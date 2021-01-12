@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Usuario;
+use App\Models\Puesto;
 use App\Models\UsuarioPuesto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

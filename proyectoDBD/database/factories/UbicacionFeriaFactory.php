@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Ubicacion;
+use App\Models\Feria;
 use App\Models\UbicacionFeria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

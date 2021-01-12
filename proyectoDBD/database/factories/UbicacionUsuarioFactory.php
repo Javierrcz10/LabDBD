@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Ubicacion;
+use App\Models\Usuario;
 use App\Models\UbicacionUsuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

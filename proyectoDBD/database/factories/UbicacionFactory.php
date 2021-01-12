@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Calle;
 use App\Models\Ubicacion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
