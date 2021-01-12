@@ -22,7 +22,8 @@ class UbicacionUsuarioFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'idUbicacion'=> Ubicacion::factory(),
+            'idUsuario'=> Usuario::factory()
         ];
     }
 }

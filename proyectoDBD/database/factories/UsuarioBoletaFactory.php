@@ -22,7 +22,8 @@ class UsuarioBoletaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'idUsuario'=> Usuario::factory(),
+            'idBoleta'=> Boleta::factory()
         ];
     }
 }

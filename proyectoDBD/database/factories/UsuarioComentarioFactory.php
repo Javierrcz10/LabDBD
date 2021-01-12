@@ -22,7 +22,8 @@ class UsuarioComentarioFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'idUsuario'=> Usuario::factory(),
+            'idComentario'=> Comentario::factory()
         ];
     }
 }

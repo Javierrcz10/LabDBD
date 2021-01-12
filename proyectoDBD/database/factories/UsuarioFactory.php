@@ -22,7 +22,11 @@ class UsuarioFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombreUsuario'=> $this->faker->name,
+            'apodoUsuario'=> $this->faker->firstname,
+            'contraseniaUsuario'=> $this->faker->password,
+            'emailUsuario'=> $this->faker->email,
+            'reputacionUsuario'=> $this->faker->numberBetween($min = 1, $max = 5)
         ];
     }
 }

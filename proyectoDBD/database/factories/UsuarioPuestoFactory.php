@@ -22,7 +22,8 @@ class UsuarioPuestoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'idUsuario'=> Usuario::factory(),
+            'idPuesto'=> Puesto::factory()
         ];
     }
 }
