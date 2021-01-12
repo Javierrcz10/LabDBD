@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Producto;
+use App\Models\Boleta;
 use App\Models\BoletaProducto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +24,8 @@ class BoletaProductoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'idBoleta' =>Boleta::factory(),
+            'idProducto' =>Producto::factory(),
         ];
     }
 }

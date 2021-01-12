@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\PuestoFeria;
+use App\Models\Producto;
 use App\Models\ProductoPuesto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,6 +25,8 @@ class ProductoPuestoFactory extends Factory
     {
         return [
             'cantidad' =>$this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 500),
+            'idProducto' => Producto::factory(),
+            'idPuesto' => PuestoFeria::factory(),
         ];
     }
 }
