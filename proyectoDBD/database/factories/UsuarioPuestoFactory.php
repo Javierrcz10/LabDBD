@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Usuario;
-use App\Models\Puesto;
+use App\Models\PuestoFeria;
 use App\Models\UsuarioPuesto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,7 +25,7 @@ class UsuarioPuestoFactory extends Factory
     {
         return [
             'idUsuario'=> Usuario::factory(),
-            'idPuesto'=> Puesto::factory()
+            'idPuesto'=> PuestoFeria::factory()
         ];
     }
 }

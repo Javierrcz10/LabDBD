@@ -23,7 +23,7 @@ class UbicacionFactory extends Factory
     public function definition()
     {
         return [
-            'numerodireccion'=> $this->faker->numberBetween($min = 0, $max = 9999),
+            'numeroDireccion'=> $this->faker->buildingNumber,
             'idCalle'=> Calle::factory()
         ];
     }
