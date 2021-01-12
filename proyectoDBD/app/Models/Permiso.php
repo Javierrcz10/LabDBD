@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Permiso extends Model
 {
     use HasFactory;
+
+    
+    public function rolPermiso()
+    {
+        return $this->hasMany(RolPermiso::class);
+
+    }
 }

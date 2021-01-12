@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class MetodoPago extends Model
 {
     use HasFactory;
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+
+    }
+
+    public function boleta()
+    {
+        return $this->hasMany(Boleta::class);
+
+    }
+
 }

@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class RolPermiso extends Model
 {
     use HasFactory;
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class);
+
+    }
+    public function permiso()
+    {
+        return $this->belongsTo(Permiso::class);
+
+    }
 }
