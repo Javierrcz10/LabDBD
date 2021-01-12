@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class UbicacionFeria extends Model
 {
     use HasFactory;
+
+    public function ubicacion()
+    {
+        return $this->belongsTo(Ubicacion::class);
+
+    }
+
+    public function feria()
+    {
+        return $this->belongsTo(Feria::class);
+
+    }
+
 }
