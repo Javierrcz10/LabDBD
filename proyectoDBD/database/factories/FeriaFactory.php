@@ -23,7 +23,7 @@ class FeriaFactory extends Factory
     {
         return [
             'nombreFeria' =>$this->faker->company,
-            'descripcionFeria' =>$this->faker->text,
+            'descripcionFeria' =>$this->faker->text
         ];
     }
 }

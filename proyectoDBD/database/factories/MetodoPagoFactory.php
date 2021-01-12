@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Usuario;
 use App\Models\MetodoPago;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -26,6 +27,7 @@ class MetodoPagoFactory extends Factory
             'totalPago' =>$this->faker->numberBetween($min = 1000, $max = 35000),
             'nombreBanco' =>$this->faker->randomElement($array = array ('Banco Estado','Banco Santander','Banco Falabella')),
             'ultimosDigitos' =>$this->faker->numberBetween($min = 1000, $max = 9999),
+            'idUsuario' =>Usuario::factory()
         ];
     }
 }

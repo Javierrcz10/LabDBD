@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\PuestoFeria;
+use App\Models\Feria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PuestoFeriaFactory extends Factory
@@ -24,6 +25,7 @@ class PuestoFeriaFactory extends Factory
         return [
             'NombrePuesto' =>$this->faker->company,
             'DescripcionPuesto' =>$this->faker->text,
+            'idFeria' =>Feria::factory()
         ];
     }
 }

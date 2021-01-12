@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Comuna;
 use App\Models\Calle;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,6 +24,7 @@ class CalleFactory extends Factory
     {
         return [
             'nombreCalle' => $this->faker->streetName,
+            'idComuna' => Comuna::factory()
         ];
     }
 }

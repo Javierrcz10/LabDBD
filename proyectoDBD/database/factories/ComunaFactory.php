@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Region;
 use App\Models\Comuna;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,6 +24,7 @@ class ComunaFactory extends Factory
     {
         return [
             'nombreComuna' =>$this->faker->randomElement($array = array ('San Miguel','Providencia','Pedro Aguirre Cerda','Cerro Navia','Las Condes','Vitacura','Renca')),
+            'idRegion' =>Region::factory()
         ];
     }
 }
