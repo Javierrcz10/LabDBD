@@ -24,8 +24,8 @@ class UbicacionFeriaFactory extends Factory
     public function definition()
     {
         return [
-            'idUbicacion'=> Ubicacion::factory(),
-            'idFeria'=> Feria::factory()
+            'idUbicacion'=> Ubicacion::all()->random()->id,
+            'idFeria'=> Feria::all()->random()->id
         ];
     }
 }

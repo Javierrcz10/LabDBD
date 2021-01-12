@@ -24,7 +24,7 @@ class ComunaFactory extends Factory
     {
         return [
             'nombreComuna' =>$this->faker->randomElement($array = array ('San Miguel','Providencia','Pedro Aguirre Cerda','Cerro Navia','Las Condes','Vitacura','Renca')),
-            'idRegion' =>Region::factory()
+            'idRegion' =>Region::all()->random()->id
         ];
     }
 }

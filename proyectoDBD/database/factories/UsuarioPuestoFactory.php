@@ -24,8 +24,8 @@ class UsuarioPuestoFactory extends Factory
     public function definition()
     {
         return [
-            'idUsuario'=> Usuario::factory(),
-            'idPuesto'=> PuestoFeria::factory()
+            'idUsuario'=> Usuario::all()->random()->id,
+            'idPuesto'=> PuestoFeria::all()->random()->id
         ];
     }
 }

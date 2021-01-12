@@ -24,8 +24,8 @@ class UbicacionUsuarioFactory extends Factory
     public function definition()
     {
         return [
-            'idUbicacion'=> Ubicacion::factory(),
-            'idUsuario'=> Usuario::factory()
+            'idUbicacion'=> Ubicacion::all()->random()->id,
+            'idUsuario'=> Usuario::all()->random()->id
         ];
     }
 }

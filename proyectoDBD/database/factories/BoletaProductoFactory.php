@@ -24,8 +24,8 @@ class BoletaProductoFactory extends Factory
     public function definition()
     {
         return [
-            'idBoleta' =>Boleta::factory(),
-            'idProducto' =>Producto::factory()
+            'idBoleta' =>Boleta::all()->random()->id,
+            'idProducto' =>Producto::all()->random()->id
         ];
     }
 }

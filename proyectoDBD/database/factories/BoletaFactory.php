@@ -25,7 +25,7 @@ class BoletaFactory extends Factory
         return [
             'precioTotal'=> $this->faker->numberBetween($min = 1000, $max = 15000),
             'fecha' => $this->faker->dateTimeBetween($startDate = '-30 years', $endDate = 'now', $timezone = null),
-            'idPago' => MetodoPago::factory()
+            'idPago' => MetodoPago::all()->random()->id
         ];
     }
 }

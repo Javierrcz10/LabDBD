@@ -24,8 +24,8 @@ class UsuarioComentarioFactory extends Factory
     public function definition()
     {
         return [
-            'idUsuario'=> Usuario::factory(),
-            'idComentario'=> Comentario::factory()
+            'idUsuario'=> Usuario::all()->random()->id,
+            'idComentario'=> Comentario::all()->random()->id
         ];
     }
 }

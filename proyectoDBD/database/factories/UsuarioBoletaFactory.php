@@ -24,8 +24,8 @@ class UsuarioBoletaFactory extends Factory
     public function definition()
     {
         return [
-            'idUsuario'=> Usuario::factory(),
-            'idBoleta'=> Boleta::factory()
+            'idUsuario'=> Usuario::all()->random()->id,
+            'idBoleta'=> Boleta::all()->random()->id
         ];
     }
 }

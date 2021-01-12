@@ -24,7 +24,7 @@ class CategoriaFactory extends Factory
     {
         return [
             'nombreCategoria' =>$this->faker->randomElement($array = array ('fruta','verdura','limpieza','libro','dulce')),
-            'idSubCategoria' =>SubCategoria::factory()
+            'idSubCategoria' =>SubCategoria::all()->random()->id
         ];
     }
 }

@@ -24,7 +24,7 @@ class CalleFactory extends Factory
     {
         return [
             'nombreCalle' => $this->faker->streetName,
-            'idComuna' => Comuna::factory()
+            'idComuna' => Comuna::all()->random()->id
         ];
     }
 }

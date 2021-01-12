@@ -24,8 +24,8 @@ class UsuarioRolFactory extends Factory
     public function definition()
     {
         return [
-            'idUsuario'=> Usuario::factory(),
-            'idRol'=> Rol::factory()
+            'idUsuario'=> Usuario::all()->random()->id,
+            'idRol'=> Rol::all()->random()->id
         ];
     }
 }
