@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Usuario;
+use App\Models\Boleta;
 use App\Models\UsuarioBoleta;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
