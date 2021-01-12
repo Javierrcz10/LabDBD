@@ -22,7 +22,9 @@ class RolFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombreRol'=> $this->faker->randomElement($array = array (
+                'admin','vendedor','ayudante','comprador','reponedor')),
+            'descripcionRol'=> $this->faker->realText
         ];
     }
 }

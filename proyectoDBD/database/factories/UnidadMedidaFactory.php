@@ -22,7 +22,9 @@ class UnidadMedidaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tipoUnidad'=> $this->faker->randomElement($array = array (
+                'Metros','Kilos','Gramos','Unidades','Litros')),
+            
         ];
     }
 }

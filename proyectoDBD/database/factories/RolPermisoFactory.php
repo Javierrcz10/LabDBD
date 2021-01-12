@@ -22,7 +22,8 @@ class RolPermisoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'idRol'=> Rol::factory(),
+            'idPermiso'=> Permiso::factory()
         ];
     }
 }

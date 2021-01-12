@@ -22,7 +22,8 @@ class UsuarioRolFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'idUsuario'=> Usuario::factory(),
+            'idRol'=> Rol::factory()
         ];
     }
 }

@@ -22,7 +22,8 @@ class SubCategoriaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombreCategoria'=> $this->faker->randomElement($array = array (
+                'manzanas','ajedrez','duraznos','escobillones','pisos','muebles'))
         ];
     }
 }
