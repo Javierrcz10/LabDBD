@@ -19,8 +19,8 @@ class CreateProductosTable extends Migration
             $table->text('descripcionProducto');
             $table->integer('precioProducto');
 
-            $table->unsignedBigInteger('idCategoria');
-            $table->foreign('idCategoria')->references('id')->on('categorias');
+            $table->unsignedBigInteger('idSubCategoria');
+            $table->foreign('idSubCategoria')->references('id')->on('sub_categorias');
 
             $table->unsignedBigInteger('idUnidad');
             $table->foreign('idUnidad')->references('id')->on('unidad_medidas');

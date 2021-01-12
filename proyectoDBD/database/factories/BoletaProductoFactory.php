@@ -25,7 +25,7 @@ class BoletaProductoFactory extends Factory
     {
         return [
             'idBoleta' =>Boleta::factory(),
-            'idProducto' =>Producto::factory(),
+            'idProducto' =>Producto::factory()
         ];
     }
 }
