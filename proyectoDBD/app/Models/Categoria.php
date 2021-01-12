@@ -11,8 +11,7 @@ class Categoria extends Model
 
     public function subCategoria()
     {
-        return
-        $this->belongsTo('App\Models\SubCategoria');
+        return $this->belongsTo(SubCategoria::class);
 
     }
 

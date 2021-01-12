@@ -11,14 +11,12 @@ class BoletaProducto extends Model
 
     public function boleta()
     {
-        return
-        $this->belongsTo('App\Models\Boleta');
+        return $this->belongsTo(Boleta::class);
 
     }
     public function producto()
     {
-        return
-        $this->belongsTo('App\Models\Producto');
+        return $this->belongsTo(App\Models\Producto::class);
 
     }
 }

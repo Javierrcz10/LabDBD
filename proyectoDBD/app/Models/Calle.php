@@ -11,15 +11,13 @@ class Calle extends Model
 
     public function comuna()
     {
-        return
-        $this->belongsTo('App\Models\Comuna');
+        return $this->belongsTo(Comuna::class);
 
     }
 
     public function ubicacion()
     {
-        return
-        $this->hasMany('App\Models\Ubicacion');
+        return $this->hasMany(Ubicacion::class);
 
     }
 }

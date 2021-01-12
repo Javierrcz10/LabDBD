@@ -11,29 +11,25 @@ class Boleta extends Model
 
     public function usuarioBoleta()
     {
-        return
-        $this->hasMany('App\Models\UsuarioBoleta');
+        return $this->hasMany(UsuarioBoleta::class);
 
     }
 
     public function boletaProducto()
     {
-        return
-        $this->hasMany('App\Models\BoletaProducto');
+        return $this->hasMany(BoletaProducto::class);
 
     }
 
     public function comentario()
     {
-        return
-        $this->hasMany('App\Models\Comentario');
+        return $this->hasMany(Comentario::class);
 
     }
 
     public function metodoPago()
     {
-        return
-        $this->belongsTo('App\Models\MetodoPago');
+        return $this->belongsTo(MetodoPago::class);
 
     }
 
