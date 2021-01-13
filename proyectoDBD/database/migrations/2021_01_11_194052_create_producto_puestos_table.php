@@ -16,6 +16,7 @@ class CreateProductoPuestosTable extends Migration
         Schema::create('producto_puestos', function (Blueprint $table) {
             $table->id('id');
             $table->decimal('cantidad');
+            $table->boolean('estado');
 
             $table->unsignedBigInteger('idProducto');
             $table->foreign('idProducto')->references('id')->on('productos');
