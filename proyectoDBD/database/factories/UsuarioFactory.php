@@ -26,7 +26,8 @@ class UsuarioFactory extends Factory
             'apodoUsuario'=> $this->faker->firstname,
             'contraseniaUsuario'=> $this->faker->password,
             'emailUsuario'=> $this->faker->email,
-            'reputacionUsuario'=> $this->faker->numberBetween($min = 1, $max = 5)
+            'reputacionUsuario'=> $this->faker->numberBetween($min = 1, $max = 5),
+            'estado' => $this->faker->boolean(100)
         ];
     }
 }

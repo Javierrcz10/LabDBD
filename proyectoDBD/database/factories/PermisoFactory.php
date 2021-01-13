@@ -23,7 +23,8 @@ class PermisoFactory extends Factory
     {
         return [
             'nombrePermiso' =>$this->faker->randomElement($array = array ('Borrar usuario','Borrar Feria','Comprar Productos', 'Borrar Comentario')),
-            'descripcionPermiso' =>$this->faker->text
+            'descripcionPermiso' =>$this->faker->text,
+            'estado' => $this->faker->boolean(100)
         ];
     }
 }

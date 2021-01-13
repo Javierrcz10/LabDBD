@@ -25,7 +25,8 @@ class ComentarioFactory extends Factory
         return [
             'contenido' =>$this->faker->realText($maxNbChars = 200, $indexSize = 2),
             'calificacion' =>$this->faker->numberBetween($min = 1, $max = 5),
-            'idBoleta' => Boleta::all()->random()->id
+            'idBoleta' => Boleta::all()->random()->id,
+            'estado' => $this->faker->boolean(100)
         ];
     }
 }

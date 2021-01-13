@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\Models\Usuario;
 class UsuarioController extends Controller
 {
     /**
@@ -13,18 +13,10 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = Usuario::all()->where($usuario->estado,true);
+        return response()->json($usuario);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -45,19 +37,14 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuario = Usuario::find($id);
+        //verificar si el usuario esta borrado o no
+        if($usuario->estado == true){
+            return response()->json($usuario);
+        }
+        return response()->json(['usuario se encuentra borrado'],404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

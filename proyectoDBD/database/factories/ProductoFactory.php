@@ -27,8 +27,9 @@ class ProductoFactory extends Factory
             'nombreProducto' =>$this->faker->name,
             'descripcionProducto' =>$this->faker->text,
             'precioProducto' =>$this->faker->numberBetween($min = 100, $max = 9000),
+            'estado' => $this->faker->boolean(100),
             'idSubCategoria'=> SubCategoria::all()->random()->id,
-            'idUnidad'=> UnidadMedida::all()->random()->id
+            'idUnidad'=> UnidadMedida::all()->random()->id,
         ];
     }
 }
