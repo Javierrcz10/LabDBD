@@ -20,6 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->text('contraseniaUsuario');
             $table->text('emailUsuario');
             $table->decimal('reputacionUsuario');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

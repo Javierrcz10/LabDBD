@@ -17,6 +17,7 @@ class CreateComentariosTable extends Migration
             $table->id('id');
             $table->text('contenido');
             $table->integer('calificacion');
+            $table->boolean('estado');
 
             $table->unsignedBigInteger('idBoleta');
             $table->foreign('idBoleta')->references('id')->on('boletas');

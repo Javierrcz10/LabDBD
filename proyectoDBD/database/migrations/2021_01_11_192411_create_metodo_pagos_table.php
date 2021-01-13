@@ -19,6 +19,7 @@ class CreateMetodoPagosTable extends Migration
             $table->integer('totalPago');
             $table->text('nombreBanco');
             $table->integer('ultimosDigitos');
+            $table->boolean('estado');
 
             $table->unsignedBigInteger('idUsuario');
             $table->foreign('idUsuario')->references('id')->on('usuarios');

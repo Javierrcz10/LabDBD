@@ -16,6 +16,7 @@ class CreateUbicacionsTable extends Migration
         Schema::create('ubicacions', function (Blueprint $table) {
             $table->id('id');
             $table->text('numeroDireccion');
+            $table->boolean('estado');
 
             $table->unsignedBigInteger('idCalle');
             $table->foreign('idCalle')->references('id')->on('calles');

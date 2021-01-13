@@ -18,6 +18,7 @@ class CreateProductosTable extends Migration
             $table->text('nombreProducto');
             $table->text('descripcionProducto');
             $table->integer('precioProducto');
+            $table->boolean('estado');
 
             $table->unsignedBigInteger('idSubCategoria');
             $table->foreign('idSubCategoria')->references('id')->on('sub_categorias');

@@ -16,6 +16,7 @@ class CreateUnidadMedidasTable extends Migration
         Schema::create('unidad_medidas', function (Blueprint $table) {
             $table->id('id');
             $table->text('tipoUnidad');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class CreateBoletasTable extends Migration
             $table->id('id');
             $table->integer('precioTotal');
             $table->dateTime('fecha');
+            $table->boolean('estado');
 
             $table->unsignedBigInteger('idPago');
             $table->foreign('idPago')->references('id')->on('metodo_pagos');

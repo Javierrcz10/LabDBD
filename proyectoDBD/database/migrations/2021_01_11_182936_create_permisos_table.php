@@ -17,6 +17,7 @@ class CreatePermisosTable extends Migration
             $table->id('id');
             $table->text('nombrePermiso');
             $table->text('descripcionPermiso');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

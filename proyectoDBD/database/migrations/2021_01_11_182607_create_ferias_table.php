@@ -17,6 +17,7 @@ class CreateFeriasTable extends Migration
             $table->id('id');
             $table->text('nombreFeria');
             $table->text('descripcionFeria');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }
