@@ -17,6 +17,7 @@ class CreatePuestoFeriasTable extends Migration
             $table->id('id');
             $table->text('NombrePuesto');
             $table->text('DescripcionPuesto');
+            $table->boolean('estado');
 
             $table->unsignedBigInteger('idFeria');
             $table->foreign('idFeria')->references('id')->on('ferias');

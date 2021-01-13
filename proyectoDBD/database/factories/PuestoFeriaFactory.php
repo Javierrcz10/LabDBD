@@ -25,6 +25,7 @@ class PuestoFeriaFactory extends Factory
         return [
             'NombrePuesto' =>$this->faker->company,
             'DescripcionPuesto' =>$this->faker->text,
+            'estado' => $this->faker->boolean(100),
             'idFeria' =>Feria::all()->random()->id
         ];
     }

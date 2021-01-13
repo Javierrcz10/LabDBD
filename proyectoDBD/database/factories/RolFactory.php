@@ -24,6 +24,7 @@ class RolFactory extends Factory
         return [
             'nombreRol'=> $this->faker->randomElement($array = array (
                 'admin','vendedor','ayudante','comprador','reponedor')),
+            'estado' => $this->faker->boolean(100),
             'descripcionRol'=> $this->faker->realText
         ];
     }

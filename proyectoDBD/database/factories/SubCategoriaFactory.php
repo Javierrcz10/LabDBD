@@ -23,7 +23,8 @@ class SubCategoriaFactory extends Factory
     {
         return [
             'nombreCategoria'=> $this->faker->randomElement($array = array (
-                'manzanas','ajedrez','duraznos','escobillones','pisos','muebles'))
+                'manzanas','ajedrez','duraznos','escobillones','pisos','muebles')),
+            'estado' => $this->faker->boolean(100)
         ];
     }
 }

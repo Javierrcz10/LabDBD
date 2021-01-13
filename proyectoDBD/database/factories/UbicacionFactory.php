@@ -24,6 +24,7 @@ class UbicacionFactory extends Factory
     {
         return [
             'numeroDireccion'=> $this->faker->buildingNumber,
+            'estado' => $this->faker->boolean(100),
             'idCalle'=> Calle::all()->random()->id
         ];
     }

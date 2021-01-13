@@ -27,7 +27,8 @@ class MetodoPagoFactory extends Factory
             'totalPago' =>$this->faker->numberBetween($min = 1000, $max = 35000),
             'nombreBanco' =>$this->faker->randomElement($array = array ('Banco Estado','Banco Santander','Banco Falabella')),
             'ultimosDigitos' =>$this->faker->numberBetween($min = 1000, $max = 9999),
-            'idUsuario' =>Usuario::all()->random()->id
+            'idUsuario' =>Usuario::all()->random()->id,
+            'estado' => $this->faker->boolean(100)
         ];
     }
 }

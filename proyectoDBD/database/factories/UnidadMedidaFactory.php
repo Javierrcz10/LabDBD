@@ -24,6 +24,7 @@ class UnidadMedidaFactory extends Factory
         return [
             'tipoUnidad'=> $this->faker->randomElement($array = array (
                 'Metros','Kilos','Gramos','Unidades','Litros')),
+            'estado' => $this->faker->boolean(100),
             
         ];
     }

@@ -25,6 +25,7 @@ class ProductoPuestoFactory extends Factory
     {
         return [
             'cantidad' =>$this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 500),
+            'estado' => $this->faker->boolean(100),
             'idProducto' => Producto::all()->random()->id,
             'idPuesto' => PuestoFeria::all()->random()->id
         ];
