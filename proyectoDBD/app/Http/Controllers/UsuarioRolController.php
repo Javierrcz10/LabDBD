@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\Models\UsuarioRol;
 class UsuarioRolController extends Controller
 {
     /**
@@ -13,18 +13,10 @@ class UsuarioRolController extends Controller
      */
     public function index()
     {
-        //
+        $usuarioRol = UsuarioRol::all();
+        return response()->json($usuarioRol);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -45,19 +37,10 @@ class UsuarioRolController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuarioRol = UsuarioRol::find($id);
+        return response()->json($usuarioRol);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

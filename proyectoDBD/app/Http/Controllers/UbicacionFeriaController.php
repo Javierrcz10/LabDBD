@@ -3,31 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Models\UbicacionFeria;
 
 class UbicacionFeriaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * mostrar todos los datos de una tabla(get)
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $ubicacionFeria = UbicacionFeria::all();
+        return response()->json($ubicacionFeria);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * crear una nueva tupla(post)
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -38,29 +30,20 @@ class UbicacionFeriaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * obtener una tupla especifica de una tabla(get)
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $ubicacionFeria = UbicacionFeria::find($id);
+        return response()->json($ubicacionFeria);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
-     * Update the specified resource in storage.
+     * Cambia una tupla especifica(put)
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -72,7 +55,7 @@ class UbicacionFeriaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * borrar una tupla especifica()
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
