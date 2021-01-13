@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\MetodoPago;
 class MetodoPagoController extends Controller
 {
     /**
@@ -13,18 +13,10 @@ class MetodoPagoController extends Controller
      */
     public function index()
     {
-        //
+        $metodoPago = MetodoPago::all();
+        return response()-> json($metodoPago);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -45,19 +37,10 @@ class MetodoPagoController extends Controller
      */
     public function show($id)
     {
-        //
+        $metodoPago = MetodoPago::find($id);
+        return response()-> json($metodoPago);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
