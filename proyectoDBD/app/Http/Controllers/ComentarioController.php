@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Comentario;
 class ComentarioController extends Controller
 {
     /**
@@ -13,18 +13,11 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        //
+        $comentario = Comentario::all();
+        return response()-> json($comentario);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -45,19 +38,11 @@ class ComentarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $comentario = Comentario::find($id);
+        return response()-> json($comentario);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
