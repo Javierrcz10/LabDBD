@@ -26,7 +26,13 @@ class BoletaProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $boletaProducto = new BoletaProducto();
+        $boletaProducto->idBoleta = $request->idBoleta;
+        $boletaProducto->idProducto = $request->idProducto;
+        $boletaProducto->save();
+        return response()->json([
+            "message"=> "relacion creada"
+        ],202);
     }
 
     /**

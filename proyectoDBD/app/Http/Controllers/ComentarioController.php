@@ -27,7 +27,15 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comentario = new Comentario();
+        $comentario->contenido = $request->contenido;
+        $comentario->calificacion = $request->calificacion;
+        $comentario->idBoleta = $request->idBoleta;
+        $comentario->save();
+        return response()->json([
+            "message"=> "comentario creado"
+            "id"=> $comentario->id
+        ],202);
     }
 
     /**

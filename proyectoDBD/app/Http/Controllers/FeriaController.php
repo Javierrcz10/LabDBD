@@ -26,7 +26,14 @@ class FeriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $feria = new Feria();
+        $feria->nombre = $request->nombre;
+        $feria->descripcion = $request->descripcion;
+        $feria->save();
+        return response()->json([
+            "message"=> "feria creada"
+            "id"=> $feria->id
+        ],202);
     }
 
     /**
