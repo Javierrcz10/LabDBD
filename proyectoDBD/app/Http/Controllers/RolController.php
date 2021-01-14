@@ -21,16 +21,6 @@ class RolController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,7 +39,11 @@ class RolController extends Controller
      */
     public function show($id)
     {
-        //
+        $rol = Rol::find($id);
+        if($rol != NULL){
+            return response()-> json($rol);
+        }
+        return response('ERROR 404');
     }
 
     /**

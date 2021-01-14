@@ -21,16 +21,6 @@ class RolPermisoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,7 +39,11 @@ class RolPermisoController extends Controller
      */
     public function show($id)
     {
-        //
+        $rolPermiso = RolPermiso::find($id);
+        if($rolPermiso != NULL){
+            return response()-> json($rolPermiso);
+        }
+        return response('ERROR 404');
     }
 
     /**

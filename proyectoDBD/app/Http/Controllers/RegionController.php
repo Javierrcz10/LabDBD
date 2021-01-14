@@ -19,17 +19,6 @@ class RegionController extends Controller
         }
         return response(404);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -49,7 +38,11 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        //
+        $region = Region::find($id);
+        if($region != NULL){
+            return response()-> json($region);
+        }
+        return response('ERROR 404');
     }
 
     /**

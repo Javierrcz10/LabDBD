@@ -41,7 +41,11 @@ class ProductoPuestoController extends Controller
      */
     public function show($id)
     {
-        //
+        $productoPuesto = ProductoPuesto::find($id);
+        if($productoPuesto != NULL){
+            return response()-> json($productoPuesto);
+        }
+        return response('ERROR 404');
     }
 
     /**

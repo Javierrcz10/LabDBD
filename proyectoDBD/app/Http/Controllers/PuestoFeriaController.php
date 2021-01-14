@@ -49,7 +49,11 @@ class PuestoFeriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $puestoFeria = PuestoFeria::find($id);
+        if($puestoFeria != NULL){
+            return response()-> json($puestoFeria);
+        }
+        return response('ERROR 404');
     }
 
     /**
