@@ -26,7 +26,11 @@ class UsuarioComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioComentario = new UsuarioComentario();
+        $usuarioComentario->idUsuario = $request->idUsuario;
+        $usuarioComentario->idComentario = $request->idComentario;
+        $usuarioComentario->save();
+        return response()->json(['relacion creada'],202);
     }
 
     /**

@@ -26,7 +26,15 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->nombreUsuario = $request->nombreUsuario;
+        $usuario->apodoUsuario = $request->apodoUsuario;
+        $usuario->contraseniaUsuario = $request->contraseniaUsuario;
+        $usuario->emailUsuario = $request->emailUsuario;
+        $usuario->reputacionUsuario = 0.0;
+        $usuario->estado = true;
+        $usuario->save();
+        return response()->json(['usuario creado'],202);
     }
 
     /**

@@ -25,7 +25,11 @@ class UbicacionUsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ubicacionUsuario = new UbicacionUsuario();
+        $ubicacionUsuario->idUbicacion = $request->idUbicacion;
+        $ubicacionUsuario->idUsuario = $request->idUsuario;
+        $ubicacionUsuario->save();
+        return response()->json(['relacion creada'],202); 
     }
 
     /**

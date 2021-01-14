@@ -26,7 +26,11 @@ class UsuarioRolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioRol = new UsuarioRol();
+        $usuarioRol->idUsuario = $request->idUsuario;
+        $usuarioRol->idRol = $request->idRol;
+        $usuarioRol->save();
+        return response()->json(['relacion creada'],202);
     }
 
     /**

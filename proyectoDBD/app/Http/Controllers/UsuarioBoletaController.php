@@ -26,7 +26,11 @@ class UsuarioBoletaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioBoleta = new UsuarioBoleta();
+        $usuarioBoleta->idUsuario = $request->idUsuario;
+        $usuarioBoleta->idBoleta = $request->idBoleta;
+        $usuarioBoleta->save();
+        return response()->json(['relacion creada'],202);
     }
 
     /**

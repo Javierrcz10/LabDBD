@@ -25,7 +25,11 @@ class UsuarioProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioProducto = new UsuarioProducto();
+        $usuarioProducto->idUsuario = $request->idUsuario;
+        $usuarioProducto->idProducto = $request->idProducto;
+        $usuarioProducto->save();
+        return response()->json([relacion creada],202);
     }
 
     /**

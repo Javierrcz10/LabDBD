@@ -26,7 +26,11 @@ class UnidadMedidaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $unidadMedida = new UnidadMedida();
+        $unidadMedida->tipoUnidad = $request->tipoUnidad;
+        $unidadMedida->estado = true;
+        $unidadMedida->save();
+        return response()->json(['unidad creada'],202);
     }
 
     /**

@@ -26,7 +26,11 @@ class UsuarioPuestoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuarioPuesto new UsuarioPuesto();
+        $usuarioPuesto->idUsuario = $request->idUsuario;
+        $usuarioPuesto->idPuesto = $request->idPuesto;
+        $usuarioPuesto->save();
+        return response()->json(['relacion creada'],202);
     }
 
     /**

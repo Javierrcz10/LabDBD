@@ -26,7 +26,11 @@ class UbicacionFeriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ubicacionFeria = new UbicacionFeria();
+        $ubicacionFeria->idUbicacion = $request->idUbicacion;
+        $ubicacionFeria->idFeria = $request->idFeria;
+        $ubicacionFeria->save()
+        return response()->json(['relacion creada'],202);
     }
 
     /**
