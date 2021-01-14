@@ -41,10 +41,10 @@ class ProductoController extends Controller
         $producto->idSubCategoria = $request->idSubCategoria;
         $producto->idUnidad = $request->idUnidad;
         $producto->estado = true;
-        $usuario->save();
+        $producto->save();
         return response()->json([
             "message"=>"Se ha creado un usuario",
-            "id"=>$usuario->id
+            "id"=>$producto->id
         ]);
     }
 

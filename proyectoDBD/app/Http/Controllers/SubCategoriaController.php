@@ -28,7 +28,18 @@ class SubCategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombreCategoria' => ['required'],
+
+        ]);
+        $subCategoria = new SubCategoria();
+        $subCategoria->nombreCategoria = $request->nombreCategoria;
+        $subCategoria->estado = true;
+        $subCategoria->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$subCategoria->id
+        ]);
     }
 
     /**

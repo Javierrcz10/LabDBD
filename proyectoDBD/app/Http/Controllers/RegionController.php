@@ -27,7 +27,17 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombreRegion' => ['required'],
+        ]);
+        $region = new Region();
+        $region->nombreRegion = $request->nombreRegion;
+        $region->estado = true;
+        $region->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$region->id
+        ]);
     }
 
     /**

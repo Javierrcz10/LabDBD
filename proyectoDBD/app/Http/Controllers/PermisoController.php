@@ -33,14 +33,14 @@ class PermisoController extends Controller
             'descripcionPermiso'=> ['required'],
 
         ]);
-        $permiso = new Usuario();
+        $permiso = new Permiso();
         $permiso->nombrePermiso = $request->nombrePermiso;
         $permiso->descripcionPermiso = $request->descripcionPermiso;
         $permiso->estado = true;
-        $usuario->save();
+        $permiso->save();
         return response()->json([
             "message"=>"Se ha creado un usuario",
-            "id"=>$usuario->id
+            "id"=>$permiso->id
         ]);
     }
 

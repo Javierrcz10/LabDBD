@@ -39,11 +39,20 @@ class RolPermisoController extends Controller
      */
     public function show($id)
     {
-        $rolPermiso = RolPermiso::find($id);
-        if($rolPermiso != NULL){
-            return response()-> json($rolPermiso);
-        }
-        return response('ERROR 404');
+        $validated = $request->validate([
+            'idRol' => ['required'],
+            'idPermiso'=> ['required'],
+
+        ]);
+        $rolPermiso = new RolPermiso();
+        $rolPermiso->idRol = $request->idRol;
+        $rolPermiso->idPermiso = $request->idPermiso;
+        $rolPermiso->estado = true;
+        $rolPermiso->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$rolPermiso->id
+        ]);
     }
 
     /**

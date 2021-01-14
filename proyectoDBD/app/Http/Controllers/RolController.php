@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RolController extends Controller
+class rolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        $rol = Rol::all()->where('estado', true);
+        $rol = rol::all()->where('estado', true);
         if($rol != NULL){
             return response()-> json($rol);
         }
@@ -28,7 +28,20 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombreRol' => ['required'],
+            'descripcionRol'=> ['required'],
+
+        ]);
+        $rol = new Rol();
+        $rol->nombreRol = $request->nombreRol;
+        $rol->descripcionRol = $request->descripcionRol;
+        $rol->estado = true;
+        $rol->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$rol->id
+        ]);
     }
 
     /**
@@ -39,7 +52,7 @@ class RolController extends Controller
      */
     public function show($id)
     {
-        $rol = Rol::find($id);
+        $rol = rol::find($id);
         if($rol != NULL){
             return response()-> json($rol);
         }

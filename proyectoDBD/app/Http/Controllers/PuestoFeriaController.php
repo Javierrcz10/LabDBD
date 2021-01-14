@@ -38,7 +38,21 @@ class PuestoFeriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombrePuesto' => ['required'],
+            'descripcionPuesto'=> ['required'],
+            'idFeria'=> ['required'],
+        ]);
+        $puestoFeria = new PuestoFeria();
+        $puestoFeria->nombrePuesto = $request->nombrePuesto;
+        $puestoFeria->descripcionPuesto = $request->descripcionPuesto;
+        $puestoFeria->idFeria = $request->idFeria;
+        $puestoFeria->estado = true;
+        $puestoFeria->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$puestoFeria->id
+        ]);
     }
 
     /**

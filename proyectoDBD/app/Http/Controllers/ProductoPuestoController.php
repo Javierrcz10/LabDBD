@@ -13,9 +13,9 @@ class ProductoPuestoController extends Controller
      */
     public function index()
     {
-        $producto = Producto::all()->where('estado', true);
-        if($producto != NULL){
-            return response()-> json($producto);
+        $productoPuestro = Producto::all()->where('estado', true);
+        if($productoPuestro != NULL){
+            return response()-> json($productoPuestro);
         }
         return response(404);
     }
@@ -30,7 +30,21 @@ class ProductoPuestoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'cantidad' => ['required'],
+            'idProducto'=> ['required'],
+            'idpuesto'=> ['required'],
+        ]);
+        $productoPuesto = new ProductoPuesto();
+        $productoPuesto->cantidad = $request->cantidad;
+        $productoPuesto->idProducto = $request->idProducto;
+        $productoPuesto->idPuesto = $request->idPuesto;
+        $productoPuesto->estado = true;
+        $productoPuesto->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$productoPuesto->id
+        ]);
     }
 
     /**
@@ -41,23 +55,13 @@ class ProductoPuestoController extends Controller
      */
     public function show($id)
     {
-        $productoPuesto = ProductoPuesto::find($id);
-        if($productoPuesto != NULL){
-            return response()-> json($productoPuesto);
+        $productoPuestroPuesto = ProductoPuesto::find($id);
+        if($productoPuestroPuesto != NULL){
+            return response()-> json($productoPuestroPuesto);
         }
         return response('ERROR 404');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

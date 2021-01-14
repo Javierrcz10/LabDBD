@@ -28,7 +28,19 @@ class UbicacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'numeroDireccion' => ['required'],
+            'idCalle'=> ['required'],
+        ]);
+        $ubicacion = new Ubicacion();
+        $ubicacion->numeroDireccion = $request->numeroDireccion;
+        $ubicacion->idCalle = $request->idCalle;
+        $ubicacion->estado = true;
+        $usuario->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$usuario->id
+        ]);
     }
 
     /**
