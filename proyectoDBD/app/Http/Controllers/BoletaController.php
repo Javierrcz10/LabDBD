@@ -27,7 +27,15 @@ class BoletaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $boleta = new Boleta();
+        $boleta->precioTotal = $request->precioTotal;
+        $boleta->fecha = $request->fecha;
+        $boleta->idPago = $request->idPago;
+        $boleta->save();
+        return response()->json([
+            "message"=> "boleta creada"
+            "id"=> $boleta->id
+        ],202);
     }
 
     /**

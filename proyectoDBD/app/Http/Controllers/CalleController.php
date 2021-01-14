@@ -26,7 +26,13 @@ class CalleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $calle = new Calle();
+        $calle->nombre = $request->nombre;
+        $calle->idComuna = $request->idComuna;
+        $calle->save();
+        return response()->json([
+            "message"=> "calle creada"
+        ],202);
     }
 
     /**

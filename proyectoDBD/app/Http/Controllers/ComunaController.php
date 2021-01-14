@@ -26,7 +26,13 @@ class ComunaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comuna = new Comuna();
+        $comuna->nombre = $request->nombre;
+        $comuna->idRegion = $request->idRegion;
+        $comuna->save();
+        return response()->json([
+            "message"=> "comuna creada"
+        ],202);
     }
 
     /**
