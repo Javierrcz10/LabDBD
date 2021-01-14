@@ -60,7 +60,18 @@ class BoletaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $boleta = Boleta::find($id);
+        if($request ->precioTotal !=NULL){
+            $boleta->precioTotal = $request->precioTotal;
+        }
+        if($request ->fecha !=NULL){
+            $boleta->fecha = $request->fecha;
+        }
+        if($request ->idPago !=NULL){
+            $boleta->idPago = $request->idPago;
+        }
+        $boleta->save();
+        return response()->json($boleta);
     }
 
     /**
