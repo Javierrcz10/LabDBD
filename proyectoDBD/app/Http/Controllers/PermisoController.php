@@ -13,17 +13,11 @@ class PermisoController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $permiso = Permiso::all()->where('estado', true);
+        if($permiso != NULL){
+            return response()-> json($permiso);
+        }
+        return response(404);
     }
 
     /**
@@ -34,7 +28,20 @@ class PermisoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombrePermiso' => ['required'],
+            'descripcionPermiso'=> ['required'],
+
+        ]);
+        $permiso = new Usuario();
+        $permiso->nombrePermiso = $request->nombrePermiso;
+        $permiso->descripcionPermiso = $request->descripcionPermiso;
+        $permiso->estado = true;
+        $usuario->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$usuario->id
+        ]);
     }
 
     /**
@@ -45,18 +52,11 @@ class PermisoController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $permiso = Permiso::find($id);
+        if($permiso != NULL){
+            return response()-> json($permiso);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -68,7 +68,18 @@ class PermisoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permiso= Permiso::find($id);
+        if($permiso!=NULL){
+            if($request->nombrePermiso!=NULL){
+                $permiso->nombrePermiso = $request->nombrePermiso;
+            }
+            if($request->descripcionPermiso!=NULL){
+                $permiso->descripcionPermiso = $request->descripcionPermiso;
+            }
+            $usuario->save();
+            return response()->json($usuario);
+        }
+        return response('ERROR 404');
     }
 
     /**

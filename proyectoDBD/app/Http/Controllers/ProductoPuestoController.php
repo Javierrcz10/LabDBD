@@ -13,18 +13,14 @@ class ProductoPuestoController extends Controller
      */
     public function index()
     {
-        //
+        $producto = Producto::all()->where('estado', true);
+        if($producto != NULL){
+            return response()-> json($producto);
+        }
+        return response(404);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.

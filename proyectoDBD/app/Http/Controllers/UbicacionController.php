@@ -13,7 +13,11 @@ class UbicacionController extends Controller
      */
     public function index()
     {
-        //
+        $ubicacion = Ubicacion::all()->where('estado', true);
+        if($ubicacion != NULL){
+            return response()-> json($ubicacion);
+        }
+        return response(404);
     }
 
     /**

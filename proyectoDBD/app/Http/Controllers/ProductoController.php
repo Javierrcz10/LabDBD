@@ -13,19 +13,12 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $producto = Producto::all()->where('estado', true);
+        if($producto != NULL){
+            return response()-> json($producto);
+        }
+        return response(404);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +27,25 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombreProducto' => ['required'],
+            'descripcionProducto'=> ['required'],
+            'precioProducto'=> ['required'],
+            'idSubCategoria'=> ['required'],
+            'idUnidad'=> ['required'],
+        ]);
+        $producto = new Producto();
+        $producto->nombreProducto = $request->nombreProducto;
+        $producto->descripcionProducto = $request->descripcionProducto;
+        $producto->precioProducto = $request->precioProducto;
+        $producto->idSubCategoria = $request->idSubCategoria;
+        $producto->idUnidad = $request->idUnidad;
+        $producto->estado = true;
+        $usuario->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$usuario->id
+        ]);
     }
 
     /**
@@ -48,16 +59,7 @@ class ProductoController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.

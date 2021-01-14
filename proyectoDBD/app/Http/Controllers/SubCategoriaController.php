@@ -13,7 +13,11 @@ class SubCategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $subCategoria = SubCategoria::all()->where('estado', true);
+        if($subCategoria != NULL){
+            return response()-> json($subCategoria);
+        }
+        return response(404);
     }
 
     /**

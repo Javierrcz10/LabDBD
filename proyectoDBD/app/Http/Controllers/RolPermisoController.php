@@ -13,7 +13,11 @@ class RolPermisoController extends Controller
      */
     public function index()
     {
-        //
+        $rolPermiso = RolPermiso::all()->where('estado', true);
+        if($rolPermiso != NULL){
+            return response()-> json($rolPermiso);
+        }
+        return response(404);
     }
 
     /**

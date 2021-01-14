@@ -13,7 +13,11 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
+        $region = Region::all()->where('estado', true);
+        if($region != NULL){
+            return response()-> json($region);
+        }
+        return response(404);
     }
 
     /**

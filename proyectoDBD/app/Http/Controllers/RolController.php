@@ -13,7 +13,11 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $rol = Rol::all()->where('estado', true);
+        if($rol != NULL){
+            return response()-> json($rol);
+        }
+        return response(404);
     }
 
     /**

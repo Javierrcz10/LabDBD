@@ -13,7 +13,11 @@ class PuestoFeriaController extends Controller
      */
     public function index()
     {
-        //
+        $puestoFeria = PuestoFeria::all()->where('estado', true);
+        if($puestoFeria != NULL){
+            return response()-> json($puestoFeria);
+        }
+        return response(404);
     }
 
     /**
