@@ -30,7 +30,7 @@ class UsuarioBoletaController extends Controller
         $usuarioBoleta->idUsuario = $request->idUsuario;
         $usuarioBoleta->idBoleta = $request->idBoleta;
         $usuarioBoleta->save();
-        return response()->json(['relacion creada'],202);
+        return response()->json(["message" = "relacion creada"],202);
     }
 
     /**
@@ -55,7 +55,17 @@ class UsuarioBoletaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuarioBoleta = UsuarioBoleta::find($id);
+        if($request->idUsuario != NULL){
+            $usuarioBoleta->idUsuario = $request->idUsuario;
+        }
+
+        if($request->idBoleta != NULL){
+            $usuarioBoleta->idBoleta = $request->idBoleta;
+        }
+        $usuarioBoleta->save();
+        return response()->json(["message" = "usuario boleta actualizado"],201);
+
     }
 
     /**
@@ -66,6 +76,8 @@ class UsuarioBoletaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuarioBoleta = UsuarioBoleta::find($id);
+        $usuarioBoleta->delete();
+        return response()->json(["message" = "el usuario boleta ha sido borrado"],201);
     }
 }

@@ -30,7 +30,7 @@ class UnidadMedidaController extends Controller
         $unidadMedida->tipoUnidad = $request->tipoUnidad;
         $unidadMedida->estado = true;
         $unidadMedida->save();
-        return response()->json(['unidad creada'],202);
+        return response()->json(["message" = "unidad creada"],202);
     }
 
     /**
@@ -55,7 +55,13 @@ class UnidadMedidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $unidadMedida = UnidadMedida::find($id);
+
+        if($request->tipoUnidad != NULL){
+            $unidadMedida->tipoUnidad = $request->tipoUnidad;
+        }
+        $unidadMedida->save();
+        return response()->json(["message" = "unidad medida actualizada"],201);
     }
 
     /**
@@ -66,6 +72,8 @@ class UnidadMedidaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $unidadMedida = UnidadMedida::find($id);
+        $unidadMedida->delete();
+        return response()->json(["message" = "la unidad medida ha sido borrado"],201);
     }
 }

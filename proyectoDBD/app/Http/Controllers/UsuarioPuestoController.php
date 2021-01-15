@@ -30,7 +30,7 @@ class UsuarioPuestoController extends Controller
         $usuarioPuesto->idUsuario = $request->idUsuario;
         $usuarioPuesto->idPuesto = $request->idPuesto;
         $usuarioPuesto->save();
-        return response()->json(['relacion creada'],202);
+        return response()->json(["message" = "relacion creada"],202);
     }
 
     /**
@@ -55,7 +55,16 @@ class UsuarioPuestoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuarioPuesto = UsuarioPuesto::find($id);
+        if($request->idUsuario != NULL){
+            $usuarioPuesto->idUsuario = $request->idUsuario;
+        }
+        if($request->idPuesto != NULL){
+            $usuarioPuesto->idPuesto = $request->idPuesto;
+        }
+
+        $usuarioPuesto->save();
+        return response()->json(["message" = "usuario puesto actualizado"],201);
     }
 
     /**
@@ -66,6 +75,8 @@ class UsuarioPuestoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuarioPuesto = UsuarioPuesto::find($id);
+        $usuarioPuesto->delete();
+        return response()->json(["message" = "el usuario puesto ha sido borrado"],201);
     }
 }

@@ -29,7 +29,7 @@ class UbicacionUsuarioController extends Controller
         $ubicacionUsuario->idUbicacion = $request->idUbicacion;
         $ubicacionUsuario->idUsuario = $request->idUsuario;
         $ubicacionUsuario->save();
-        return response()->json(['relacion creada'],202); 
+        return response()->json(["message" = "relacion creada"],202); 
     }
 
     /**
@@ -54,7 +54,17 @@ class UbicacionUsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ubicacionUsuario = UbicacionUsuario::find($id);
+
+        if($request->idUbicacion != NULL){
+            $ubicacionUsuario->idUbicacion = $request->idUbicacion;
+        }
+
+        if($request->idUsuario != NULL){
+            $ubicacionUsuario->idUsuario = $request->idUsuario;
+        }
+        $ubicacionUsuario->save();
+        return response()->json(["message" = "ubicacion usuario actualizado"],201);
     }
 
     /**
@@ -65,6 +75,8 @@ class UbicacionUsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ubicacionUsuario = UbicacionUsuario::find($id);
+        $ubicacionUsuario->delete();
+        return response()->json(["message" = "la ubicacion usuario ha sido borrado"],201);
     }
 }

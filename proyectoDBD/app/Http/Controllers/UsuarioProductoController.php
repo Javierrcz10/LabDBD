@@ -29,7 +29,7 @@ class UsuarioProductoController extends Controller
         $usuarioProducto->idUsuario = $request->idUsuario;
         $usuarioProducto->idProducto = $request->idProducto;
         $usuarioProducto->save();
-        return response()->json([relacion creada],202);
+        return response()->json(["message" = "relacion creada"],202);
     }
 
     /**
@@ -54,7 +54,16 @@ class UsuarioProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuarioProducto = UsuarioProducto::find($id);
+        if($request->idUsuario != NULL){
+            $usuarioProducto->idUsuario = $request->idUsuario;
+        }
+        if($request->idProducto){
+            $usuarioProducto->idProducto = $request->idProducto;
+        }
+        $usuarioProducto->save();
+        return response()->json(["message" = "usuario producto actualizado"],201);
+
     }
 
     /**
@@ -65,6 +74,8 @@ class UsuarioProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuarioProducto = UsuarioProducto::find($id);
+        $usuarioProducto->delete();
+        return response()->json(["message" = "el usuario producto ha sido borrado"],201);
     }
 }

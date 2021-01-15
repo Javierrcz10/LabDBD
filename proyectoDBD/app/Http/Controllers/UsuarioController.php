@@ -34,7 +34,7 @@ class UsuarioController extends Controller
         $usuario->reputacionUsuario = 0.0;
         $usuario->estado = true;
         $usuario->save();
-        return response()->json(['usuario creado'],202);
+        return response()->json(["message" = "usuario creado"],202);
     }
 
     /**
@@ -50,7 +50,7 @@ class UsuarioController extends Controller
         if($usuario->estado == true){
             return response()->json($usuario);
         }
-        return response()->json(['usuario se encuentra borrado'],404);
+        return response()->json(["message" = "usuario se encuentra borrado"],404);
     }
 
 
@@ -63,7 +63,25 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = Usuario::find($id);
+        if($request->nombreUsuario != NULL){
+            $usuario->nombreUsuario = $request->nombreUsuario;
+        }
+        if($request->apodoUsuario != NULL){
+            $usuario->apodoUsuario = $request->apodoUsuario;
+        }
+        if($request->contraseniaUsuario != NULL){
+            $usuario->contraseniaUsuario = $request->contraseniaUsuario;
+        }
+        if($request->emailUsuario != NULL){
+            $usuario->emailUsuario = $request->emailUsuario;
+        }
+        if($request->reputacionUsuario != NULL){
+            $usuario->reputacionUsuario = $request->reputacionUsuario;
+        }
+        $usuario->save();
+        return response()->json(["message" = "usuario actualizado"],201);
+
     }
 
     /**
@@ -74,6 +92,8 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = Usuario::find($id);
+        $usuario->delete();
+        return response()->json(["message" = "el usuario ha sido borrado"],201);
     }
 }

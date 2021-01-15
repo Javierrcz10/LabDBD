@@ -30,7 +30,7 @@ class UsuarioComentarioController extends Controller
         $usuarioComentario->idUsuario = $request->idUsuario;
         $usuarioComentario->idComentario = $request->idComentario;
         $usuarioComentario->save();
-        return response()->json(['relacion creada'],202);
+        return response()->json(["message" = "relacion creada"],202);
     }
 
     /**
@@ -55,7 +55,17 @@ class UsuarioComentarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuarioComentario = UsuarioComentario::find($id);
+        if($request->idUsuario != NULL){
+            $usuarioComentario->idUsuario = $request->idUsuario;
+        }
+
+        if($request->idComentario != NULL){
+            $usuarioComentario->idComentario = $request->idComentario;
+        }
+
+        $usuarioComentario->save();
+        return response()->json(["message" = "usuario comentario actualizado"],201);
     }
 
     /**
@@ -66,6 +76,8 @@ class UsuarioComentarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuarioComentario = UsuarioComentario::find($id);
+        $usuarioComentario->delete();
+        return response()->json(["message" = "el usuario comentario ha sido borrado"],201);
     }
 }

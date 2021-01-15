@@ -30,7 +30,7 @@ class UsuarioRolController extends Controller
         $usuarioRol->idUsuario = $request->idUsuario;
         $usuarioRol->idRol = $request->idRol;
         $usuarioRol->save();
-        return response()->json(['relacion creada'],202);
+        return response()->json(["message" = "relacion creada"],202);
     }
 
     /**
@@ -55,7 +55,16 @@ class UsuarioRolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuarioRol = UsuarioRol::find($id);
+        if($request->idUsuario != NULL){
+            $usuarioRol->idUsuario = $request->idUsuario;
+        }
+        if($request->idRol != NULL){
+            $usuarioRol->idRol = $request->idRol;
+        }
+
+        $usuarioRol->save();
+        return response()->json(["message" = "usuario rol actualizado"],201);
     }
 
     /**
@@ -66,6 +75,8 @@ class UsuarioRolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuarioRol = UsuarioRol::find($id);
+        $usuarioRol->delete();
+        return response()->json(["message" = "el usuario rol ha sido borrado"],201);
     }
 }

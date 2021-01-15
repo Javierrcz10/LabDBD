@@ -29,8 +29,8 @@ class UbicacionFeriaController extends Controller
         $ubicacionFeria = new UbicacionFeria();
         $ubicacionFeria->idUbicacion = $request->idUbicacion;
         $ubicacionFeria->idFeria = $request->idFeria;
-        $ubicacionFeria->save()
-        return response()->json(['relacion creada'],202);
+        $ubicacionFeria->save();
+        return response()->json(["message" = "relacion creada"],202);
     }
 
     /**
@@ -55,7 +55,15 @@ class UbicacionFeriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ubicacionFeria = UbicacionFeria::find($id);
+        if($request->idUbicacion != NULL){
+            $ubicacionFeria->idUbicacion = $request->idUbicacion;
+        }
+        if($request->idFeria != NULL){
+            $ubicacionFeria->idFeria = $request->idFeria;
+        }
+        $ubicacionFeria->save();
+        return response()->json(["message" = "ubicacion feria actualizada"],201);
     }
 
     /**
@@ -66,6 +74,8 @@ class UbicacionFeriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ubicacionFeria = UbicacionFeria::find($id);
+        $ubicacionFeria->delete();
+        return response()->json(["message" = "la ubicacion feria ha sido borrado"],201);
     }
 }
