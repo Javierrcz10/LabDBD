@@ -20,15 +20,6 @@ class PuestoFeriaController extends Controller
         return response(404);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,7 +41,7 @@ class PuestoFeriaController extends Controller
         $puestoFeria->estado = true;
         $puestoFeria->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un puestoFeria",
             "id"=>$puestoFeria->id
         ]);
     }
@@ -71,17 +62,6 @@ class PuestoFeriaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -90,7 +70,21 @@ class PuestoFeriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $puestoFeria= PuestoFeria::find($id);
+        if($puestoFeria!=NULL){
+            if($request->nombrePuesto!=NULL){
+                $puestoFeria->nombrePuesto = $request->nombrePuesto;
+            }
+            if($request->descripcionPuesto!=NULL){
+                $puestoFeria->descripcionPuesto = $request->descripcionPuesto;
+            }
+            if($request->idFeria!=NULL){
+                $puestoFeria->idFeria = $request->idFeria;
+            }
+            $puestoFeria->save();
+            return response()->json($puestoFeria);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -101,6 +95,16 @@ class PuestoFeriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $puestoFeria=PuestoFeria::find($id);
+        if($puestoFeria!=NULL){
+            $puestoFeria->delete();
+            return response()->json([
+                "message"=>"Delete a puestoFeria",
+                "id"=>$puestoFeria->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el puestoFeria"
+        ],404);
     }
 }

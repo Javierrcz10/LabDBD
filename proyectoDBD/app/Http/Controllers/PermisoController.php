@@ -39,7 +39,7 @@ class PermisoController extends Controller
         $permiso->estado = true;
         $permiso->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un permiso",
             "id"=>$permiso->id
         ]);
     }
@@ -76,8 +76,8 @@ class PermisoController extends Controller
             if($request->descripcionPermiso!=NULL){
                 $permiso->descripcionPermiso = $request->descripcionPermiso;
             }
-            $usuario->save();
-            return response()->json($usuario);
+            $permiso->save();
+            return response()->json($permiso);
         }
         return response('ERROR 404');
     }
@@ -90,6 +90,16 @@ class PermisoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permiso=Permiso::find($id);
+        if($permiso!=NULL){
+            $permiso->delete();
+            return response()->json([
+                "message"=>"Delete a permiso",
+                "id"=>$permiso->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el permiso"
+        ],404);
     }
 }

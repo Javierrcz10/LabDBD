@@ -28,7 +28,20 @@ class RolPermisoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'idRol' => ['required'],
+            'idPermiso'=> ['required'],
+
+        ]);
+        $rolPermiso = new RolPermiso();
+        $rolPermiso->idRol = $request->idRol;
+        $rolPermiso->idPermiso = $request->idPermiso;
+        $rolPermiso->estado = true;
+        $rolPërmiso->save();
+        return response()->json([
+            "message"=>"Se ha creado un rolPermiso",
+            "id"=>$rolPermiso->id
+        ]);
     }
 
     /**
@@ -50,20 +63,9 @@ class RolPermisoController extends Controller
         $rolPermiso->estado = true;
         $rolPermiso->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un rolPermiso",
             "id"=>$rolPermiso->id
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -75,7 +77,18 @@ class RolPermisoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rolPermiso= RolPermiso::find($id);
+        if($rolPermiso!=NULL){
+            if($request->idRol!=NULL){
+                $rolPermiso->idRol = $request->idRol;
+            }
+            if($request->idPermiso!=NULL){
+                $rolPermiso->idPermiso = $request->idPermiso;
+            }
+            $rolPermiso->save();
+            return response()->json($rolPermiso);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -86,6 +99,16 @@ class RolPermisoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rolPermiso=RolPermiso::find($id);
+        if($rolPermiso!=NULL){
+            $rolPermiso->delete();
+            return response()->json([
+                "message"=>"Delete a rolPermiso",
+                "id"=>$rolPermiso->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el rolPermiso"
+        ],404);
     }
 }

@@ -35,7 +35,7 @@ class RegionController extends Controller
         $region->estado = true;
         $region->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un region",
             "id"=>$region->id
         ]);
     }
@@ -56,17 +56,6 @@ class RegionController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -75,7 +64,15 @@ class RegionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $region= Region::find($id);
+        if($region!=NULL){
+            if($request->nombreRegion!=NULL){
+                $region->nombreRegion = $request->nombreRegion;
+            }
+            $region->save();
+            return response()->json($region);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -86,6 +83,16 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $region=Region::find($id);
+        if($region!=NULL){
+            $region->delete();
+            return response()->json([
+                "message"=>"Delete a region",
+                "id"=>$region->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el region"
+        ],404);
     }
 }

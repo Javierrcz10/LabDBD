@@ -13,9 +13,9 @@ class ProductoPuestoController extends Controller
      */
     public function index()
     {
-        $productoPuestro = Producto::all()->where('estado', true);
-        if($productoPuestro != NULL){
-            return response()-> json($productoPuestro);
+        $productoPuesto = Producto::all()->where('estado', true);
+        if($productoPuesto != NULL){
+            return response()-> json($productoPuesto);
         }
         return response(404);
     }
@@ -42,7 +42,7 @@ class ProductoPuestoController extends Controller
         $productoPuesto->estado = true;
         $productoPuesto->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un productoPuesto",
             "id"=>$productoPuesto->id
         ]);
     }
@@ -55,9 +55,9 @@ class ProductoPuestoController extends Controller
      */
     public function show($id)
     {
-        $productoPuestroPuesto = ProductoPuesto::find($id);
-        if($productoPuestroPuesto != NULL){
-            return response()-> json($productoPuestroPuesto);
+        $productoPuesto = ProductoPuesto::find($id);
+        if($productoPuesto != NULL){
+            return response()-> json($productoPuesto);
         }
         return response('ERROR 404');
     }
@@ -72,7 +72,21 @@ class ProductoPuestoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $productoPuesto= ProductoPuesto::find($id);
+        if($productoPuesto!=NULL){
+            if($request->cantidad!=NULL){
+                $productoPuesto->cantidad = $request->cantidad;
+            }
+            if($request->idProducto!=NULL){
+                $productoPuesto->idProducto = $request->idProducto;
+            }
+            if($request->idPuesto!=NULL){
+                $productoPuesto->idPuesto = $request->idPuesto;
+            }
+            $productoPuesto->save();
+            return response()->json($productoPuesto);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -83,6 +97,16 @@ class ProductoPuestoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $productoPuesto=productoPuesto::find($id);
+        if($productoPuesto!=NULL){
+            $productoPuesto->delete();
+            return response()->json([
+                "message"=>"Delete a productoPuesto",
+                "id"=>$productoPuesto->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el productoPuesto"
+        ],404);
     }
 }
