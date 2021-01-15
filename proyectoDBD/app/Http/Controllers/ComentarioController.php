@@ -27,7 +27,15 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comentario = new Comentario();
+        $comentario->contenido = $request->contenido;
+        $comentario->calificacion = $request->calificacion;
+        $comentario->idBoleta = $request->idBoleta;
+        $comentario->save();
+        return response()->json([
+            "message"=> "comentario creado"
+            "id"=> $comentario->id
+        ],202);
     }
 
     /**
@@ -53,7 +61,20 @@ class ComentarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request ->precioTotal !=NULL){
+
+        $comentario = Comentario::find($id);
+        if($request ->contenido !=NULL){
+            $comentario->contenido = $request->contenido;
+        }
+        if($request ->calificacion !=NULL){
+            $comentario->calificacion = $request->calificacion;
+        }
+        if($request ->idBoleta !=NULL){
+            $comentario->idBoleta = $request->idBoleta;
+        }
+        $comentario->save();
+        return response()->json($id);
     }
 
     /**

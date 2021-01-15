@@ -26,7 +26,13 @@ class CalleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $calle = new Calle();
+        $calle->nombre = $request->nombre;
+        $calle->idComuna = $request->idComuna;
+        $calle->save();
+        return response()->json([
+            "message"=> "calle creada"
+        ],202);
     }
 
     /**
@@ -52,7 +58,16 @@ class CalleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+            $calle =Calle::find($id);
+            if($request ->nombre !=NULL){
+                $calle->nombre = $request->nombre;
+            }
+            if($request ->idComuna !=NULL){
+                $calle->idComuna = $request->idComuna;
+            }
+            $calle->save();
+            return response()->json($calle);
     }
 
     /**

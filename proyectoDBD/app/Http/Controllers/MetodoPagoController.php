@@ -26,7 +26,16 @@ class MetodoPagoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $metodoPago = new MetodoPago();
+        $metodoPago->tipoPago = $request->tipoPago;
+        $metodoPago->totalPago = $request->totalPago;
+        $metodoPago->nombreBanco = $request->nombreBanco;
+        $metodoPago->ultimosDigitos = $request->ultimosDigitos;
+        $metodoPago->save();
+        return response()->json([
+            "message"=> "metodo de pago creado"
+            "id"=> $metodoPago->id
+        ],202);
     }
 
     /**

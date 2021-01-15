@@ -13,17 +13,11 @@ class UbicacionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $ubicacion = Ubicacion::all()->where('estado', true);
+        if($ubicacion != NULL){
+            return response()-> json($ubicacion);
+        }
+        return response(404);
     }
 
     /**
@@ -34,7 +28,19 @@ class UbicacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'numeroDireccion' => ['required'],
+            'idCalle'=> ['required'],
+        ]);
+        $ubicacion = new Ubicacion();
+        $ubicacion->numeroDireccion = $request->numeroDireccion;
+        $ubicacion->idCalle = $request->idCalle;
+        $ubicacion->estado = true;
+        $usuario->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$usuario->id
+        ]);
     }
 
     /**
@@ -45,7 +51,11 @@ class UbicacionController extends Controller
      */
     public function show($id)
     {
-        //
+        $ubicacion = Ubicacion::find($id);
+        if($ubicacion != NULL){
+            return response()-> json($ubicacion);
+        }
+        return response('ERROR 404');
     }
 
     /**

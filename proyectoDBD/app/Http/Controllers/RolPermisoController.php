@@ -13,17 +13,11 @@ class RolPermisoController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $rolPermiso = RolPermiso::all()->where('estado', true);
+        if($rolPermiso != NULL){
+            return response()-> json($rolPermiso);
+        }
+        return response(404);
     }
 
     /**
@@ -45,7 +39,20 @@ class RolPermisoController extends Controller
      */
     public function show($id)
     {
-        //
+        $validated = $request->validate([
+            'idRol' => ['required'],
+            'idPermiso'=> ['required'],
+
+        ]);
+        $rolPermiso = new RolPermiso();
+        $rolPermiso->idRol = $request->idRol;
+        $rolPermiso->idPermiso = $request->idPermiso;
+        $rolPermiso->estado = true;
+        $rolPermiso->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$rolPermiso->id
+        ]);
     }
 
     /**

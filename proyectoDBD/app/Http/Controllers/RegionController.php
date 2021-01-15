@@ -13,19 +13,12 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
+        $region = Region::all()->where('estado', true);
+        if($region != NULL){
+            return response()-> json($region);
+        }
+        return response(404);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +27,17 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombreRegion' => ['required'],
+        ]);
+        $region = new Region();
+        $region->nombreRegion = $request->nombreRegion;
+        $region->estado = true;
+        $region->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$region->id
+        ]);
     }
 
     /**
@@ -45,7 +48,11 @@ class RegionController extends Controller
      */
     public function show($id)
     {
-        //
+        $region = Region::find($id);
+        if($region != NULL){
+            return response()-> json($region);
+        }
+        return response('ERROR 404');
     }
 
     /**

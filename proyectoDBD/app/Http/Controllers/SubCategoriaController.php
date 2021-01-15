@@ -13,17 +13,11 @@ class SubCategoriaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $subCategoria = SubCategoria::all()->where('estado', true);
+        if($subCategoria != NULL){
+            return response()-> json($subCategoria);
+        }
+        return response(404);
     }
 
     /**
@@ -34,7 +28,18 @@ class SubCategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombreCategoria' => ['required'],
+
+        ]);
+        $subCategoria = new SubCategoria();
+        $subCategoria->nombreCategoria = $request->nombreCategoria;
+        $subCategoria->estado = true;
+        $subCategoria->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$subCategoria->id
+        ]);
     }
 
     /**
@@ -45,7 +50,11 @@ class SubCategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $subCategoria = SubCategoria::find($id);
+        if($subCategoria != NULL){
+            return response()-> json($subCategoria);
+        }
+        return response('ERROR 404');
     }
 
     /**

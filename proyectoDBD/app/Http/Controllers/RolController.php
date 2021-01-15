@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RolController extends Controller
+class rolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +13,11 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $rol = rol::all()->where('estado', true);
+        if($rol != NULL){
+            return response()-> json($rol);
+        }
+        return response(404);
     }
 
     /**
@@ -34,7 +28,20 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombreRol' => ['required'],
+            'descripcionRol'=> ['required'],
+
+        ]);
+        $rol = new Rol();
+        $rol->nombreRol = $request->nombreRol;
+        $rol->descripcionRol = $request->descripcionRol;
+        $rol->estado = true;
+        $rol->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$rol->id
+        ]);
     }
 
     /**
@@ -45,7 +52,11 @@ class RolController extends Controller
      */
     public function show($id)
     {
-        //
+        $rol = rol::find($id);
+        if($rol != NULL){
+            return response()-> json($rol);
+        }
+        return response('ERROR 404');
     }
 
     /**

@@ -27,7 +27,15 @@ class BoletaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $boleta = new Boleta();
+        $boleta->precioTotal = $request->precioTotal;
+        $boleta->fecha = $request->fecha;
+        $boleta->idPago = $request->idPago;
+        $boleta->save();
+        return response()->json([
+            "message"=> "boleta creada"
+            "id"=> $boleta->id
+        ],202);
     }
 
     /**
@@ -52,7 +60,18 @@ class BoletaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $boleta = Boleta::find($id);
+        if($request ->precioTotal !=NULL){
+            $boleta->precioTotal = $request->precioTotal;
+        }
+        if($request ->fecha !=NULL){
+            $boleta->fecha = $request->fecha;
+        }
+        if($request ->idPago !=NULL){
+            $boleta->idPago = $request->idPago;
+        }
+        $boleta->save();
+        return response()->json($boleta);
     }
 
     /**

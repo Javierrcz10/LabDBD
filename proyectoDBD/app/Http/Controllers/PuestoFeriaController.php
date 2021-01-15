@@ -13,7 +13,11 @@ class PuestoFeriaController extends Controller
      */
     public function index()
     {
-        //
+        $puestoFeria = PuestoFeria::all()->where('estado', true);
+        if($puestoFeria != NULL){
+            return response()-> json($puestoFeria);
+        }
+        return response(404);
     }
 
     /**
@@ -34,7 +38,21 @@ class PuestoFeriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nombrePuesto' => ['required'],
+            'descripcionPuesto'=> ['required'],
+            'idFeria'=> ['required'],
+        ]);
+        $puestoFeria = new PuestoFeria();
+        $puestoFeria->nombrePuesto = $request->nombrePuesto;
+        $puestoFeria->descripcionPuesto = $request->descripcionPuesto;
+        $puestoFeria->idFeria = $request->idFeria;
+        $puestoFeria->estado = true;
+        $puestoFeria->save();
+        return response()->json([
+            "message"=>"Se ha creado un usuario",
+            "id"=>$puestoFeria->id
+        ]);
     }
 
     /**
@@ -45,7 +63,11 @@ class PuestoFeriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $puestoFeria = PuestoFeria::find($id);
+        if($puestoFeria != NULL){
+            return response()-> json($puestoFeria);
+        }
+        return response('ERROR 404');
     }
 
     /**

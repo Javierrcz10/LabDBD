@@ -26,7 +26,13 @@ class BoletaProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $boletaProducto = new BoletaProducto();
+        $boletaProducto->idBoleta = $request->idBoleta;
+        $boletaProducto->idProducto = $request->idProducto;
+        $boletaProducto->save();
+        return response()->json([
+            "message"=> "relacion creada"
+        ],202);
     }
 
     /**
@@ -51,7 +57,18 @@ class BoletaProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $boletaProducto = BoletaProducto::find($id);
+        if($request ->idBoleta !=NULL){
+            $boletaProducto->idBoleta = $request->idBoleta;
+        }
+        if($request ->idProducto !=NULL){
+            $boletaProducto->idProducto = $request->idProducto;
+        }
+        $boletaProducto->save();
+        return response()->json($boletaProducto);
+            
+    }
     }
 
     /**

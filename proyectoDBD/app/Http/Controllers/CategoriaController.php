@@ -26,7 +26,13 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombreCategoria = $request->nombreCategoria;
+        $categoria->idSubCategoria = $request->idSubCategoria;
+        $categoria->save();
+        return response()->json([
+            "message"=> "categoria creada"
+        ],202);
     }
 
     /**
@@ -51,7 +57,17 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request ->precioTotal !=NULL){
+
+        $categoria =Categoria::find($id);
+        if($request ->nombreCategoria !=NULL){
+            $categoria->nombreCategoria = $request->nombreCategoria;
+        }
+        if($request ->idSubCategoria !=NULL){
+            $categoria->idSubCategoria = $request->idSubCategoria;
+        }
+        $categoria->save();
+        return response()->json($id);
     }
 
     /**
