@@ -57,7 +57,16 @@ class ComunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+            $comuna = Comuna::find($id);
+            if($request ->nombre !=NULL){
+                $comuna->nombre = $request->nombre;
+            }
+            if($request ->idRegion !=NULL){
+                $comuna->idRegion = $request->idRegion;
+            }
+            $comuna->save();
+            return response()->json($id);
     }
 
     /**

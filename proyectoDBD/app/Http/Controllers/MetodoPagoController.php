@@ -60,7 +60,23 @@ class MetodoPagoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+ 
+            $metodoPago = MetodoPago::find($id);
+            if($request ->tipoPago !=NULL){
+                $metodoPago->tipoPago = $request->tipoPago;
+            }
+            if($request ->totalPago !=NULL){
+                $metodoPago->totalPago = $request->totalPago;
+            }
+            if($request ->nombreBanco !=NULL){
+                $metodoPago->nombreBanco = $request->nombreBanco;
+            }
+            if($request ->ultimosDigitos !=NULL){
+                $metodoPago->ultimosDigitos = $request->ultimosDigitos;
+            }
+
+            $metodoPago->save();
+            return response()->json($id);
     }
 
     /**

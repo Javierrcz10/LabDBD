@@ -58,7 +58,16 @@ class FeriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $feria = Feria::find($id);
+        if($request ->nombre !=NULL){
+            $feria->nombre = $request->nombre;
+        }
+        if($request ->descripcion !=NULL){
+            $feria->descripcion = $request->descripcion;
+        }
+        $feria->save();
+        return response()->json($id);
     }
 
     /**

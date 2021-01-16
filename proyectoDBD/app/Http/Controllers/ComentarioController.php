@@ -61,7 +61,6 @@ class ComentarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request ->precioTotal !=NULL){
 
         $comentario = Comentario::find($id);
         if($request ->contenido !=NULL){
