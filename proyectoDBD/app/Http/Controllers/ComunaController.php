@@ -77,6 +77,16 @@ class ComunaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comuna=Comuna::find($id);
+        if($comuna!=NULL){
+            $comuna->delete();
+            return response()->json([
+                "message"=>"Delete a comuna",
+                "id"=>$comuna->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró la comuna"
+        ],404);
     }
 }

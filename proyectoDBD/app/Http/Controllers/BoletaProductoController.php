@@ -79,6 +79,16 @@ class BoletaProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $boletaProducto=BoletaProducto::find($id);
+        if($boletaProducto!=NULL){
+            $boletaProducto->delete();
+            return response()->json([
+                "message"=>"Delete a boletaProducto",
+                "id"=>$boletaProducto->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró la boletaProducto"
+        ],404);
     }
 }

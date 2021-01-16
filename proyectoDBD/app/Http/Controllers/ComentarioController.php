@@ -84,6 +84,16 @@ class ComentarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comentario=Comentario::find($id);
+        if($comentario!=NULL){
+            $comentario->delete();
+            return response()->json([
+                "message"=>"Delete a comentario",
+                "id"=>$comentario->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el comentario"
+        ],404);
     }
 }

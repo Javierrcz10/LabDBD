@@ -87,6 +87,16 @@ class MetodoPagoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $metodoPago=MetodoPago::find($id);
+        if($metodoPago!=NULL){
+            $metodoPago->delete();
+            return response()->json([
+                "message"=>"Delete al metodo de pago",
+                "id"=>$metodoPago->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el metodo de pago"
+        ],404);
     }
 }

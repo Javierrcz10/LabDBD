@@ -78,6 +78,16 @@ class FeriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $feria=Feria::find($id);
+        if($feria!=NULL){
+            $feria->delete();
+            return response()->json([
+                "message"=>"Delete a feria",
+                "id"=>$feria->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró la feria"
+        ],404);
     }
 }
