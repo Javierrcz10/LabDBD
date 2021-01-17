@@ -14,7 +14,10 @@ class UsuarioRolController extends Controller
     public function index()
     {
         $usuarioRol = UsuarioRol::all();
-        return response()->json($usuarioRol);
+        if($usuarioRol != NULL){
+            return response()->json($usuarioRol);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -30,7 +33,7 @@ class UsuarioRolController extends Controller
         $usuarioRol->idUsuario = $request->idUsuario;
         $usuarioRol->idRol = $request->idRol;
         $usuarioRol->save();
-        return response()->json(["message" = "relacion creada"],202);
+        return response()->json(["message" => "relacion creada","id" => $usuarioRol->id],202);
     }
 
     /**
@@ -42,7 +45,10 @@ class UsuarioRolController extends Controller
     public function show($id)
     {
         $usuarioRol = UsuarioRol::find($id);
-        return response()->json($usuarioRol);
+        if($usuarioRol != NULL){
+            return response()->json($usuarioRol);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -64,7 +70,7 @@ class UsuarioRolController extends Controller
         }
 
         $usuarioRol->save();
-        return response()->json(["message" = "usuario rol actualizado"],201);
+        return response()->json(["message" => "usuario rol actualizado","id" => $id],201);
     }
 
     /**
@@ -77,6 +83,6 @@ class UsuarioRolController extends Controller
     {
         $usuarioRol = UsuarioRol::find($id);
         $usuarioRol->delete();
-        return response()->json(["message" = "el usuario rol ha sido borrado"],201);
+        return response()->json(["message" => "el usuario rol ha sido borrado","id" => $id],201);
     }
 }

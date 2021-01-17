@@ -14,7 +14,10 @@ class UnidadMedidaController extends Controller
     public function index()
     {
         $unidadMedida = UnidadMedida::all();
-        return response()->json($unidadMedida);
+        if($unidadMedida != NULL){
+            return response()->json($unidadMedida);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -30,7 +33,7 @@ class UnidadMedidaController extends Controller
         $unidadMedida->tipoUnidad = $request->tipoUnidad;
         $unidadMedida->estado = true;
         $unidadMedida->save();
-        return response()->json(["message" = "unidad creada"],202);
+        return response()->json(["message" => "unidad creada","id" => $unidadMedida->id],202);
     }
 
     /**
@@ -42,7 +45,10 @@ class UnidadMedidaController extends Controller
     public function show($id)
     {
         $unidadMedida = UnidadMedida::find($id);
-        return response()->json($unidadMedida);
+        if($unidadMedida != NULL){
+            return response()->json($unidadMedida);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -61,7 +67,7 @@ class UnidadMedidaController extends Controller
             $unidadMedida->tipoUnidad = $request->tipoUnidad;
         }
         $unidadMedida->save();
-        return response()->json(["message" = "unidad medida actualizada"],201);
+        return response()->json(["message" => "unidad medida actualizada","id" => $id],201);
     }
 
     /**
@@ -74,10 +80,8 @@ class UnidadMedidaController extends Controller
     {
         $unidadMedida = UnidadMedida::find($id);
         $unidadMedida->delete();
-        return response()->json(["message" = "la unidad medida ha sido borrado"],201);
+        return response()->json(["message" => "la unidad medida ha sido borrado","id" => $id],201);
     }
-}
-
 
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)
@@ -96,3 +100,5 @@ class UnidadMedidaController extends Controller
         ],404);
     }
 }
+
+

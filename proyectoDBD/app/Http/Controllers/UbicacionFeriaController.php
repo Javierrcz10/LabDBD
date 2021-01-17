@@ -15,7 +15,10 @@ class UbicacionFeriaController extends Controller
     public function index()
     {
         $ubicacionFeria = UbicacionFeria::all();
-        return response()->json($ubicacionFeria);
+        if($ubicacionFeria != NULL){
+            return response()->json($ubicacionFeria);
+        }
+        return response()->json(['message' => 'No existen datos'],404);
     }
 
     /**
@@ -30,7 +33,7 @@ class UbicacionFeriaController extends Controller
         $ubicacionFeria->idUbicacion = $request->idUbicacion;
         $ubicacionFeria->idFeria = $request->idFeria;
         $ubicacionFeria->save();
-        return response()->json(["message" = "relacion creada"],202);
+        return response()->json(["message" => "relacion creada","id" => $ubicacionFeria->id],202);
     }
 
     /**
@@ -42,7 +45,10 @@ class UbicacionFeriaController extends Controller
     public function show($id)
     {
         $ubicacionFeria = UbicacionFeria::find($id);
-        return response()->json($ubicacionFeria);
+        if($ubicacionFeria != NULL){
+            return response()->json($ubicacionFeria);
+        }
+        return response()->json(["message" => "Id no encontrado"],404);
     }
 
 
@@ -56,6 +62,9 @@ class UbicacionFeriaController extends Controller
     public function update(Request $request, $id)
     {
         $ubicacionFeria = UbicacionFeria::find($id);
+        if($ubicacionFeria == NULL){
+            return response()->json(["message" => "Id no encontrado"],404);
+        }
         if($request->idUbicacion != NULL){
             $ubicacionFeria->idUbicacion = $request->idUbicacion;
         }
@@ -63,7 +72,7 @@ class UbicacionFeriaController extends Controller
             $ubicacionFeria->idFeria = $request->idFeria;
         }
         $ubicacionFeria->save();
-        return response()->json(["message" = "ubicacion feria actualizada"],201);
+        return response()->json(["message" => "ubicacion feria actualizada","id" => $id],201);
     }
 
     /**
@@ -75,7 +84,10 @@ class UbicacionFeriaController extends Controller
     public function destroy($id)
     {
         $ubicacionFeria = UbicacionFeria::find($id);
+        if($ubicacionFeria == NULL){
+            return response()->json(["message" => "Id no encontrado"],404);
+        }
         $ubicacionFeria->delete();
-        return response()->json(["message" = "la ubicacion feria ha sido borrado"],201);
+        return response()->json(["message" => "la ubicacion feria ha sido borrado","id" => $id],201);
     }
 }

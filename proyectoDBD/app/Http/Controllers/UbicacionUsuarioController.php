@@ -14,7 +14,10 @@ class UbicacionUsuarioController extends Controller
     public function index()
     {
         $ubicacionUsuario = UbicacionUsuario::all();
-        return response()->json($ubicacionUsuario);
+        if($ubicacionUsuario != NULL){
+            return response()->json($ubicacionUsuario);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
     /**
@@ -29,7 +32,7 @@ class UbicacionUsuarioController extends Controller
         $ubicacionUsuario->idUbicacion = $request->idUbicacion;
         $ubicacionUsuario->idUsuario = $request->idUsuario;
         $ubicacionUsuario->save();
-        return response()->json(["message" = "relacion creada"],202); 
+        return response()->json(["message" => "relacion creada","id" => $ubicacionUsuario->id],202); 
     }
 
     /**
@@ -41,7 +44,10 @@ class UbicacionUsuarioController extends Controller
     public function show($id)
     {
         $ubicacionUsuario = UbicacionUsuario::find($id);
-        return response()->json($ubicacionUsuario);
+        if($ubicacionUsuario != NULL){
+            return response()->json($ubicacionUsuario);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -64,7 +70,7 @@ class UbicacionUsuarioController extends Controller
             $ubicacionUsuario->idUsuario = $request->idUsuario;
         }
         $ubicacionUsuario->save();
-        return response()->json(["message" = "ubicacion usuario actualizado"],201);
+        return response()->json(["message" => "ubicacion usuario actualizado","id" => $id],201);
     }
 
     /**
@@ -77,6 +83,6 @@ class UbicacionUsuarioController extends Controller
     {
         $ubicacionUsuario = UbicacionUsuario::find($id);
         $ubicacionUsuario->delete();
-        return response()->json(["message" = "la ubicacion usuario ha sido borrado"],201);
+        return response()->json(["message" => "la ubicacion usuario ha sido borrado","id" => $id],201);
     }
 }

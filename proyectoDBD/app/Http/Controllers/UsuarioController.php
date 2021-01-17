@@ -14,7 +14,10 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuario = Usuario::all()->where('estado',true);
-        return response()->json($usuario);
+        if($usuario != NULL){
+            return response()->json($usuario);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -34,7 +37,7 @@ class UsuarioController extends Controller
         $usuario->reputacionUsuario = 0.0;
         $usuario->estado = true;
         $usuario->save();
-        return response()->json("usuario creado");
+        return response()->json(["message" => "Usuario creado","id" => $usuario->id],202);
     }
 
     /**
@@ -47,6 +50,9 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::find($id);
         //verificar si el usuario esta borrado o no
+        if($usuario == NULL){
+            return response()->json(["message" => "usuario no existe"],404);
+        }
         if($usuario->estado == true){
             return response()->json($usuario);
         }
@@ -80,7 +86,7 @@ class UsuarioController extends Controller
             $usuario->reputacionUsuario = $request->reputacionUsuario;
         }
         $usuario->save();
-        return response()->json(["message" => "usuario actualizado"],201);
+        return response()->json(["message" => "usuario actualizado","id" => $id],201);
 
     }
 
@@ -94,7 +100,7 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::find($id);
         $usuario->delete();
-        return response()->json(["message" => "el usuario ha sido borrado"],201);
+        return response()->json(["message" => "el usuario ha sido borrado","id" => $id],201);
     }
 
         //-------softDelete(id)-----------------------------------------

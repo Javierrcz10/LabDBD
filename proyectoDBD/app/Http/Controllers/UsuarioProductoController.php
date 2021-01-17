@@ -14,7 +14,10 @@ class UsuarioProductoController extends Controller
     public function index()
     {
         $usuarioProducto = UsuarioProducto::all();
-        return response()->json($usuarioProducto);
+        if($usuarioProducto != NULL){
+            return response()->json($usuarioProducto);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
     /**
@@ -29,7 +32,7 @@ class UsuarioProductoController extends Controller
         $usuarioProducto->idUsuario = $request->idUsuario;
         $usuarioProducto->idProducto = $request->idProducto;
         $usuarioProducto->save();
-        return response()->json(["message" = "relacion creada"],202);
+        return response()->json(["message" => "relacion creada","id" => $usuarioProducto->id],202);
     }
 
     /**
@@ -41,7 +44,10 @@ class UsuarioProductoController extends Controller
     public function show($id)
     {
         $usuarioProducto = UsuarioProducto::find($id);
-        return response()->json($usuarioProducto);
+        if($usuarioProducto != NULL){
+            return response()->json($usuarioProducto);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -62,7 +68,7 @@ class UsuarioProductoController extends Controller
             $usuarioProducto->idProducto = $request->idProducto;
         }
         $usuarioProducto->save();
-        return response()->json(["message" = "usuario producto actualizado"],201);
+        return response()->json(["message" => "usuario producto actualizado","id" => $id],201);
 
     }
 
@@ -76,6 +82,6 @@ class UsuarioProductoController extends Controller
     {
         $usuarioProducto = UsuarioProducto::find($id);
         $usuarioProducto->delete();
-        return response()->json(["message" = "el usuario producto ha sido borrado"],201);
+        return response()->json(["message" => "el usuario producto ha sido borrado","id" => $id],201);
     }
 }

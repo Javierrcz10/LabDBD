@@ -14,7 +14,10 @@ class UsuarioComentarioController extends Controller
     public function index()
     {
         $usuarioComentario = UsuarioComentario::all();
-        return response()->json($usuarioComentario);
+        if($usuarioComentario != NULL){
+            return response()->json($usuarioComentario);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -30,7 +33,7 @@ class UsuarioComentarioController extends Controller
         $usuarioComentario->idUsuario = $request->idUsuario;
         $usuarioComentario->idComentario = $request->idComentario;
         $usuarioComentario->save();
-        return response()->json(["message" = "relacion creada"],202);
+        return response()->json(["message" => "relacion creada","id" => $usuarioComentario->id],202);
     }
 
     /**
@@ -42,7 +45,10 @@ class UsuarioComentarioController extends Controller
     public function show($id)
     {
         $usuarioComentario = UsuarioComentario::find($id);
-        return response()->json($usuarioComentario);
+        if($usuarioComentario != NULL){
+            return response()->json($usuarioComentario);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -65,7 +71,7 @@ class UsuarioComentarioController extends Controller
         }
 
         $usuarioComentario->save();
-        return response()->json(["message" = "usuario comentario actualizado"],201);
+        return response()->json(["message" => "usuario comentario actualizado","id" => $id],201);
     }
 
     /**
@@ -78,6 +84,6 @@ class UsuarioComentarioController extends Controller
     {
         $usuarioComentario = UsuarioComentario::find($id);
         $usuarioComentario->delete();
-        return response()->json(["message" = "el usuario comentario ha sido borrado"],201);
+        return response()->json(["message" => "el usuario comentario ha sido borrado","id" => $id],201);
     }
 }

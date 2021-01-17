@@ -14,7 +14,10 @@ class UsuarioPuestoController extends Controller
     public function index()
     {
         $usuarioPuesto = UsuarioPuesto::all();
-        return response()->json($usuarioPuesto);
+        if($usuarioPuesto != NULL){
+            return response()->json($usuarioPuesto);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -30,7 +33,7 @@ class UsuarioPuestoController extends Controller
         $usuarioPuesto->idUsuario = $request->idUsuario;
         $usuarioPuesto->idPuesto = $request->idPuesto;
         $usuarioPuesto->save();
-        return response()->json(["message" = "relacion creada"],202);
+        return response()->json(["message" => "relacion creada","id" => $usuarioPuesto->id],202);
     }
 
     /**
@@ -42,7 +45,10 @@ class UsuarioPuestoController extends Controller
     public function show($id)
     {
         $usuarioPuesto = UsuarioPuesto::find($id);
-        return response()->json($usuarioPuesto);
+        if($usuarioPuesto != NULL){
+            return response()->json($usuarioPuesto);
+        }
+        return response()->json(['message' => 'no existen datos'],404);
     }
 
 
@@ -64,7 +70,7 @@ class UsuarioPuestoController extends Controller
         }
 
         $usuarioPuesto->save();
-        return response()->json(["message" = "usuario puesto actualizado"],201);
+        return response()->json(["message" => "usuario puesto actualizado","id" => $id],201);
     }
 
     /**
@@ -77,6 +83,6 @@ class UsuarioPuestoController extends Controller
     {
         $usuarioPuesto = UsuarioPuesto::find($id);
         $usuarioPuesto->delete();
-        return response()->json(["message" = "el usuario puesto ha sido borrado"],201);
+        return response()->json(["message" => "el usuario puesto ha sido borrado","id" => $id],201);
     }
 }
