@@ -13,7 +13,7 @@ class FeriaController extends Controller
      */
     public function index()
     {
-        $feria = Feria::all();
+        $feria = Feria::all()->where('estado', true);
         if($feria!=NULL){
             return response()-> json($feria);
         }

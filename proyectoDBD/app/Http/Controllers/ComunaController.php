@@ -13,7 +13,7 @@ class ComunaController extends Controller
      */
     public function index()
     {
-        $comuna = Comuna::all();
+        $comuna = Comuna::all()->where('estado', true);
         if($comuna!=NULL){
             return response()-> json($comuna);
         }
@@ -30,11 +30,13 @@ class ComunaController extends Controller
     public function store(Request $request)
     {
         $comuna = new Comuna();
-        $comuna->nombre = $request->nombre;
+        $comuna->nombreComuna = $request->nombreComuna;
         $comuna->idRegion = $request->idRegion;
+        $comuna->estado = true;
         $comuna->save();
         return response()->json([
-            "message"=> "comuna creada"
+            "message"=> "comuna creada",
+            "id"=> $comuna->id
         ],202);
     }
 
@@ -66,8 +68,8 @@ class ComunaController extends Controller
 
             $comuna = Comuna::find($id);
             if($comuna!=NULL){
-                if($request ->nombre !=NULL){
-                    $comuna->nombre = $request->nombre;
+                if($request ->nombreComuna !=NULL){
+                    $comuna->nombreComuna = $request->nombreComuna;
                 }
                 if($request ->idRegion !=NULL){
                     $comuna->idRegion = $request->idRegion;

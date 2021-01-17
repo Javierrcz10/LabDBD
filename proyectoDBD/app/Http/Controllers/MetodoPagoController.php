@@ -13,7 +13,7 @@ class MetodoPagoController extends Controller
      */
     public function index()
     {
-        $metodoPago = MetodoPago::all();
+        $metodoPago = MetodoPago::all()->where('estado', true);
         if($metodoPago!=NULL){
             return response()-> json($metodoPago);
         }
@@ -34,9 +34,10 @@ class MetodoPagoController extends Controller
         $metodoPago->totalPago = $request->totalPago;
         $metodoPago->nombreBanco = $request->nombreBanco;
         $metodoPago->ultimosDigitos = $request->ultimosDigitos;
+        $metodoPago->estado = true;
         $metodoPago->save();
         return response()->json([
-            "message"=> "metodo de pago creado"
+            "message"=> "metodo de pago creado",
             "id"=> $metodoPago->id
         ],202);
     }
@@ -108,22 +109,21 @@ class MetodoPagoController extends Controller
             "message"=>"No se encontró el metodo de pago"
         ],404);
     }
+     //-------softDelete(id)-----------------------------------------
+     public function softdestroy($id)
+     {
+         $metodoPago=MetodoPago::find($id);
+         if($metodoPago!=NULL){
+             $metodoPago->estado = false;
+             $metodoPago->save();
+             return response()->json([
+                 "message"=> "SoftDelete a metodoPago",
+                 "id"=>$metodoPago->id
+             ]);
+         }
+         return response()->json([
+             "message"=>"No se encontró el metodoPago"
+         ],404);
+     }
 }
 
-    //-------softDelete(id)-----------------------------------------
-    public function softdestroy($id)
-    {
-        $metodoPago=MetodoPago::find($id);
-        if($metodoPago!=NULL){
-            $metodoPago->estado = false;
-            $metodoPago->save();
-            return response()->json([
-                "message"=> "SoftDelete a metodoPago",
-                "id"=>$metodoPago->id
-            ]);
-        }
-        return response()->json([
-            "message"=>"No se encontró el metodoPago"
-        ],404);
-    }
-}

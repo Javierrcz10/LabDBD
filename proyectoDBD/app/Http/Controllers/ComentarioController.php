@@ -13,7 +13,7 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        $comentario = Comentario::all();
+        $comentario = Comentario::all()->where('estado', true);
         if($comentario!=NULL){
             return response()-> json($comentario);
         }
@@ -34,9 +34,10 @@ class ComentarioController extends Controller
         $comentario->contenido = $request->contenido;
         $comentario->calificacion = $request->calificacion;
         $comentario->idBoleta = $request->idBoleta;
+        $comentario->estado = true;
         $comentario->save();
         return response()->json([
-            "message"=> "comentario creado"
+            "message"=> "comentario creado",
             "id"=> $comentario->id
         ],202);
     }
@@ -106,22 +107,21 @@ class ComentarioController extends Controller
             "message"=>"No se encontró el comentario"
         ],404);
     }
+     //-------softDelete(id)-----------------------------------------
+     public function softdestroy($id)
+     {
+         $comentario=Comentario::find($id);
+         if($comentario!=NULL){
+             $comentario->estado = false;
+             $comentario->save();
+             return response()->json([
+                 "message"=> "SoftDelete a comentario",
+                 "id"=>$comentario->id
+             ]);
+         }
+         return response()->json([
+             "message"=>"No se encontró el comentario"
+         ],404);
+     }
 }
 
-    //-------softDelete(id)-----------------------------------------
-    public function softdestroy($id)
-    {
-        $comentario=Comentario::find($id);
-        if($comentario!=NULL){
-            $comentario->estado = false;
-            $comentario->save();
-            return response()->json([
-                "message"=> "SoftDelete a comentario",
-                "id"=>$comentario->id
-            ]);
-        }
-        return response()->json([
-            "message"=>"No se encontró el comentario"
-        ],404);
-    }
-}

@@ -13,7 +13,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categoria = Categoria::all();
+        $categoria = Categoria::all()->where('estado', true);
         if($categoria!=NULL){
             return response()-> json($categoria);
         }
@@ -32,9 +32,11 @@ class CategoriaController extends Controller
         $categoria = new Categoria();
         $categoria->nombreCategoria = $request->nombreCategoria;
         $categoria->idSubCategoria = $request->idSubCategoria;
+        $categoria->estado = true;
         $categoria->save();
         return response()->json([
-            "message"=> "categoria creada"
+            "message"=> "categoria creada",
+            "id"=> $categoria->id
         ],202);
     }
 
@@ -47,7 +49,10 @@ class CategoriaController extends Controller
     public function show($id)
     {
         $categoria = Categoria::find($id);
-        return response()-> json($categoria);
+        if($categoria!=NULL){
+            return response()-> json($categoria);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -95,8 +100,6 @@ class CategoriaController extends Controller
             "message"=>"No se encontró la categoria"
         ],404);
     }
-}
-
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)
     {
@@ -114,3 +117,5 @@ class CategoriaController extends Controller
         ],404);
     }
 }
+
+   

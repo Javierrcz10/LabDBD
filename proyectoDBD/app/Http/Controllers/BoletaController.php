@@ -14,7 +14,7 @@ class BoletaController extends Controller
      */
     public function index()
     {
-        $boleta = Boleta::all();
+        $boleta = Boleta::all()->where('estado', true);
         if($boleta !=NULL){
             return response()-> json($boleta);
         }
@@ -34,9 +34,10 @@ class BoletaController extends Controller
         $boleta->precioTotal = $request->precioTotal;
         $boleta->fecha = $request->fecha;
         $boleta->idPago = $request->idPago;
+        $boleta->estado = true;
         $boleta->save();
         return response()->json([
-            "message"=> "boleta creada"
+            "message"=> "boleta creada",
             "id"=> $boleta->id
         ],202);
     }
@@ -104,8 +105,6 @@ class BoletaController extends Controller
             "message"=>"No se encontró la boleta"
         ],404);
     }
-}
-
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)
     {
@@ -123,3 +122,6 @@ class BoletaController extends Controller
         ],404);
     }
 }
+
+    
+

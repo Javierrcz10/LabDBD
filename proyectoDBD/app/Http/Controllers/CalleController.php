@@ -13,7 +13,7 @@ class CalleController extends Controller
      */
     public function index()
     {
-        $calle = Calle::all();
+        $calle = Calle::all()->where('estado', true);
         if($calle!=NULL){
             return response()-> json($calle);
         }
@@ -30,11 +30,14 @@ class CalleController extends Controller
     public function store(Request $request)
     {
         $calle = new Calle();
-        $calle->nombre = $request->nombre;
+        $calle->nombreCalle = $request->nombreCalle;
         $calle->idComuna = $request->idComuna;
+        $calle->estado = true;
         $calle->save();
         return response()->json([
-            "message"=> "calle creada"
+            "message"=> "calle creada",
+            "id"=> $calle->id
+
         ],202);
     }
 
@@ -67,8 +70,8 @@ class CalleController extends Controller
 
             $calle =Calle::find($id);
             if($calle!=NULL){
-                if($request ->nombre !=NULL){
-                    $calle->nombre = $request->nombre;
+                if($request ->nombreCalle !=NULL){
+                    $calle->nombreCalle = $request->nombreCalle;
                 }
                 if($request ->idComuna !=NULL){
                     $calle->idComuna = $request->idComuna;
@@ -99,22 +102,22 @@ class CalleController extends Controller
             "message"=>"No se encontró la calle"
         ],404);
     }
+     //-------softDelete(id)-----------------------------------------
+     public function softdestroy($id)
+     {
+         $calle=Calle::find($id);
+         if($calle!=NULL){
+             $calle->estado = false;
+             $calle->save();
+             return response()->json([
+                 "message"=> "SoftDelete a calle",
+                 "id"=>$calle->id
+             ]);
+         }
+         return response()->json([
+             "message"=>"No se encontró el calle"
+         ],404);
+     }
 }
 
-    //-------softDelete(id)-----------------------------------------
-    public function softdestroy($id)
-    {
-        $calle=Calle::find($id);
-        if($calle!=NULL){
-            $calle->estado = false;
-            $calle->save();
-            return response()->json([
-                "message"=> "SoftDelete a calle",
-                "id"=>$calle->id
-            ]);
-        }
-        return response()->json([
-            "message"=>"No se encontró el calle"
-        ],404);
-    }
-}
+   

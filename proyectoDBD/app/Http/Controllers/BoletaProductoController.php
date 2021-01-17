@@ -13,7 +13,7 @@ class BoletaProductoController extends Controller
      */
     public function index()
     {
-        $boletaProducto = BoletaProducto::all();
+        $boletaProducto = BoletaProducto::all()->where('estado', true);
         if($boletaProducto!=NULL){
             return response()-> json($boletaProducto);
         }
