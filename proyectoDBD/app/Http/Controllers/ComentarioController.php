@@ -14,7 +14,10 @@ class ComentarioController extends Controller
     public function index()
     {
         $comentario = Comentario::all();
-        return response()-> json($comentario);
+        if($comentario!=NULL){
+            return response()-> json($comentario);
+        }
+        return response('ERROR 404');
     }
 
    
@@ -47,7 +50,10 @@ class ComentarioController extends Controller
     public function show($id)
     {
         $comentario = Comentario::find($id);
-        return response()-> json($comentario);
+        if($comentario!=NULL){
+            return response()-> json($comentario);
+        }
+        return response('ERROR 404');
     }
 
     
@@ -63,17 +69,21 @@ class ComentarioController extends Controller
     {
 
         $comentario = Comentario::find($id);
-        if($request ->contenido !=NULL){
-            $comentario->contenido = $request->contenido;
+        if($comentario!=NULL){
+            if($request ->contenido !=NULL){
+                $comentario->contenido = $request->contenido;
+            }
+            if($request ->calificacion !=NULL){
+                $comentario->calificacion = $request->calificacion;
+            }
+            if($request ->idBoleta !=NULL){
+                $comentario->idBoleta = $request->idBoleta;
+            }
+            $comentario->save();
+            return response()->json($id);
         }
-        if($request ->calificacion !=NULL){
-            $comentario->calificacion = $request->calificacion;
-        }
-        if($request ->idBoleta !=NULL){
-            $comentario->idBoleta = $request->idBoleta;
-        }
-        $comentario->save();
-        return response()->json($id);
+        return response('ERROR 404');
+
     }
 
     /**

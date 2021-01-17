@@ -15,7 +15,10 @@ class BoletaController extends Controller
     public function index()
     {
         $boleta = Boleta::all();
-        return response()-> json($boleta);
+        if($boleta !=NULL){
+            return response()-> json($boleta);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -47,7 +50,10 @@ class BoletaController extends Controller
     public function show($id)
     {
         $boleta = Boleta::find($id);
-        return response()-> json($boleta);
+        if($boleta != NULL){
+            return response()-> json($boleta);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -61,17 +67,21 @@ class BoletaController extends Controller
     public function update(Request $request, $id)
     {
         $boleta = Boleta::find($id);
-        if($request ->precioTotal !=NULL){
-            $boleta->precioTotal = $request->precioTotal;
+        if($boleta != NULL){
+            if($request ->precioTotal !=NULL){
+                $boleta->precioTotal = $request->precioTotal;
+            }
+            if($request ->fecha !=NULL){
+                $boleta->fecha = $request->fecha;
+            }
+            if($request ->idPago !=NULL){
+                $boleta->idPago = $request->idPago;
+            }
+            $boleta->save();
+            return response()->json($boleta);
         }
-        if($request ->fecha !=NULL){
-            $boleta->fecha = $request->fecha;
-        }
-        if($request ->idPago !=NULL){
-            $boleta->idPago = $request->idPago;
-        }
-        $boleta->save();
-        return response()->json($boleta);
+        return response('ERROR 404');
+
     }
 
     /**

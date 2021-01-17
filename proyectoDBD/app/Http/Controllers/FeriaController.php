@@ -14,7 +14,10 @@ class FeriaController extends Controller
     public function index()
     {
         $feria = Feria::all();
-        return response()-> json($feria);
+        if($feria!=NULL){
+            return response()-> json($feria);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -45,7 +48,10 @@ class FeriaController extends Controller
     public function show($id)
     {
         $feria = Feria::find($id);
-        return response()-> json($feria);
+        if($feria!=NULL){
+            return response()-> json($feria);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -60,14 +66,17 @@ class FeriaController extends Controller
     {
 
         $feria = Feria::find($id);
-        if($request ->nombre !=NULL){
-            $feria->nombre = $request->nombre;
+        if($feria!=NULL){
+            if($request ->nombre !=NULL){
+                $feria->nombre = $request->nombre;
+            }
+            if($request ->descripcion !=NULL){
+                $feria->descripcion = $request->descripcion;
+            }
+            $feria->save();
+            return response()->json($id);
         }
-        if($request ->descripcion !=NULL){
-            $feria->descripcion = $request->descripcion;
-        }
-        $feria->save();
-        return response()->json($id);
+        return response('ERROR 404');
     }
 
     /**

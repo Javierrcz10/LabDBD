@@ -14,7 +14,10 @@ class CategoriaController extends Controller
     public function index()
     {
         $categoria = Categoria::all();
-        return response()-> json($categoria);
+        if($categoria!=NULL){
+            return response()-> json($categoria);
+        }
+        return response('ERROR 404');
     }
 
    
@@ -57,17 +60,19 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request ->precioTotal !=NULL){
 
         $categoria =Categoria::find($id);
-        if($request ->nombreCategoria !=NULL){
-            $categoria->nombreCategoria = $request->nombreCategoria;
+        if($categoria!=NULL){
+            if($request ->nombreCategoria !=NULL){
+                $categoria->nombreCategoria = $request->nombreCategoria;
+            }
+            if($request ->idSubCategoria !=NULL){
+                $categoria->idSubCategoria = $request->idSubCategoria;
+            }
+            $categoria->save();
+            return response()->json($id);
         }
-        if($request ->idSubCategoria !=NULL){
-            $categoria->idSubCategoria = $request->idSubCategoria;
-        }
-        $categoria->save();
-        return response()->json($id);
+        return response('ERROR 404');
     }
 
     /**

@@ -14,7 +14,10 @@ class ComunaController extends Controller
     public function index()
     {
         $comuna = Comuna::all();
-        return response()-> json($comuna);
+        if($comuna!=NULL){
+            return response()-> json($comuna);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -44,7 +47,10 @@ class ComunaController extends Controller
     public function show($id)
     {
         $comuna = Comuna::find($id);
-        return response()-> json($comuna);
+        if($comuna!=NULL){
+            return response()-> json($comuna);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -59,14 +65,17 @@ class ComunaController extends Controller
     {
 
             $comuna = Comuna::find($id);
-            if($request ->nombre !=NULL){
-                $comuna->nombre = $request->nombre;
+            if($comuna!=NULL){
+                if($request ->nombre !=NULL){
+                    $comuna->nombre = $request->nombre;
+                }
+                if($request ->idRegion !=NULL){
+                    $comuna->idRegion = $request->idRegion;
+                }
+                $comuna->save();
+                return response()->json($id);
             }
-            if($request ->idRegion !=NULL){
-                $comuna->idRegion = $request->idRegion;
-            }
-            $comuna->save();
-            return response()->json($id);
+            return response('ERROR 404');
     }
 
     /**

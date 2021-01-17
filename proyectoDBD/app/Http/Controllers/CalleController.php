@@ -14,7 +14,10 @@ class CalleController extends Controller
     public function index()
     {
         $calle = Calle::all();
-        return response()-> json($calle);
+        if($calle!=NULL){
+            return response()-> json($calle);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -44,7 +47,10 @@ class CalleController extends Controller
     public function show($id)
     {
         $calle = Calle::find($id);
-        return response()-> json($calle);
+        if($calle!=NULL){
+            return response()-> json($calle);
+        }
+        return response('ERROR 404');
     }
 
    
@@ -60,14 +66,17 @@ class CalleController extends Controller
     {
 
             $calle =Calle::find($id);
-            if($request ->nombre !=NULL){
-                $calle->nombre = $request->nombre;
+            if($calle!=NULL){
+                if($request ->nombre !=NULL){
+                    $calle->nombre = $request->nombre;
+                }
+                if($request ->idComuna !=NULL){
+                    $calle->idComuna = $request->idComuna;
+                }
+                $calle->save();
+                return response()->json($calle);
             }
-            if($request ->idComuna !=NULL){
-                $calle->idComuna = $request->idComuna;
-            }
-            $calle->save();
-            return response()->json($calle);
+            return response('ERROR 404');
     }
 
     /**

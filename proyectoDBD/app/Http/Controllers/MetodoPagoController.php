@@ -14,7 +14,10 @@ class MetodoPagoController extends Controller
     public function index()
     {
         $metodoPago = MetodoPago::all();
-        return response()-> json($metodoPago);
+        if($metodoPago!=NULL){
+            return response()-> json($metodoPago);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -47,7 +50,10 @@ class MetodoPagoController extends Controller
     public function show($id)
     {
         $metodoPago = MetodoPago::find($id);
-        return response()-> json($metodoPago);
+        if($metodoPago!=NULL){
+            return response()-> json($metodoPago);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -62,21 +68,24 @@ class MetodoPagoController extends Controller
     {
  
             $metodoPago = MetodoPago::find($id);
-            if($request ->tipoPago !=NULL){
-                $metodoPago->tipoPago = $request->tipoPago;
-            }
-            if($request ->totalPago !=NULL){
-                $metodoPago->totalPago = $request->totalPago;
-            }
-            if($request ->nombreBanco !=NULL){
-                $metodoPago->nombreBanco = $request->nombreBanco;
-            }
-            if($request ->ultimosDigitos !=NULL){
-                $metodoPago->ultimosDigitos = $request->ultimosDigitos;
-            }
+            if($metodoPago!=NULL){
+                if($request ->tipoPago !=NULL){
+                    $metodoPago->tipoPago = $request->tipoPago;
+                }
+                if($request ->totalPago !=NULL){
+                    $metodoPago->totalPago = $request->totalPago;
+                }
+                if($request ->nombreBanco !=NULL){
+                    $metodoPago->nombreBanco = $request->nombreBanco;
+                }
+                if($request ->ultimosDigitos !=NULL){
+                    $metodoPago->ultimosDigitos = $request->ultimosDigitos;
+                }
 
-            $metodoPago->save();
-            return response()->json($id);
+                $metodoPago->save();
+                return response()->json($id);
+            }
+            return response('ERROR 404');
     }
 
     /**

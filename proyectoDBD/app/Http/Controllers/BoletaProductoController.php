@@ -13,8 +13,11 @@ class BoletaProductoController extends Controller
      */
     public function index()
     {
-        $boletaProductoProducto = BoletaProducto::all();
-        return response()-> json($boletaProductoProducto);
+        $boletaProducto = BoletaProducto::all();
+        if($boletaProducto!=NULL){
+            return response()-> json($boletaProducto);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -43,8 +46,11 @@ class BoletaProductoController extends Controller
      */
     public function show($id)
     {
-        $boletaProductoProducto = BoletaProducto::find($id);
-        return response()-> json($boletaProductoProducto);
+        $boletaProducto = BoletaProducto::find($id);
+        if($boletaProducto!=NULL){
+            return response()-> json($boletaProducto);
+        }
+        return response('ERROR 404');
     }
 
 
@@ -58,17 +64,19 @@ class BoletaProductoController extends Controller
     public function update(Request $request, $id)
     {
 
-        $boletaProductoProducto = BoletaProducto::find($id);
-        if($request ->idBoleta !=NULL){
-            $boletaProductoProducto->idBoleta = $request->idBoleta;
+        $boletaProducto = BoletaProducto::find($id);
+        if($boletaProducto!=NULL){
+            if($request ->idBoleta !=NULL){
+                $boletaProducto->idBoleta = $request->idBoleta;
+            }
+            if($request ->idProducto !=NULL){
+                $boletaProducto->idProducto = $request->idProducto;
+            }
+            $boletaProducto->save();
+            return response()->json($boletaProducto);
+                
         }
-        if($request ->idProducto !=NULL){
-            $boletaProductoProducto->idProducto = $request->idProducto;
-        }
-        $boletaProductoProducto->save();
-        return response()->json($boletaProductoProducto);
-            
-    }
+        return response('ERROR 404');
     }
 
     /**
