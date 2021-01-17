@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -27,6 +27,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validated = $request->validate([
             'nombreProducto' => ['required'],
             'descripcionProducto'=> ['required'],
@@ -117,7 +118,7 @@ class ProductoController extends Controller
             "message"=>"No se encontró el producto"
         ],404);
     }
-}
+
 
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)

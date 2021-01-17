@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\RolPermiso;
 use Illuminate\Http\Request;
 
 class RolPermisoController extends Controller
@@ -13,7 +13,7 @@ class RolPermisoController extends Controller
      */
     public function index()
     {
-        $rolPermiso = RolPermiso::all()->where('estado', true);
+        $rolPermiso = RolPermiso::all();
         if($rolPermiso != NULL){
             return response()-> json($rolPermiso);
         }
@@ -36,7 +36,6 @@ class RolPermisoController extends Controller
         $rolPermiso = new RolPermiso();
         $rolPermiso->idRol = $request->idRol;
         $rolPermiso->idPermiso = $request->idPermiso;
-        $rolPermiso->estado = true;
         $rolPërmiso->save();
         return response()->json([
             "message"=>"Se ha creado un rolPermiso",

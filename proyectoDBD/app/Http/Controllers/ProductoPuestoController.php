@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\ProductoPuesto;
 use Illuminate\Http\Request;
 
 class ProductoPuestoController extends Controller
@@ -13,7 +13,7 @@ class ProductoPuestoController extends Controller
      */
     public function index()
     {
-        $productoPuesto = Producto::all()->where('estado', true);
+        $productoPuesto = ProductoPuesto::all()->where('estado', true);
         if($productoPuesto != NULL){
             return response()-> json($productoPuesto);
         }
@@ -33,7 +33,7 @@ class ProductoPuestoController extends Controller
         $validated = $request->validate([
             'cantidad' => ['required'],
             'idProducto'=> ['required'],
-            'idpuesto'=> ['required'],
+            'idPuesto'=> ['required'],
         ]);
         $productoPuesto = new ProductoPuesto();
         $productoPuesto->cantidad = $request->cantidad;
@@ -109,7 +109,7 @@ class ProductoPuestoController extends Controller
             "message"=>"No se encontró el productoPuesto"
         ],404);
     }
-}
+
 
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)

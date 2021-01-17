@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 
 class UbicacionController extends Controller
@@ -112,7 +112,7 @@ class UbicacionController extends Controller
             "message"=>"No se encontró el ubicacion"
         ],404);
     }
-}
+
 
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\PuestoFeria;
 use Illuminate\Http\Request;
 
 class PuestoFeriaController extends Controller
@@ -107,7 +107,7 @@ class PuestoFeriaController extends Controller
             "message"=>"No se encontró el puestoFeria"
         ],404);
     }
-}
+
 
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)
