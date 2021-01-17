@@ -30,13 +30,13 @@ class PuestoFeriaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nombrePuesto' => ['required'],
-            'descripcionPuesto'=> ['required'],
+            'NombrePuesto' => ['required'],
+            'DescripcionPuesto'=> ['required'],
             'idFeria'=> ['required'],
         ]);
         $puestoFeria = new PuestoFeria();
-        $puestoFeria->nombrePuesto = $request->nombrePuesto;
-        $puestoFeria->descripcionPuesto = $request->descripcionPuesto;
+        $puestoFeria->NombrePuesto = $request->NombrePuesto;
+        $puestoFeria->DescripcionPuesto = $request->DescripcionPuesto;
         $puestoFeria->idFeria = $request->idFeria;
         $puestoFeria->estado = true;
         $puestoFeria->save();
@@ -72,11 +72,11 @@ class PuestoFeriaController extends Controller
     {
         $puestoFeria= PuestoFeria::find($id);
         if($puestoFeria!=NULL){
-            if($request->nombrePuesto!=NULL){
-                $puestoFeria->nombrePuesto = $request->nombrePuesto;
+            if($request->NombrePuesto!=NULL){
+                $puestoFeria->NombrePuesto = $request->NombrePuesto;
             }
-            if($request->descripcionPuesto!=NULL){
-                $puestoFeria->descripcionPuesto = $request->descripcionPuesto;
+            if($request->DescripcionPuesto!=NULL){
+                $puestoFeria->DescripcionPuesto = $request->DescripcionPuesto;
             }
             if($request->idFeria!=NULL){
                 $puestoFeria->idFeria = $request->idFeria;
