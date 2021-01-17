@@ -100,22 +100,20 @@ class ComunaController extends Controller
             "message"=>"No se encontró la comuna"
         ],404);
     }
-}
-
-    //-------softDelete(id)-----------------------------------------
-    public function softdestroy($id)
-    {
-        $comuna=Comuna::find($id);
-        if($comuna!=NULL){
-            $comuna->estado = false;
-            $comuna->save();
-            return response()->json([
-                "message"=> "SoftDelete a comuna",
-                "id"=>$comuna->id
-            ]);
-        }
-        return response()->json([
-            "message"=>"No se encontró el comuna"
-        ],404);
-    }
+     //-------softDelete(id)-----------------------------------------
+     public function softdestroy($id)
+     {
+         $comuna=Comuna::find($id);
+         if($comuna!=NULL){
+             $comuna->estado = false;
+             $comuna->save();
+             return response()->json([
+                 "message"=> "SoftDelete a comuna",
+                 "id"=>$comuna->id
+             ]);
+         }
+         return response()->json([
+             "message"=>"No se encontró el comuna"
+         ],404);
+     }
 }

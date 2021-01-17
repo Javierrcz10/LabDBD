@@ -91,7 +91,7 @@ class CalleController extends Controller
     public function destroy($id)
     {
         $calle=Calle::find($id);
-        if($permiso!=NULL){
+        if($calle!=NULL){
             $calle->delete();
             return response()->json([
                 "message"=>"Delete a calle",

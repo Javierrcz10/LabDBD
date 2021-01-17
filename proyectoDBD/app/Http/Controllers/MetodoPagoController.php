@@ -35,6 +35,7 @@ class MetodoPagoController extends Controller
         $metodoPago->nombreBanco = $request->nombreBanco;
         $metodoPago->ultimosDigitos = $request->ultimosDigitos;
         $metodoPago->estado = true;
+        $metodoPago->idUsuario = $request->idUsuario;
         $metodoPago->save();
         return response()->json([
             "message"=> "metodo de pago creado",
@@ -81,6 +82,9 @@ class MetodoPagoController extends Controller
                 }
                 if($request ->ultimosDigitos !=NULL){
                     $metodoPago->ultimosDigitos = $request->ultimosDigitos;
+                }
+                if($request ->idUsuario !=NULL){
+                    $metodoPago->idUsuario = $request->idUsuario;
                 }
 
                 $metodoPago->save();
