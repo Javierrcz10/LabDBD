@@ -100,3 +100,21 @@ class MetodoPagoController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $metodoPago=MetodoPago::find($id);
+        if($metodoPago!=NULL){
+            $metodoPago->estado = false;
+            $metodoPago->save();
+            return response()->json([
+                "message"=> "SoftDelete a metodoPago",
+                "id"=>$metodoPago->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el metodoPago"
+        ],404);
+    }
+}

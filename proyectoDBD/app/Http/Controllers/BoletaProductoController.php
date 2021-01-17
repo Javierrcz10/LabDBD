@@ -13,8 +13,8 @@ class BoletaProductoController extends Controller
      */
     public function index()
     {
-        $boletaProducto = BoletaProducto::all();
-        return response()-> json($boletaProducto);
+        $boletaProductoProducto = BoletaProducto::all();
+        return response()-> json($boletaProductoProducto);
     }
 
 
@@ -26,10 +26,10 @@ class BoletaProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $boletaProducto = new BoletaProducto();
-        $boletaProducto->idBoleta = $request->idBoleta;
-        $boletaProducto->idProducto = $request->idProducto;
-        $boletaProducto->save();
+        $boletaProductoProducto = new BoletaProducto();
+        $boletaProductoProducto->idBoleta = $request->idBoleta;
+        $boletaProductoProducto->idProducto = $request->idProducto;
+        $boletaProductoProducto->save();
         return response()->json([
             "message"=> "relacion creada"
         ],202);
@@ -43,8 +43,8 @@ class BoletaProductoController extends Controller
      */
     public function show($id)
     {
-        $boletaProducto = BoletaProducto::find($id);
-        return response()-> json($boletaProducto);
+        $boletaProductoProducto = BoletaProducto::find($id);
+        return response()-> json($boletaProductoProducto);
     }
 
 
@@ -58,15 +58,15 @@ class BoletaProductoController extends Controller
     public function update(Request $request, $id)
     {
 
-        $boletaProducto = BoletaProducto::find($id);
+        $boletaProductoProducto = BoletaProducto::find($id);
         if($request ->idBoleta !=NULL){
-            $boletaProducto->idBoleta = $request->idBoleta;
+            $boletaProductoProducto->idBoleta = $request->idBoleta;
         }
         if($request ->idProducto !=NULL){
-            $boletaProducto->idProducto = $request->idProducto;
+            $boletaProductoProducto->idProducto = $request->idProducto;
         }
-        $boletaProducto->save();
-        return response()->json($boletaProducto);
+        $boletaProductoProducto->save();
+        return response()->json($boletaProductoProducto);
             
     }
     }
@@ -79,16 +79,17 @@ class BoletaProductoController extends Controller
      */
     public function destroy($id)
     {
-        $boletaProducto=BoletaProducto::find($id);
-        if($boletaProducto!=NULL){
-            $boletaProducto->delete();
+        $boletaProductoProducto=BoletaProducto::find($id);
+        if($boletaProductoProducto!=NULL){
+            $boletaProductoProducto->delete();
             return response()->json([
-                "message"=>"Delete a boletaProducto",
-                "id"=>$boletaProducto->id
+                "message"=>"Delete a boletaProductoProducto",
+                "id"=>$boletaProductoProducto->id
             ],202);
         }
         return response()->json([
-            "message"=>"No se encontró la boletaProducto"
+            "message"=>"No se encontró la boletaProductoProducto"
         ],404);
     }
 }
+

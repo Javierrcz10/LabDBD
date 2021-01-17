@@ -103,3 +103,21 @@ class PermisoController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $permiso=Permiso::find($id);
+        if($permiso!=NULL){
+            $permiso->estado = false;
+            $permiso->save();
+            return response()->json([
+                "message"=> "SoftDelete a permiso",
+                "id"=>$permiso->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el permiso"
+        ],404);
+    }
+}

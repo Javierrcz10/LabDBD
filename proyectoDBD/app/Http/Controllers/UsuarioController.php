@@ -77,3 +77,21 @@ class UsuarioController extends Controller
         //
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $usuario=Usuario::find($id);
+        if($usuario!=NULL){
+            $usuario->estado = false;
+            $usuario->save();
+            return response()->json([
+                "message"=> "SoftDelete a usuario",
+                "id"=>$usuario->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el usuario"
+        ],404);
+    }
+}

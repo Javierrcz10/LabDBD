@@ -91,3 +91,21 @@ class CalleController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $calle=Calle::find($id);
+        if($calle!=NULL){
+            $calle->estado = false;
+            $calle->save();
+            return response()->json([
+                "message"=> "SoftDelete a calle",
+                "id"=>$calle->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el calle"
+        ],404);
+    }
+}

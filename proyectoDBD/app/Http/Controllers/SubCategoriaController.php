@@ -109,3 +109,22 @@ class SubCategoriaController extends Controller
         ],404);
     }
 }
+
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $subCategoria=SubCategoria::find($id);
+        if($subCategoria!=NULL){
+            $subCategoria->estado = false;
+            $subCategoria->save();
+            return response()->json([
+                "message"=> "SoftDelete a subCategoria",
+                "id"=>$subCategoria->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el subCategoria"
+        ],404);
+    }
+}

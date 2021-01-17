@@ -91,3 +91,21 @@ class CategoriaController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $categoria=Categoria::find($id);
+        if($categoria!=NULL){
+            $categoria->estado = false;
+            $categoria->save();
+            return response()->json([
+                "message"=> "SoftDelete a categoria",
+                "id"=>$categoria->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el categoria"
+        ],404);
+    }
+}

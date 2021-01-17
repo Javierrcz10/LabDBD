@@ -96,3 +96,22 @@ class RegionController extends Controller
         ],404);
     }
 }
+
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $region=Region::find($id);
+        if($region!=NULL){
+            $region->estado = false;
+            $region->save();
+            return response()->json([
+                "message"=> "SoftDelete a region",
+                "id"=>$region->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el region"
+        ],404);
+    }
+}

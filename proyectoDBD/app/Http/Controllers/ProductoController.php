@@ -118,3 +118,21 @@ class ProductoController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $producto=Producto::find($id);
+        if($producto!=NULL){
+            $producto->estado = false;
+            $producto->save();
+            return response()->json([
+                "message"=> "SoftDelete a producto",
+                "id"=>$producto->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el producto"
+        ],404);
+    }
+}

@@ -113,3 +113,22 @@ class UbicacionController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $ubicacion=Ubicacion::find($id);
+        if($ubicacion!=NULL){
+            $ubicacion->estado = false;
+            $ubicacion->save();
+            return response()->json([
+                "message"=> "SoftDelete a ubicacion",
+                "id"=>$ubicacion->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el ubicacion"
+        ],404);
+    }
+}
+

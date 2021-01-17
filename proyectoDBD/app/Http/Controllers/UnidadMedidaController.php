@@ -69,3 +69,22 @@ class UnidadMedidaController extends Controller
         //
     }
 }
+
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $unidadMedida=UnidadMedida::find($id);
+        if($unidadMedida!=NULL){
+            $unidadMedida->estado = false;
+            $unidadMedida->save();
+            return response()->json([
+                "message"=> "SoftDelete a unidadMedida",
+                "id"=>$unidadMedida->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el unidadMedida"
+        ],404);
+    }
+}

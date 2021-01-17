@@ -91,3 +91,21 @@ class FeriaController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $feria=Feria::find($id);
+        if($feria!=NULL){
+            $feria->estado = false;
+            $feria->save();
+            return response()->json([
+                "message"=> "SoftDelete a feria",
+                "id"=>$feria->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró la feria"
+        ],404);
+    }
+}

@@ -108,3 +108,22 @@ class PuestoFeriaController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $puestoFeria=PuestoFeria::find($id);
+        if($puestoFeria!=NULL){
+            $puestoFeria->estado = false;
+            $puestoFeria->save();
+            return response()->json([
+                "message"=> "SoftDelete a puestoFeria",
+                "id"=>$puestoFeria->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el puestoFeria"
+        ],404);
+    }
+}
+

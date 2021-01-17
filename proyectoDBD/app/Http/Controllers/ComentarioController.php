@@ -97,3 +97,21 @@ class ComentarioController extends Controller
         ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $comentario=Comentario::find($id);
+        if($comentario!=NULL){
+            $comentario->estado = false;
+            $comentario->save();
+            return response()->json([
+                "message"=> "SoftDelete a comentario",
+                "id"=>$comentario->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el comentario"
+        ],404);
+    }
+}

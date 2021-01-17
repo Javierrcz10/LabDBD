@@ -112,3 +112,5 @@ class RolPermisoController extends Controller
         ],404);
     }
 }
+
+

@@ -103,3 +103,22 @@ class rolController extends Controller
         ],404);
     }
 }
+
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $rol=Rol::find($id);
+        if($rol!=NULL){
+            $rol->estado = false;
+            $rol->save();
+            return response()->json([
+                "message"=> "SoftDelete a rol",
+                "id"=>$rol->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el rol"
+        ],404);
+    }
+}
