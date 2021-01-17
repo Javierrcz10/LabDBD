@@ -30,11 +30,12 @@ class FeriaController extends Controller
     public function store(Request $request)
     {
         $feria = new Feria();
-        $feria->nombre = $request->nombre;
-        $feria->descripcion = $request->descripcion;
+        $feria->nombreFeria = $request->nombreFeria;
+        $feria->descripcionFeria = $request->descripcionFeria;
+        $feria->estado = true;
         $feria->save();
         return response()->json([
-            "message"=> "feria creada"
+            "message"=> "feria creada",
             "id"=> $feria->id
         ],202);
     }
@@ -67,11 +68,11 @@ class FeriaController extends Controller
 
         $feria = Feria::find($id);
         if($feria!=NULL){
-            if($request ->nombre !=NULL){
-                $feria->nombre = $request->nombre;
+            if($request ->nombreFeria !=NULL){
+                $feria->nombreFeria = $request->nombreFeria;
             }
-            if($request ->descripcion !=NULL){
-                $feria->descripcion = $request->descripcion;
+            if($request ->descripcionFeria !=NULL){
+                $feria->descripcionFeria = $request->descripcionFeria;
             }
             $feria->save();
             return response()->json($id);
@@ -99,7 +100,6 @@ class FeriaController extends Controller
             "message"=>"No se encontró la feria"
         ],404);
     }
-}
 
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)

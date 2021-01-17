@@ -13,7 +13,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuario = Usuario::all()->where($usuario->estado,true);
+        $usuario = Usuario::all()->where('estado',true);
         return response()->json($usuario);
     }
 
@@ -34,7 +34,7 @@ class UsuarioController extends Controller
         $usuario->reputacionUsuario = 0.0;
         $usuario->estado = true;
         $usuario->save();
-        return response()->json(["message" = "usuario creado"],202);
+        return response()->json("usuario creado");
     }
 
     /**
@@ -50,7 +50,7 @@ class UsuarioController extends Controller
         if($usuario->estado == true){
             return response()->json($usuario);
         }
-        return response()->json(["message" = "usuario se encuentra borrado"],404);
+        return response()->json(["message" => "usuario se encuentra borrado"],404);
     }
 
 
@@ -80,7 +80,7 @@ class UsuarioController extends Controller
             $usuario->reputacionUsuario = $request->reputacionUsuario;
         }
         $usuario->save();
-        return response()->json(["message" = "usuario actualizado"],201);
+        return response()->json(["message" => "usuario actualizado"],201);
 
     }
 
@@ -94,24 +94,24 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::find($id);
         $usuario->delete();
-        return response()->json(["message" = "el usuario ha sido borrado"],201);
+        return response()->json(["message" => "el usuario ha sido borrado"],201);
     }
-}
 
-    //-------softDelete(id)-----------------------------------------
+        //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)
     {
         $usuario=Usuario::find($id);
         if($usuario!=NULL){
             $usuario->estado = false;
-            $usuario->save();
-            return response()->json([
+             $usuario->save();
+             return response()->json([
                 "message"=> "SoftDelete a usuario",
                 "id"=>$usuario->id
-            ]);
-        }
+             ]);
+          }
         return response()->json([
             "message"=>"No se encontró el usuario"
         ],404);
     }
 }
+

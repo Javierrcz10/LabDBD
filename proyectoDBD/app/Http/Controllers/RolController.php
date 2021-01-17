@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Rol;
 use Illuminate\Http\Request;
 
 class rolController extends Controller
@@ -13,7 +13,7 @@ class rolController extends Controller
      */
     public function index()
     {
-        $rol = rol::all()->where('estado', true);
+        $rol = Rol::all()->where('estado', true);
         if($rol != NULL){
             return response()-> json($rol);
         }
@@ -102,23 +102,20 @@ class rolController extends Controller
             "message"=>"No se encontró el rol"
         ],404);
     }
-}
-
-
-    //-------softDelete(id)-----------------------------------------
-    public function softdestroy($id)
-    {
-        $rol=Rol::find($id);
-        if($rol!=NULL){
-            $rol->estado = false;
-            $rol->save();
+        //-------softDelete(id)-----------------------------------------
+        public function softdestroy($id)
+        {
+            $rol=Rol::find($id);
+            if($rol!=NULL){
+                $rol->estado = false;
+                $rol->save();
+                return response()->json([
+                    "message"=> "SoftDelete a rol",
+                    "id"=>$rol->id
+                ]);
+            }
             return response()->json([
-                "message"=> "SoftDelete a rol",
-                "id"=>$rol->id
-            ]);
+                "message"=>"No se encontró el rol"
+            ],404);
         }
-        return response()->json([
-            "message"=>"No se encontró el rol"
-        ],404);
-    }
 }

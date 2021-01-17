@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Permiso;
 use Illuminate\Http\Request;
 
 class PermisoController extends Controller
@@ -68,7 +68,7 @@ class PermisoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $permiso= Permiso::find($id);
+        $permiso = Permiso::find($id);
         if($permiso!=NULL){
             if($request->nombrePermiso!=NULL){
                 $permiso->nombrePermiso = $request->nombrePermiso;
@@ -79,7 +79,7 @@ class PermisoController extends Controller
             $permiso->save();
             return response()->json($permiso);
         }
-        return response('ERROR 404');
+        return response()->json("no se encontro");
     }
 
     /**
@@ -102,8 +102,6 @@ class PermisoController extends Controller
             "message"=>"No se encontró el permiso"
         ],404);
     }
-}
-
     //-------softDelete(id)-----------------------------------------
     public function softdestroy($id)
     {
@@ -121,3 +119,4 @@ class PermisoController extends Controller
         ],404);
     }
 }
+
