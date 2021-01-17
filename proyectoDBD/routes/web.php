@@ -162,3 +162,22 @@ Route::delete('/usuarios/delete/{$id}','UsuarioController@destroy');
 Route::delete('/usuarioProductos/delete/{$id}','UsuarioProductoController@destroy');
 Route::delete('/usuarioPuestos/delete/{$id}','UsuarioPuestoController@destroy');
 Route::delete('/usuarioRols/delete/{$id}','UsuarioRolController@destroy');
+
+/*rutas de softdestroy
+
+Route::delete('/boletas/delete/{$id}','BoletaController@softdestroy');
+Route::delete('/calles/delete/{$id}','CalleController@softdestroy');
+Route::delete('/categorias/delete/{$id}','CategoriaController@softdestroy');
+Route::delete('/comentarios/delete/{$id}','ComentarioController@softdestroy');
+Route::delete('/comunas/delete/{$id}','ComunaController@softdestroy');
+Route::delete('/ferias/delete/{$id}','FeriaController@softdestroy');
+Route::delete('/metodosDePago/delete/{$id}','MetodoPagoController@softdestroy');
+Route::delete('/permisos/delete/{$id}','PermisoController@softdestroy');
+Route::delete('/productos/delete/{$id}','ProductoController@softdestroy');
+Route::delete('/productosPuestos/delete/{$id}','ProductoPuestoController@softdestroy');
+Route::delete('/regiones/delete/{$id}','RegionController@softdestroy');
+Route::delete('/roles/delete/{$id}','RolController@softdestroy');
+Route::delete('/subCategorias/delete/{$id}','SubCategoriaController@softdestroy');
+Route::delete('/ubicaciones/delete/{$id}','UbicacionController@softdestroy');
+Route::delete('/unidadMedidas/delete/{$id}','UnidadMedidaController@softdestroy');
+Route::delete('/usuarios/delete/{$id}','UsuarioController@softdestroy');

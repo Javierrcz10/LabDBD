@@ -43,7 +43,7 @@ class ProductoController extends Controller
         $producto->estado = true;
         $producto->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un producto",
             "id"=>$producto->id
         ]);
     }
@@ -74,7 +74,27 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto= Producto::find($id);
+        if($producto!=NULL){
+            if($request->nombreProducto!=NULL){
+                $producto->nombreProducto = $request->nombreProducto;
+            }
+            if($request->descripcionProducto!=NULL){
+                $producto->descripcionProducto = $request->descripcionProducto;
+            }
+            if($request->precioProducto!=NULL){
+                $producto->precioProducto = $request->precioProducto;
+            }
+            if($request->idSubCategoria!=NULL){
+                $producto->idSubCategoria = $request->idSubCategoria;
+            }
+            if($request->idSubCategoria!=NULL){
+                $producto->idUnidad = $request->idUnidad;
+            }
+            $producto->save();
+            return response()->json($producto);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -85,6 +105,34 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto=Producto::find($id);
+        if($producto!=NULL){
+            $producto->delete();
+            return response()->json([
+                "message"=>"Delete a producto",
+                "id"=>$producto->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el producto"
+        ],404);
+    }
+}
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $producto=Producto::find($id);
+        if($producto!=NULL){
+            $producto->estado = false;
+            $producto->save();
+            return response()->json([
+                "message"=> "SoftDelete a producto",
+                "id"=>$producto->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el producto"
+        ],404);
     }
 }

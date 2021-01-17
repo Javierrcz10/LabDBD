@@ -78,6 +78,34 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria=Categoria::find($id);
+        if($categoria!=NULL){
+            $categoria->delete();
+            return response()->json([
+                "message"=>"Delete a categoria",
+                "id"=>$categoria->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró la categoria"
+        ],404);
+    }
+}
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $categoria=Categoria::find($id);
+        if($categoria!=NULL){
+            $categoria->estado = false;
+            $categoria->save();
+            return response()->json([
+                "message"=> "SoftDelete a categoria",
+                "id"=>$categoria->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el categoria"
+        ],404);
     }
 }

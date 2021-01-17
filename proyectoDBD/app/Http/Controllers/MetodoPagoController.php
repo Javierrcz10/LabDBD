@@ -60,7 +60,23 @@ class MetodoPagoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+ 
+            $metodoPago = MetodoPago::find($id);
+            if($request ->tipoPago !=NULL){
+                $metodoPago->tipoPago = $request->tipoPago;
+            }
+            if($request ->totalPago !=NULL){
+                $metodoPago->totalPago = $request->totalPago;
+            }
+            if($request ->nombreBanco !=NULL){
+                $metodoPago->nombreBanco = $request->nombreBanco;
+            }
+            if($request ->ultimosDigitos !=NULL){
+                $metodoPago->ultimosDigitos = $request->ultimosDigitos;
+            }
+
+            $metodoPago->save();
+            return response()->json($id);
     }
 
     /**
@@ -71,6 +87,34 @@ class MetodoPagoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $metodoPago=MetodoPago::find($id);
+        if($metodoPago!=NULL){
+            $metodoPago->delete();
+            return response()->json([
+                "message"=>"Delete al metodo de pago",
+                "id"=>$metodoPago->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el metodo de pago"
+        ],404);
+    }
+}
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $metodoPago=MetodoPago::find($id);
+        if($metodoPago!=NULL){
+            $metodoPago->estado = false;
+            $metodoPago->save();
+            return response()->json([
+                "message"=> "SoftDelete a metodoPago",
+                "id"=>$metodoPago->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el metodoPago"
+        ],404);
     }
 }

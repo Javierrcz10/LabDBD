@@ -61,7 +61,6 @@ class ComentarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request ->precioTotal !=NULL){
 
         $comentario = Comentario::find($id);
         if($request ->contenido !=NULL){
@@ -85,6 +84,34 @@ class ComentarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comentario=Comentario::find($id);
+        if($comentario!=NULL){
+            $comentario->delete();
+            return response()->json([
+                "message"=>"Delete a comentario",
+                "id"=>$comentario->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el comentario"
+        ],404);
+    }
+}
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $comentario=Comentario::find($id);
+        if($comentario!=NULL){
+            $comentario->estado = false;
+            $comentario->save();
+            return response()->json([
+                "message"=> "SoftDelete a comentario",
+                "id"=>$comentario->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el comentario"
+        ],404);
     }
 }

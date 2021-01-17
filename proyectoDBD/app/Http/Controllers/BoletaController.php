@@ -82,6 +82,34 @@ class BoletaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $boleta=Boleta::find($id);
+        if($boleta!=NULL){
+            $boleta->delete();
+            return response()->json([
+                "message"=>"Delete a boleta",
+                "id"=>$boleta->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró la boleta"
+        ],404);
+    }
+}
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $boleta=Boleta::find($id);
+        if($boleta!=NULL){
+            $boleta->estado = false;
+            $boleta->save();
+            return response()->json([
+                "message"=> "SoftDelete a boleta",
+                "id"=>$boleta->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el boleta"
+        ],404);
     }
 }

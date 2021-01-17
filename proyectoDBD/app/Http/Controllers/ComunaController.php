@@ -57,7 +57,16 @@ class ComunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+            $comuna = Comuna::find($id);
+            if($request ->nombre !=NULL){
+                $comuna->nombre = $request->nombre;
+            }
+            if($request ->idRegion !=NULL){
+                $comuna->idRegion = $request->idRegion;
+            }
+            $comuna->save();
+            return response()->json($id);
     }
 
     /**
@@ -68,6 +77,34 @@ class ComunaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comuna=Comuna::find($id);
+        if($comuna!=NULL){
+            $comuna->delete();
+            return response()->json([
+                "message"=>"Delete a comuna",
+                "id"=>$comuna->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró la comuna"
+        ],404);
+    }
+}
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $comuna=Comuna::find($id);
+        if($comuna!=NULL){
+            $comuna->estado = false;
+            $comuna->save();
+            return response()->json([
+                "message"=> "SoftDelete a comuna",
+                "id"=>$comuna->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el comuna"
+        ],404);
     }
 }

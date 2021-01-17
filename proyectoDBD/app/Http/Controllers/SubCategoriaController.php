@@ -37,7 +37,7 @@ class SubCategoriaController extends Controller
         $subCategoria->estado = true;
         $subCategoria->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un subCategoria",
             "id"=>$subCategoria->id
         ]);
     }
@@ -77,7 +77,15 @@ class SubCategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subCategoria= SubCategoria::find($id);
+        if($subCategoria!=NULL){
+            if($request->nombreCategoria!=NULL){
+                $subCategoria->nombreCategoria = $request->nombreCategoria;
+            }
+            $subCategoria->save();
+            return response()->json($subCategoria);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -88,6 +96,35 @@ class SubCategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subCategoria=SubCategoria::find($id);
+        if($subCategoria!=NULL){
+            $subCategoria->delete();
+            return response()->json([
+                "message"=>"Delete a subCategoria",
+                "id"=>$subCategoria->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el subCategoria"
+        ],404);
+    }
+}
+
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $subCategoria=SubCategoria::find($id);
+        if($subCategoria!=NULL){
+            $subCategoria->estado = false;
+            $subCategoria->save();
+            return response()->json([
+                "message"=> "SoftDelete a subCategoria",
+                "id"=>$subCategoria->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el subCategoria"
+        ],404);
     }
 }

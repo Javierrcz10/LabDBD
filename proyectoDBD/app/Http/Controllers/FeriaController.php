@@ -58,7 +58,16 @@ class FeriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $feria = Feria::find($id);
+        if($request ->nombre !=NULL){
+            $feria->nombre = $request->nombre;
+        }
+        if($request ->descripcion !=NULL){
+            $feria->descripcion = $request->descripcion;
+        }
+        $feria->save();
+        return response()->json($id);
     }
 
     /**
@@ -69,6 +78,34 @@ class FeriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $feria=Feria::find($id);
+        if($feria!=NULL){
+            $feria->delete();
+            return response()->json([
+                "message"=>"Delete a feria",
+                "id"=>$feria->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró la feria"
+        ],404);
+    }
+}
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $feria=Feria::find($id);
+        if($feria!=NULL){
+            $feria->estado = false;
+            $feria->save();
+            return response()->json([
+                "message"=> "SoftDelete a feria",
+                "id"=>$feria->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró la feria"
+        ],404);
     }
 }

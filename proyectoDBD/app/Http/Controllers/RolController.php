@@ -39,7 +39,7 @@ class rolController extends Controller
         $rol->estado = true;
         $rol->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
+            "message"=>"Se ha creado un rol",
             "id"=>$rol->id
         ]);
     }
@@ -60,17 +60,6 @@ class rolController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -79,7 +68,18 @@ class rolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rol= Rol::find($id);
+        if($rol!=NULL){
+            if($request->nombreRol!=NULL){
+                $rol->nombreRol = $request->nombreRol;
+            }
+            if($request->descripcionRol!=NULL){
+                $rol->descripcionRol = $request->descripcionRol;
+            }
+            $rol->save();
+            return response()->json($rol);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -90,6 +90,35 @@ class rolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rol=Rol::find($id);
+        if($rol!=NULL){
+            $rol->delete();
+            return response()->json([
+                "message"=>"Delete a rol",
+                "id"=>$rol->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el rol"
+        ],404);
+    }
+}
+
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $rol=Rol::find($id);
+        if($rol!=NULL){
+            $rol->estado = false;
+            $rol->save();
+            return response()->json([
+                "message"=> "SoftDelete a rol",
+                "id"=>$rol->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el rol"
+        ],404);
     }
 }

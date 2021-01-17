@@ -36,10 +36,10 @@ class UbicacionController extends Controller
         $ubicacion->numeroDireccion = $request->numeroDireccion;
         $ubicacion->idCalle = $request->idCalle;
         $ubicacion->estado = true;
-        $usuario->save();
+        $ubicacion->save();
         return response()->json([
-            "message"=>"Se ha creado un usuario",
-            "id"=>$usuario->id
+            "message"=>"Se ha creado un ubicacion",
+            "id"=>$ubicacion->id
         ]);
     }
 
@@ -78,7 +78,18 @@ class UbicacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ubicacion= Ubicacion::find($id);
+        if($ubicacion!=NULL){
+            if($request->numeroDireccion!=NULL){
+                $ubicacion->numeroDireccion = $request->numeroDireccion;
+            }
+            if($request->idCalle!=NULL){
+                $ubicacion->idCalle = $request->idCalle;
+            }
+            $ubicacion->save();
+            return response()->json($ubicacion);
+        }
+        return response('ERROR 404');
     }
 
     /**
@@ -89,6 +100,35 @@ class UbicacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ubicacion=Ubicacion::find($id);
+        if($ubicacion!=NULL){
+            $ubicacion->delete();
+            return response()->json([
+                "message"=>"Delete a ubicacion",
+                "id"=>$ubicacion->id
+            ],202);
+        }
+        return response()->json([
+            "message"=>"No se encontró el ubicacion"
+        ],404);
     }
 }
+
+    //-------softDelete(id)-----------------------------------------
+    public function softdestroy($id)
+    {
+        $ubicacion=Ubicacion::find($id);
+        if($ubicacion!=NULL){
+            $ubicacion->estado = false;
+            $ubicacion->save();
+            return response()->json([
+                "message"=> "SoftDelete a ubicacion",
+                "id"=>$ubicacion->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el ubicacion"
+        ],404);
+    }
+}
+
