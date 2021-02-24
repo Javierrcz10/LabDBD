@@ -21,6 +21,10 @@ Route::get('/uwu', function () {
     return view('welcome');
 });
 
+Route::get('/inicio2', function () {
+    return view('inicio2');
+});
+
 /*  rutas de index*/
 
 Route::get('/boletas','BoletaController@index');
