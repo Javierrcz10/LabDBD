@@ -19,30 +19,30 @@
                 <img src="https://i.imgur.com/no68Ic5.png" alt="" width="30" height="20" class="d-inline-block align-top">
                 Feria Online
                 <p>
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="inicio2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-            <button class="btn btn-primary" href="inicio2" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-            </p>
-            <div class="row">
-            <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample1">
-                <div class="card card-body">
-                    Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="collapse multi-collapse" id="multiCollapseExample2">
-                <div class="card card-body">
-                    Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                </div>
-                </div>
-            </div>
-            </div>
-                
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#registro" role="button">
+                        Registrarse
+                    </a>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#rs" role="button">
+                        Iniciar Sesión
+                    </a>
+                </p>
                 </a>
             </div>
-            
         </nav>
+        <figure class="text-center">
+            <h1>
+                Bienvenido
+            </h1>
+        </figure>
+        <figure class="text-center">
+            <h4>
+                Registrate o inicia sesión en nuestra pagina
+
+            </h4>
+        </figure>
+        <div class="text-center">
+            <img src="https://static.vix.com/es/sites/default/files/l/las_frutas_y_verduras_tambien_fueron_domesticadas.jpg" class="img-thumbnail" alt="imagen" width="70%" height="200px">
+        </div>
+        
     </body>
 </html>
