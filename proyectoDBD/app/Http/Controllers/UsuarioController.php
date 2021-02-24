@@ -54,7 +54,7 @@ class UsuarioController extends Controller
             return response()->json(["message" => "usuario no existe"],404);
         }
         if($usuario->estado == true){
-            return response()->json($usuario);
+            return view('perfil',['usuario' => $usuario]);
         }
         return response()->json(["message" => "usuario se encuentra borrado"],404);
     }

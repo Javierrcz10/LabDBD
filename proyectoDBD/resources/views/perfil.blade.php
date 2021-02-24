@@ -24,8 +24,8 @@
             <div class="navbar-nav position-absolute end-0">
                 <a class="nav-link active end-0" aria-current="page" href="uwu">carrito</a>
                 <a href="/"><img src="https://www.flaticon.es/svg/vstatic/svg/2121/2121815.svg?token=exp=1614144180~hmac=fbd564c4f791c62b73bcc3361327ae2f" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
-                <a class="nav-link" href="/usuarios/{{ $id}}">perfil</a>
-                <a href="/usuarios/{{ $id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/64/64572.svg?token=exp=1614144250~hmac=cde59deb7b5db0484ffe1086425f367a" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
+                <a class="nav-link" href="/usuarios/{{ $usuario->id }}">perfil</a>
+                <a href="/usuarios/{{ $usuario->id }}"><img src="https://www.flaticon.es/svg/vstatic/svg/64/64572.svg?token=exp=1614144250~hmac=cde59deb7b5db0484ffe1086425f367a" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
                 &nbsp &nbsp &nbsp
             </div>
             </div>
@@ -34,33 +34,28 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm margen">
-                <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">filtrar por producto</a>
+                <div class="col-3">
                 </div>
-                <div class="col-sm margen">
-                <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">filtrar por comuna</a>
+                
+                <div class="col-sm margen2">
+                <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077114.svg?token=exp=1614194909~hmac=30af42c7e17c7d2142cdfd454ac9ecde" class="img-thumbnail" alt="imagen" width="20%" height="200px">
+                    <h2>Usuario: {{ $usuario->nombreUsuario }}</h2> 
+                    <h2>Apodo: {{ $usuario->apodoUsuario }}</h2> 
+                    <h2>Mail: {{ $usuario->emailUsuario }}</h2> 
+                    <h2>Reputacion: {{ $usuario->reputacionUsuario }}</h2> 
                 </div>
-            </div>
-            <div class="row">
 
-                    <div class="text-center">
-                        <img src="https://static.vix.com/es/sites/default/files/l/las_frutas_y_verduras_tambien_fueron_domesticadas.jpg" class="img-thumbnail" alt="imagen" width="70%" height="200px">
-                    </div>
+                <div class="col-3">
+                </div>
             </div>
         </div>
-
-                
     </body>
 </html>
 
 <style>
-    .margen{
-        margin-left:20%;
-        margin-top:1%;
-        margin-bottom:1%;
-    }
     .margen2{
         margin-top:1%;
+
     }
     
 </style>
