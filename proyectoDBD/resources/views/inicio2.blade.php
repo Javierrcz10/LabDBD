@@ -19,8 +19,8 @@
                 <img src="https://i.imgur.com/no68Ic5.png" alt="" width="30" height="20" class="d-inline-block align-top">
                 Feria Online
                 <p>
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="inicio2" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-            <button class="btn btn-primary" href="inicio2" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="uwu" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
             <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
             </p>
             <div class="row">
