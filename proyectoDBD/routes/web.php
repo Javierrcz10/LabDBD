@@ -33,6 +33,9 @@ Route::get('/filtroComuna', function () {
     return view('filtroComuna');
 });
 
+Route::get('/registro', function () {
+    return view('registro');
+});
 /*  rutas de index*/
 
 Route::get('/boletas','BoletaController@index');
