@@ -22,7 +22,7 @@
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#registro" role="button">
                         Registrarse
                     </a>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#rs" role="button">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#login" role="button">
                         Iniciar Sesión
                     </a>
                 </p>

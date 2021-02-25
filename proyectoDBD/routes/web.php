@@ -29,6 +29,10 @@ Route::get('/producto', function () {
     return view('producto',['id' => 10]);
 });
 
+Route::get('/filtroComuna', function () {
+    return view('filtroComuna');
+});
+
 /*  rutas de index*/
 
 Route::get('/boletas','BoletaController@index');
