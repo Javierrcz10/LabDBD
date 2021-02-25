@@ -22,11 +22,11 @@ Route::get('/uwu', function () {
 });
 
 Route::get('/inicio2', function () {
-    return view('inicio2', ['id' => 1]);
+    return view('inicio2', ['id' => 10]);
 });
 
-Route::get('/perfil', function () {
-    return view('perfil');
+Route::get('/producto', function () {
+    return view('producto',['id' => 10]);
 });
 
 /*  rutas de index*/
