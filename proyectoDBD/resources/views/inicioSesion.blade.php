@@ -19,9 +19,9 @@
                 <img src="https://i.imgur.com/no68Ic5.png" alt="" width="30" height="20" class="d-inline-block align-top">
                 Feria Online
                 <p>
-                    
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="inicioSesion" role="button">
-                        Iniciar Sesión
+                   
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="registro" role="button">
+                        Registrarse
                     </a>
                 </p>
                 </a>
@@ -29,12 +29,12 @@
         </nav>
         <figure class="text-center">
             <h1>
-                Registro
+                Inicio de sesión
             </h1>
         </figure>
         <figure class="text-center">
             <h4>
-                Rellene el formulario
+                Ingrese sus datos
 
             </h4>
 
@@ -46,41 +46,15 @@
                   <div class="col-sm">
                     <div class="form-floating mb-3">
                         <input type="User" class="form-control" id="floatingInput" placeholder="nombre">
-                        <label for="floatingInput">Nombre</label>
+                        <label for="floatingInput">nombre de usuario</label>
                       </div>
                       <div class="form-floating">
-                        <input type="User" class="form-control" id="usuario" placeholder="User">
-                        <label for="usuario">Apodo</label>
+                        <input type="password" class="form-control" id="contrasena" placeholder="contra">
+                        <label for="contrasena">contraseña</label>
                       </div>
-                      
-                  </div>
-                  <div class="col-sm">
-                    
-                  </div>
-                </div>
-              </div>
-
-              <!--segundo recuadro de 2-->
-
-              <div class="container">
-                <div class="row mb-3">
-                  <div class="col-sm">
-                    <br>
-                    
-                    </a>
-                  </div>
-                  <div class="col-sm">
-                    <br>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email</label>
-                      </div>
-                      <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Contraseña</label>
-                      </div>
+                      <br>
                       <a class="btn btn-primary" data-bs-toggle="collapse" href="inicio2" role="button">
-                        Registrar
+                        ingresar
                     </a>
                   </div>
                   <div class="col-sm">
