@@ -38,16 +38,37 @@
                 </div>
                 
                 <div class="col-sm margen2">
-                    <h1 class="color"> Mouse Pads Gamer Negro Borde Rojo 70 X 30cm Multiproposito</h1>
+                    <h1 class="color">{{ $producto->nombreProducto }}</h1>
                     <div class="row">
                         <div class="col-1">
                             <h1>$</h1>
                         </div>
                         <div class="col-11">
-                            <h1>5.990</h1>
+                            <h1>{{ $producto->precioProducto }}</h1>
                         </div>
                     </div>
-                    <h1 class="ui-pdp-title">Mouse Pads Gamer Negro Borde Rojo 70 X 30cm Multiproposito</h1>
+                    <h1 class="ui-pdp-title">{{ $producto->descripcionProducto }}</h1>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">tienda</th>
+                            <th scope="col">stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($productoPuesto as $productoPuesto)
+                                <tr>
+                                    <th scope="row">{{ $productoPuesto->NombrePuesto }}</th>
+                                    <td>{{ $productoPuesto->cantidad }}</td>
+                                </tr>
+                            @empty
+                                no hay vendedor
+                            @endforelse
+                        </tbody>
+                    </table>
+
+ 
                 </div>
 
                 <div class="col-3">

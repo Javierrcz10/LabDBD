@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Producto;
+use App\Models\ProductoPuesto;
+use App\Models\PuestoFeria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -57,9 +60,42 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
+        $productoPuesto = DB::table('puesto_ferias')
+            ->join('producto_puestos','producto_puestos.idPuesto','=','puesto_ferias.id')
+            ->get()
+            ->where('estado' , true)
+            ->where('idProducto' , $id);
+        print_r($productoPuesto);
         $producto = Producto::find($id);
-        if($producto != NULL){
-            return response()-> json($producto);
+        //$productoPuesto = productoPuesto::find($producto->idProducto)->first();
+        /*
+        $lista = array();
+        print_r($lista);
+        foreach ($productoPuesto as &$valor) {
+            array_push($lista, $valor->idPuesto);
+        }
+        print_r($lista);
+        $lista2 = array();
+        foreach ($productoPuesto as &$primer1) {
+            foreach ($puestoFeria as &$primer2){
+                if($primer1->idPuesto == $primer2->id){
+                    array_push($lista2, $primer2);
+                }
+            }
+        }
+        
+        $myJSON = json_encode($lista2);
+        print_r($myJSON);
+        print_r("\n");
+        print_r($puestoFeria);
+        */
+        //$puestoFeria2 = PuestoFeria::all()->where('estado' , true)->whereIn('id' , $lista);
+        //print_r($productoPuesto);
+        if($producto != NULL and $productoPuesto != Null){
+            return view('producto')
+            ->with('producto' , $producto)
+            ->with('productoPuesto', $productoPuesto)
+            ->with('id',$id);
         }
         return response('ERROR 404');
     }
