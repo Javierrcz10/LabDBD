@@ -15,14 +15,14 @@
     <!-- Image and text -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                 <img src="https://i.imgur.com/no68Ic5.png" alt="" width="30" height="20" class="d-inline-block align-top">
                 Feria Online
                 <p>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#registro" role="button">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="registro" role="button">
                         Registrarse
                     </a>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#login" role="button">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="inicioSesion" role="button">
                         Iniciar Sesión
                     </a>
                 </p>
