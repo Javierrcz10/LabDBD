@@ -52,14 +52,15 @@
                     <table class="table">
                         <thead>
                             <tr>
-                            <th scope="col">tienda</th>
-                            <th scope="col">stock</th>
+                            <th scope="col">Tienda</th>
+                            <th scope="col">Stock en {{ $unidadMedida->tipoUnidad }}</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($productoPuesto as $productoPuesto)
                                 <tr>
-                                    <th scope="row">{{ $productoPuesto->NombrePuesto }}</th>
+                                    <td>{{ $productoPuesto->NombrePuesto }}</td>
                                     <td>{{ $productoPuesto->cantidad }}</td>
                                 </tr>
                             @empty

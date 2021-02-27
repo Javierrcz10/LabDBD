@@ -43,6 +43,30 @@
                     <h2>Apodo: {{ $usuario->apodoUsuario }}</h2> 
                     <h2>Mail: {{ $usuario->emailUsuario }}</h2> 
                     <h2>Reputacion: {{ $usuario->reputacionUsuario }}</h2> 
+                    
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="registro" role="button">editar datos</a>
+                    <br><br>
+                    <h5>Roles del usuario</h5>
+                    <ul>
+                            @forelse($usuarioRoles as $usuarioRoles)
+                                <li>{{ $usuarioRoles->idRol }}{{ $usuarioRoles->nombreRol }}</li>
+                            @empty
+                                no tiene roles
+                            @endforelse
+                    </ul>
+                    <form class="row g-3">
+                        <select class="form-select mb-1" aria-label="Default select example" required>
+                            <option selected disabled value="">Selecciona un rol</option>
+                            @forelse($roles as $roles)
+                                <option value="1">{{ $roles->nombreRol }}</option>
+                            @empty
+                                no hay roles a postular
+                            @endforelse
+                        </select>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Postular</button>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="col-3">

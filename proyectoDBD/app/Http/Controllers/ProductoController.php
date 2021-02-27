@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use App\Models\ProductoPuesto;
 use App\Models\PuestoFeria;
+use App\Models\UnidadMedida;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -65,8 +66,8 @@ class ProductoController extends Controller
             ->get()
             ->where('estado' , true)
             ->where('idProducto' , $id);
-        print_r($productoPuesto);
         $producto = Producto::find($id);
+        $unidadMedida = UnidadMedida::find($producto->idUnidad);
         //$productoPuesto = productoPuesto::find($producto->idProducto)->first();
         /*
         $lista = array();
@@ -95,6 +96,7 @@ class ProductoController extends Controller
             return view('producto')
             ->with('producto' , $producto)
             ->with('productoPuesto', $productoPuesto)
+            ->with('unidadMedida', $unidadMedida)
             ->with('id',$id);
         }
         return response('ERROR 404');

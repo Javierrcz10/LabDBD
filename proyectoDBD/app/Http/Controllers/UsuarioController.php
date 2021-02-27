@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Usuario;
+use \App\Models\Rol;
+use \App\Models\UsuarioRol;
+use Illuminate\Support\Facades\DB;
+
 class UsuarioController extends Controller
 {
     /**
@@ -49,12 +53,24 @@ class UsuarioController extends Controller
     public function show($id)
     {
         $usuario = Usuario::find($id);
+        $usuarioRoles = DB::table('usuario_rols')
+            ->join('rols','rols.id','=','usuario_rols.idRol')
+            ->get()
+            //->select('usuario_rols.*','rols.nombreRol');
+            ->where('idUsuario', $id)
+            ->where('estado', true);
+        //$usuarioRoles = UsuarioRol::all()->where('idUsuario', $id);
+        $roles = Rol::all()->where('estado', true);
+        print_r($usuarioRoles);
         //verificar si el usuario esta borrado o no
         if($usuario == NULL){
             return response()->json(["message" => "usuario no existe"],404);
         }
         if($usuario->estado == true){
-            return view('perfil',['usuario' => $usuario]);
+            return view('perfil')
+            ->with('usuario',$usuario)
+            ->with('roles',$roles)
+            ->with('usuarioRoles',$usuarioRoles);
         }
         return response()->json(["message" => "usuario se encuentra borrado"],404);
     }
