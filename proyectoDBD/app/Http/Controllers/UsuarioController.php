@@ -41,7 +41,7 @@ class UsuarioController extends Controller
         $usuario->reputacionUsuario = 0.0;
         $usuario->estado = true;
         $usuario->save();
-        return response()->json(["message" => "Usuario creado","id" => $usuario->id],202);
+        return redirect('/');
     }
 
     /**

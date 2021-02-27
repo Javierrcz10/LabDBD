@@ -21,8 +21,8 @@ Route::get('/uwu', function () {
     return view('welcome');
 });
 
-Route::get('/inicio2', function () {
-    return view('inicio2', ['id' => 10]);
+Route::get('/inicio2/{id}', function ($id) {
+    return view('inicio2')->with('id', $id);
 });
 
 Route::get('/producto', function () {
@@ -35,6 +35,10 @@ Route::get('/filtroComuna', function () {
 
 Route::get('/registro', function () {
     return view('registro');
+});
+
+Route::get('/carritoCompra/{id}', function ($id) {
+    return view('carritoCompra')->with('id', $id);
 });
 /*  rutas de index*/
 
@@ -121,7 +125,7 @@ Route::post('/ubicacionUsuarios/create','UbicacionUsuarioController@store');
 Route::post('/unidadMedidas/create','UnidadMedidaController@store');
 Route::post('/usuarioBoletas/create','UsuarioBoletaController@store');
 Route::post('/usuarioComentarios/create','UsuarioComentarioController@store');
-Route::post('/usuarios/create','UsuarioController@store');
+Route::post('/usuarios/create','UsuarioController@store')->name('usuarioStore');
 Route::post('/usuarioProductos/create','UsuarioProductoController@store');
 Route::post('/usuarioPuestos/create','UsuarioPuestoController@store');
 Route::post('/usuarioRols/create','UsuarioRolController@store');
