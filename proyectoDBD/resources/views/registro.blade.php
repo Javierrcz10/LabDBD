@@ -44,50 +44,37 @@
                      
                   </div>
                   <div class="col-sm">
-                    <div class="form-floating mb-3">
-                        <input type="User" class="form-control" id="floatingInput" placeholder="nombre">
-                        <label for="floatingInput">Nombre</label>
-                      </div>
-                      <div class="form-floating">
-                        <input type="User" class="form-control" id="usuario" placeholder="User">
-                        <label for="usuario">Apodo</label>
-                      </div>
-                      
-                  </div>
-                  <div class="col-sm">
-                    
-                  </div>
-                </div>
-              </div>
-
-              <!--segundo recuadro de 2-->
-
-              <div class="container">
-                <div class="row mb-3">
-                  <div class="col-sm">
-                    <br>
-                    
-                    </a>
-                  </div>
-                  <div class="col-sm">
-                    <br>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email</label>
-                      </div>
+                    <form action="{{route('usuarioStore')}}" method="POST">
                       <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label for="floatingPassword">Contraseña</label>
-                      </div>
-                      <a class="btn btn-primary" data-bs-toggle="collapse" href="inicio2" role="button">
-                        Registrar
-                    </a>
+                          <input type="text" class="form-control" name="nombreUsuario" placeholder="nombre">
+                          <label for="floatingInput">Nombre</label>
+                        </div>
+                        <div class="form-floating">
+                          <input type="text" class="form-control" name="apodoUsuario" placeholder="User">
+                          <label for="usuario">Apodo</label>
+                        </div>
+                        <br>
+                      
+                      <div class="form-floating mb-3">
+                          <input type="text" class="form-control" name="contraseniaUsuario" placeholder="name@example.com">
+                          <label for="floatingInput">Contraseña</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                          <input type="text" class="form-control" name="emailUsuario" placeholder="Password">
+                          <label for="floatingPassword">Mail</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" href="/">Registrar</button>
+                      
+                    </form>
                   </div>
+
                   <div class="col-sm">
                     
                   </div>
                 </div>
               </div>
+
+           
         
     </body>
 </html>
