@@ -44,18 +44,18 @@
                      
                   </div>
                   <div class="col-sm">
-                    <div class="form-floating mb-3">
-                        <input type="User" class="form-control" id="floatingInput" placeholder="nombre">
-                        <label for="floatingInput">nombre de usuario</label>
-                      </div>
-                      <div class="form-floating">
-                        <input type="password" class="form-control" id="contrasena" placeholder="contra">
-                        <label for="contrasena">contraseña</label>
-                      </div>
-                      <br>
-                      <a class="btn btn-primary" data-bs-toggle="collapse" href="inicio2" role="button">
-                        ingresar
-                    </a>
+                    <form action="{{route('usuarioSesion')}}" method="GET">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="apodoUsuario" placeholder="User">
+                            <label for="usuario">Apodo Usuario</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" name="contraseniaUsuario" placeholder="name@example.com">
+                            <label for="floatingInput">Contraseña</label>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" >Ingresar</button>
+                    </form>
                   </div>
                   <div class="col-sm">
                     

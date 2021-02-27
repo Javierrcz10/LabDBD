@@ -40,6 +40,10 @@ Route::get('/registro', function () {
 Route::get('/carritoCompra/{id}', function ($id) {
     return view('carritoCompra')->with('id', $id);
 });
+
+Route::get('/inicioSesion', function () {
+    return view('inicioSesion');
+});
 /*  rutas de index*/
 
 Route::get('/boletas','BoletaController@index');
@@ -99,7 +103,7 @@ Route::get('/usuarios/{id}','UsuarioController@show');
 Route::get('/usuarioProductos/{id}','UsuarioProductoController@show');
 Route::get('/usuarioPuestos/{id}','UsuarioPuestoController@show');
 Route::get('/usuarioRols/{id}','UsuarioRolController@show');
-
+Route::get('/usuarios','UsuarioController@show2')->name('usuarioSesion');
 
 /*  rutas de store*/
 

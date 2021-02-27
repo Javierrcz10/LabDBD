@@ -135,5 +135,14 @@ class UsuarioController extends Controller
             "message"=>"No se encontró el usuario"
         ],404);
     }
+    public function show2(Request $request)
+    {
+        $usuario = Usuario::all()->where('estado',true)->where('apodoUsuario',$request->apodoUsuario)->where('contraseniaUsuario',$request->contraseniaUsuario)->first();
+            
+        if($usuario == NULL){
+            return redirect('/inicioSesion');
+        }
+        return view('inicio2')->with('id',$usuario->id);
+    }
 }
 
