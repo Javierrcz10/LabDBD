@@ -15,8 +15,8 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
        
-        <a href="/"><img src="https://www.flaticon.es/svg/vstatic/svg/3081/3081887.svg?token=exp=1614144431~hmac=8d704a208a4e466b3c7785aa17a7a6c3" alt="" width="30" height="20" class="d-inline-block align-top"></a>
-            <a class="navbar-brand" href="/inicio2">Feria online</a>
+        <a href="/inicio2/{{ $id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/3081/3081887.svg?token=exp=1614144431~hmac=8d704a208a4e466b3c7785aa17a7a6c3" alt="" width="30" height="20" class="d-inline-block align-top"></a>
+            <a class="navbar-brand" href="/inicio2/{{ $id}}">Feria online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,23 +38,24 @@
                 </div>
                 
                 <div class="col-sm margen2">
-                    
+                    <h2>Carro de compra</h2><br>
                     <div class="card-group">
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        @forelse($usuarioProducto as $usuarioProducto)
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title">{{$usuarioProducto->nombreProducto}}</h5>
+                                <h6 class="card-title">$ {{$usuarioProducto->precioProducto}}</h6>
+                                <p class="card-text">{{$usuarioProducto->descripcionProducto}}</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
+                        @empty
+                            no hay productos en el carrito
+                        @endforelse
                     </div>
+                    <br>
+
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="registro" role="button">pagar</a>
 
                 </div>
 

@@ -49,7 +49,7 @@ class UsuarioProductoController extends Controller
             ->join('productos','usuario_productos.idProducto','=','productos.id')
             ->get()
             ->where('estado' , true)
-            ->where('idProducto' , $id);
+            ->where('idUsuario' , $id);
         print_r($usuarioProducto);
         //$usuarioProducto = UsuarioProducto::all()->where('idProducto', $id);
         if($usuarioProducto != NULL){
