@@ -21,8 +21,8 @@ Route::get('/uwu', function () {
     return view('welcome');
 });
 
-Route::get('/inicio2', function () {
-    return view('inicio2', ['id' => 10]);
+Route::get('/inicio2/{id}', function ($id) {
+    return view('inicio2')->with('id', $id);
 });
 
 Route::get('/producto', function () {
@@ -35,6 +35,10 @@ Route::get('/filtroComuna', function () {
 
 Route::get('/registro', function () {
     return view('registro');
+});
+
+Route::get('/carritoCompra/{id}', function ($id) {
+    return view('carritoCompra')->with('id', $id);
 });
 /*  rutas de index*/
 

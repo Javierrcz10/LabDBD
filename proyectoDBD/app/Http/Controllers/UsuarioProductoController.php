@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\UsuarioProducto;
+use Illuminate\Support\Facades\DB;
 class UsuarioProductoController extends Controller
 {
     /**
@@ -43,9 +44,18 @@ class UsuarioProductoController extends Controller
      */
     public function show($id)
     {
-        $usuarioProducto = UsuarioProducto::find($id);
+        //$usuarioProducto = UsuarioProducto::find($id);
+        $usuarioProducto = DB::table('usuario_productos')
+            ->join('productos','usuario_productos.idProducto','=','productos.id')
+            ->get()
+            ->where('estado' , true)
+            ->where('idProducto' , $id);
+        print_r($usuarioProducto);
+        //$usuarioProducto = UsuarioProducto::all()->where('idProducto', $id);
         if($usuarioProducto != NULL){
-            return response()->json($usuarioProducto);
+            return view('carritoCompra')
+                ->with('usuarioProducto' , $usuarioProducto)
+                ->with('id',$id);
         }
         return response()->json(['message' => 'no existen datos'],404);
     }
