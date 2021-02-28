@@ -44,7 +44,7 @@
                     <h2>Mail: {{ $usuario->emailUsuario }}</h2> 
                     <h2>Reputacion: {{ $usuario->reputacionUsuario }}</h2> 
                     
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="registro" role="button">editar datos</a>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="/editarPerfil/{{ $usuario->id }}" role="button">editar datos</a>
                     <br><br>
                     <h5>Roles del usuario</h5>
                     <ul>

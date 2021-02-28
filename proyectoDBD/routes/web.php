@@ -44,6 +44,10 @@ Route::get('/carritoCompra/{id}', function ($id) {
 Route::get('/inicioSesion', function () {
     return view('inicioSesion');
 });
+
+Route::get('/editarPerfil/{id}', function ($id) {
+    return view('editarPerfil')->with('id', $id);
+});
 /*  rutas de index*/
 
 Route::get('/boletas','BoletaController@index');
