@@ -49,6 +49,10 @@ Route::get('/inicioSesion', function () {
     return view('inicioSesion');
 });
 
+Route::get('/metodoPago/{id}', function ($id) {
+    return view('metodoPago')->with('id', $id);
+});
+
 Route::get('/editarPerfil/{id}', 'UsuarioController@editar');
 /*  rutas de index*/
 

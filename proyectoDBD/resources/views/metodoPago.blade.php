@@ -13,6 +13,7 @@
     </head>
     <body>
     <!-- Image and text -->
+        <!-- Image and text -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
@@ -39,10 +40,10 @@
                 Registrate o inicia sesión en nuestra pagina
 
             </h4>
-        </figure>
-        <div class="text-center">
-            <img src="https://ibb.co/2ZMx10Y" class="img-thumbnail" alt="imagen" width="70%" height="200px">
-        </div>
         
+        
+            <img src="https://i.imgur.com/FOzroXu.jpg" height="30%" width="10%">
+            
+          
     </body>
-</html>
+    </html>
