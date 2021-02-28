@@ -33,6 +33,10 @@ Route::get('/filtroComuna', function () {
     return view('filtroComuna');
 });
 
+Route::get('/productosPuesto', function () {
+    return view('productosPuesto');
+});
+
 Route::get('/registro', function () {
     return view('registro');
 });
