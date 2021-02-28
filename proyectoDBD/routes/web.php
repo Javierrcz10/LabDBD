@@ -45,9 +45,7 @@ Route::get('/inicioSesion', function () {
     return view('inicioSesion');
 });
 
-Route::get('/editarPerfil/{id}', function ($id) {
-    return view('editarPerfil')->with('id', $id);
-});
+Route::get('/editarPerfil/{id}', 'UsuarioController@editar');
 /*  rutas de index*/
 
 Route::get('/boletas','BoletaController@index');
@@ -163,7 +161,7 @@ Route::put('/ubicacionUsuarios/update/{id}','UbicacionUsuarioController@update')
 Route::put('/unidadMedidas/update/{id}','UnidadMedidaController@update');
 Route::put('/usuarioBoletas/update/{id}','UsuarioBoletaController@update');
 Route::put('/usuarioComentarios/update/{id}','UsuarioComentarioController@update');
-Route::put('/usuarios/update/{id}','UsuarioController@update');
+Route::put('/usuarios/update/{id}','UsuarioController@update')->name('usuarioUpdate');
 Route::put('/usuarioProductos/update/{id}','UsuarioProductoController@update');
 Route::put('/usuarioPuestos/update/{id}','UsuarioPuestoController@update');
 Route::put('/usuarioRols/update/{id}','UsuarioRolController@update');

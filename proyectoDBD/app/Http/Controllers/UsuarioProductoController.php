@@ -50,7 +50,6 @@ class UsuarioProductoController extends Controller
             ->get()
             ->where('estado' , true)
             ->where('idUsuario' , $id);
-        print_r($usuarioProducto);
         //$usuarioProducto = UsuarioProducto::all()->where('idProducto', $id);
         if($usuarioProducto != NULL){
             return view('carritoCompra')

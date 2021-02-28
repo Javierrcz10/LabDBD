@@ -61,7 +61,6 @@ class UsuarioController extends Controller
             ->where('estado', true);
         //$usuarioRoles = UsuarioRol::all()->where('idUsuario', $id);
         $roles = Rol::all()->where('estado', true);
-        print_r($usuarioRoles);
         //verificar si el usuario esta borrado o no
         if($usuario == NULL){
             return response()->json(["message" => "usuario no existe"],404);
@@ -71,6 +70,20 @@ class UsuarioController extends Controller
             ->with('usuario',$usuario)
             ->with('roles',$roles)
             ->with('usuarioRoles',$usuarioRoles);
+        }
+        return response()->json(["message" => "usuario se encuentra borrado"],404);
+    }
+
+    public function editar($id)
+    {
+        $usuario = Usuario::find($id);
+        
+        if($usuario == NULL){
+            return response()->json(["message" => "usuario no existe"],404);
+        }
+        if($usuario->estado == true){
+            return view('editarPerfil')
+                ->with('usuario',$usuario);
         }
         return response()->json(["message" => "usuario se encuentra borrado"],404);
     }
@@ -85,7 +98,16 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $usuario = Usuario::find($id);
+        $usuarioRoles = DB::table('usuario_rols')
+            ->join('rols','rols.id','=','usuario_rols.idRol')
+            ->get()
+            //->select('usuario_rols.*','rols.nombreRol');
+            ->where('idUsuario', $id)
+            ->where('estado', true);
+        //$usuarioRoles = UsuarioRol::all()->where('idUsuario', $id);
+        $roles = Rol::all()->where('estado', true);
         if($request->nombreUsuario != NULL){
             $usuario->nombreUsuario = $request->nombreUsuario;
         }
@@ -102,7 +124,10 @@ class UsuarioController extends Controller
             $usuario->reputacionUsuario = $request->reputacionUsuario;
         }
         $usuario->save();
-        return response()->json(["message" => "usuario actualizado","id" => $id],201);
+        return view('perfil')
+        ->with('usuario',$usuario)
+        ->with('roles',$roles)
+        ->with('usuarioRoles',$usuarioRoles);
 
     }
 
