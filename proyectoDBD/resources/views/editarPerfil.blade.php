@@ -63,7 +63,7 @@
                           <label for="floatingPassword">Mail</label>
                           <input type="text" class="form-control" name="emailUsuario" placeholder="{{ $usuario->emailUsuario }}">
                         </div>
-                        <button type="submit" class="btn btn-primary" href="/">Editar</button>
+                        <button type="submit" class="btn btn-success" href="/">Guardad cambios</button>
                       
                     </form>
                   </div>

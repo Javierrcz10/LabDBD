@@ -50,7 +50,7 @@
                             <label for="usuario">Apodo Usuario</label>
                         </div>
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="contraseniaUsuario" placeholder="name@example.com">
+                            <input type="password" class="form-control" name="contraseniaUsuario" placeholder="name@example.com">
                             <label for="floatingInput">Contraseña</label>
                         </div>
                         <br>

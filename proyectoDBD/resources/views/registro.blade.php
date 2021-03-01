@@ -56,7 +56,7 @@
                         <br>
                       
                       <div class="form-floating mb-3">
-                          <input type="text" class="form-control" name="contraseniaUsuario" placeholder="name@example.com">
+                          <input type="password" class="form-control" name="contraseniaUsuario" placeholder="name@example.com">
                           <label for="floatingInput">Contraseña</label>
                         </div>
                         <div class="form-floating mb-3">

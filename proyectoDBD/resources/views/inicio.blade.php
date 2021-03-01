@@ -41,8 +41,8 @@
             </h4>
         </figure>
         <div class="text-center">
-            <img src="https://ibb.co/2ZMx10Y" class="img-thumbnail" alt="imagen" width="70%" height="200px">
+            <img src="https://static.vix.com/es/sites/default/files/l/las_frutas_y_verduras_tambien_fueron_domesticadas.jpg" class="img-thumbnail" alt="imagen" width="70%" height="200px">
         </div>
         
-    </body>
+    </body> 
 </html>
