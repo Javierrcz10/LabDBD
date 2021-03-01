@@ -13,9 +13,10 @@ class ComunaController extends Controller
      */
     public function index()
     {
-        $comuna = Comuna::all()->where('estado', true);
+        $comuna = Comuna::all()
+            ->where('estado', true);
         if($comuna!=NULL){
-            return response()-> json($comuna);
+            return view('filtroComuna',compact('comuna'));
         }
         return response('ERROR 404');
     }

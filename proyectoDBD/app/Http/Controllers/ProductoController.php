@@ -15,11 +15,13 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $producto = Producto::all()->where('estado', true);
-        if($producto != NULL){
-            return response()-> json($producto);
+        $nombre = $request->get('nombre');
+        $productos = Producto::all()
+            ->where('estado', true);
+        if($productos != NULL){
+            return view('filtrarProducto',compact('productos'));
         }
         return response(404);
     }

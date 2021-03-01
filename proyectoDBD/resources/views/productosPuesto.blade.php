@@ -42,6 +42,7 @@
 
         <!-- productos del puesto de feria-->
         <div class="row row-cols-1 row-cols-md-3 g-4">
+        
         <div class="col">
             <div class="card">
             <div class="card-body">
@@ -51,23 +52,6 @@
             </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button class="btn btn-outline-success">Ir al puesto</button>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                <button class="btn btn-outline-success">Ir al puesto</button>
-            </div>
-            </div>
         </div>
     </body>
 </html>

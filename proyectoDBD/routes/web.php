@@ -29,9 +29,9 @@ Route::get('/producto', function () {
     return view('producto',['id' => 10]);
 });
 
-Route::get('/filtroComuna', function () {
-    return view('filtroComuna');
-});
+Route::get('/filtroComuna','ComunaController@index');
+
+Route::get('/filtrarProducto','ProductoController@index');
 
 Route::get('/productosPuesto', function () {
     return view('productosPuesto');
@@ -61,7 +61,7 @@ Route::get('/boletaProductos','BoletaProductoController@index');
 Route::get('/calles','CalleController@index');
 Route::get('/categorias','CategoriaController@index');
 Route::get('/comentarios','ComentarioController@index');
-Route::get('/comunas','ComunaController@index');
+//Route::get('/comunas','ComunaController@index');
 Route::get('/ferias','FeriaController@index');
 Route::get('/metodosDePago','MetodoPagoController@index');
 Route::get('/permisos','PermisoController@index');
