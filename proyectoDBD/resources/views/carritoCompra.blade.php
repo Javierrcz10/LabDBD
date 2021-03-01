@@ -55,7 +55,7 @@
                     </div>
                     <br>
 
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="registro" role="button">pagar</a>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="/metodoPago/{{$id}}" role="button">pagar</a>
 
                 </div>
 
