@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\Categoria;
 use App\Models\SubCategoria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,6 +24,7 @@ class SubCategoriaFactory extends Factory
         return [
             'nombreCategoria'=> $this->faker->randomElement($array = array (
                 'manzanas','ajedrez','duraznos','escobillones','pisos','muebles')),
+            'idCategoria' =>Categoria::all()->random()->id,
             'estado' => $this->faker->boolean(100)
         ];
     }

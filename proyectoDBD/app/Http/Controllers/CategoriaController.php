@@ -31,7 +31,6 @@ class CategoriaController extends Controller
     {
         $categoria = new Categoria();
         $categoria->nombreCategoria = $request->nombreCategoria;
-        $categoria->idSubCategoria = $request->idSubCategoria;
         $categoria->estado = true;
         $categoria->save();
         return response()->json([
@@ -70,9 +69,6 @@ class CategoriaController extends Controller
         if($categoria!=NULL){
             if($request ->nombreCategoria !=NULL){
                 $categoria->nombreCategoria = $request->nombreCategoria;
-            }
-            if($request ->idSubCategoria !=NULL){
-                $categoria->idSubCategoria = $request->idSubCategoria;
             }
             $categoria->save();
             return response()->json($id);

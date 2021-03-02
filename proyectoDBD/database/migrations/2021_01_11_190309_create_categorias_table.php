@@ -17,9 +17,6 @@ class CreateCategoriasTable extends Migration
             $table->id('id');
             $table->text('nombreCategoria');
             $table->boolean('estado');
-
-            $table->unsignedBigInteger('idSubCategoria');
-            $table->foreign('idSubCategoria')->references('id')->on('sub_categorias');
             $table->timestamps();
         });
     }

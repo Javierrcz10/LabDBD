@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Producto;
+use App\Models\SubCategoria;
+use App\Models\Categoria;
 use App\Models\ProductoPuesto;
 use App\Models\PuestoFeria;
 use App\Models\UnidadMedida;
@@ -17,11 +19,26 @@ class ProductoController extends Controller
      */
     public function index(Request $request)
     {
-        $nombre = $request->get('nombre');
+        $categoria = $request->get('categoria');
+        $subCategoria = $request->get('subCategoria');
+        $categorias = Categoria::all()->where('estado', true);
+        $subCategorias = SubCategoria::all()->where('estado', true);
+        if($subCategoria !=NULL and $categoria == NULL){
+            $productos = Producto::all()
+                ->where('estado', true)
+                ->where('idSubCategoria',"$subCategoria");
+            return view('filtrarProducto',compact('productos','categorias','subCategorias'));
+        }
+        elseif($subCategoria ==NULL and $categoria !=NULL){
+            $productos =Producto::all()
+                ->where('estado',true);
+            return view('filtrarProducto',compact('productos','categorias','subCategorias'));
+        }
         $productos = Producto::all()
             ->where('estado', true);
         if($productos != NULL){
-            return view('filtrarProducto',compact('productos'));
+
+            return view('filtrarProducto',compact('productos','categorias','subCategorias'));
         }
         return response(404);
     }

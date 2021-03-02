@@ -40,7 +40,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        SubCategoria::factory(10)->create();
         Feria::factory(10)->create();
         Rol::factory(10)->create();
         Permiso::factory(10)->create();
@@ -48,6 +47,7 @@ class DatabaseSeeder extends Seeder
         Usuario::factory(10)->create();
         Region::factory(10)->create();
         Categoria::factory(10)->create();
+        SubCategoria::factory(10)->create();
         Producto::factory(10)->create();
         RolPermiso::factory(10)->create();
         UsuarioProducto::factory(10)->create();
