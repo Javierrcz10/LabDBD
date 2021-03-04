@@ -24,7 +24,7 @@ class ProductoController extends Controller
         $categorias = Categoria::all()->where('estado', true);
         $subCategorias = SubCategoria::all()->where('estado', true);
         if($subCategoria !=NULL and $categoria == NULL){
-            $productos = Producto::join('producto_puestos','producto_puestos.idProducto','=','productos.id')
+            $productos = Producto::join('sub_categorias','sub_categorias.id','=','productos.idSubCategoria')
                 ->where('productos.estado', true)
                 ->where('productos.idSubCategoria',"$subCategoria")
                 ->get();
@@ -43,6 +43,7 @@ class ProductoController extends Controller
         }
         elseif($subCategoria !=NULL and $categoria !=NULL){
             $productos = Producto::join('sub_categorias','sub_categorias.id','=','productos.idSubCategoria')
+                ->join('producto_puestos','producto_puestos.idProducto','=','productos.id')
                 ->where('productos.estado', true)
                 ->where('productos.idSubCategoria',"$subCategoria")
                 ->where('sub_categorias.idCategoria',"$categoria")

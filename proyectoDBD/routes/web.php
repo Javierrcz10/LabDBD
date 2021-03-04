@@ -29,13 +29,11 @@ Route::get('/producto', function () {
     return view('producto',['id' => 10]);
 });
 
-Route::get('/filtroComuna','ComunaController@index');
+Route::get('/filtroComuna','PuestoFeriaController@filtrarPuestos');
 
 Route::get('/filtrarProducto','ProductoController@index');
 
-Route::get('/productosPuesto', function () {
-    return view('productosPuesto');
-});
+Route::get('/productosPuesto','ProductoPuestoController@index');
 
 Route::get('/registro', function () {
     return view('registro');
@@ -66,7 +64,6 @@ Route::get('/ferias','FeriaController@index');
 Route::get('/metodosDePago','MetodoPagoController@index');
 Route::get('/permisos','PermisoController@index');
 Route::get('/productos','ProductoController@index');
-Route::get('/productosPuestos','ProductoPuestoController@index');
 Route::get('/puestosFerias','PuestoFeriaController@index');
 Route::get('/regiones','RegionController@index');
 Route::get('/roles','RolController@index');

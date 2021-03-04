@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\PuestoFeria;
+use App\Models\Feria;
+use App\Models\UbicacionFeria;
+use App\Models\Ubicacion;
+use App\Models\Calle;
+use App\Models\Comuna;
 use Illuminate\Http\Request;
 
 class PuestoFeriaController extends Controller
@@ -18,6 +23,39 @@ class PuestoFeriaController extends Controller
             return response()-> json($puestoFeria);
         }
         return response(404);
+    }
+
+    public function  filtrarPuestos(Request $request){
+        $comunas = Comuna::all();
+        $filtro = $request->get('comuna');
+        
+        if($filtro == NULL){
+            $puestoFeria = PuestoFeria::all();
+            return view('filtroComuna',compact('puestoFeria','comunas'));
+
+        }
+            
+        $calles = Calle::all()->where('idComuna', $filtro);
+        
+        foreach($calles as $calle){
+            $ubicaciones = Ubicacion::all()->where('idCalle', $calle->id);
+        }
+        
+        foreach($ubicaciones as $ubicacion){
+            $ubicacionFerias = UbicacionFeria::all()->where('idUbicacion',$ubicacion->id);
+        }
+        
+        foreach($ubicacionFerias as $ubicacionFeria){
+            $ferias = Feria::all()->where('id',$ubicacionFeria->idFeria);
+        }
+        
+        foreach($ferias as $feria){
+            $puestoFeria = PuestoFeria::all()->where('idFeria', $feria->id);
+        }
+        
+        return view('filtroComuna',compact('puestoFeria','comunas'));
+
+
     }
 
 
