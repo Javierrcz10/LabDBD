@@ -65,9 +65,9 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        
+        /*
         $validated = $request->validate([
             'nombreProducto' => ['required'],
             'descripcionProducto'=> ['required'],
@@ -75,18 +75,16 @@ class ProductoController extends Controller
             'idSubCategoria'=> ['required'],
             'idUnidad'=> ['required'],
         ]);
+            */
         $producto = new Producto();
         $producto->nombreProducto = $request->nombreProducto;
         $producto->descripcionProducto = $request->descripcionProducto;
         $producto->precioProducto = $request->precioProducto;
-        $producto->idSubCategoria = $request->idSubCategoria;
-        $producto->idUnidad = $request->idUnidad;
+        $producto->idSubCategoria = 1;
+        $producto->idUnidad = 1;
         $producto->estado = true;
         $producto->save();
-        return response()->json([
-            "message"=>"Se ha creado un producto",
-            "id"=>$producto->id
-        ]);
+        return view('inicio2')->with('id',$id);
     }
 
     /**

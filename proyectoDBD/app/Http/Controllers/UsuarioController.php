@@ -57,8 +57,8 @@ class UsuarioController extends Controller
             ->join('rols','rols.id','=','usuario_rols.idRol')
             ->get()
             //->select('usuario_rols.*','rols.nombreRol');
-            ->where('idUsuario', $id)
-            ->where('estado', true);
+            ->where('idUsuario', $id);
+            //->where('estado', true);
         //$usuarioRoles = UsuarioRol::all()->where('idUsuario', $id);
         $roles = Rol::all()->where('estado', true);
         //verificar si el usuario esta borrado o no
@@ -104,7 +104,7 @@ class UsuarioController extends Controller
             ->join('rols','rols.id','=','usuario_rols.idRol')
             ->get()
             //->select('usuario_rols.*','rols.nombreRol');
-            ->where('idUsuario', $id)
+            ->where('idUsuario', $id)       
             ->where('estado', true);
         //$usuarioRoles = UsuarioRol::all()->where('idUsuario', $id);
         $roles = Rol::all()->where('estado', true);
@@ -162,7 +162,9 @@ class UsuarioController extends Controller
     }
     public function show2(Request $request)
     {
-        $usuario = Usuario::all()->where('estado',true)->where('apodoUsuario',$request->apodoUsuario)->where('contraseniaUsuario',$request->contraseniaUsuario)->first();
+        $usuario = Usuario::all()->where('estado',true)
+        ->where('apodoUsuario',$request->apodoUsuario)
+        ->where('contraseniaUsuario',$request->contraseniaUsuario)->first();
             
         if($usuario == NULL){
             return redirect('/inicioSesion');

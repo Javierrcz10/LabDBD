@@ -33,6 +33,9 @@ Route::get('/filtroComuna','PuestoFeriaController@filtrarPuestos');
 
 Route::get('/filtrarProducto','ProductoController@index');
 
+Route::get('/crearProducto/{id}', function ($id) {
+    return view('crearProducto')->with('id', $id);
+});
 Route::get('/productosPuesto','ProductoPuestoController@index');
 
 Route::get('/registro', function () {
@@ -123,7 +126,7 @@ Route::post('/comunas/create','ComunaController@store');
 Route::post('/ferias/create','FeriaController@store');
 Route::post('/metodosDePago/create','MetodoPagoController@store');
 Route::post('/permisos/create','PermisoController@store');
-Route::post('/productos/create','ProductoController@store');
+Route::post('/productos/create/{id}','ProductoController@store')->name('productoStore');
 Route::post('/productosPuestos/create','ProductoPuestoController@store');
 Route::post('/puestosFerias/create','PuestoFeriaController@store');
 Route::post('/regiones/create','RegionController@store');

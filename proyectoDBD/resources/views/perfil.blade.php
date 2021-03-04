@@ -22,6 +22,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav position-absolute end-0">
+                @forelse($usuarioRoles as $us)
+                    @if($us->nombreRol == 'vendedor')
+                        <a class="nav-link active end-0" aria-current="page" href="/crearProducto/{{ $usuario->id}}">crear producto</a>
+                        <a href="/crearProducto/{{ $usuario->id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/1077/1077221.svg?token=exp=1614838195~hmac=e3b31a3a0566ea4d600327788c1b9201" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
+                    @else
+                    @endif
+                @empty
+                @endforelse
                 <a class="nav-link active end-0" aria-current="page" href="/usuarioProductos/{{ $usuario->id}}">carrito</a>
                 <a href="/usuarioProductos/{{ $usuario->id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/2121/2121815.svg?token=exp=1614144180~hmac=fbd564c4f791c62b73bcc3361327ae2f" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
                 <a class="nav-link" href="/usuarios/{{ $usuario->id }}">perfil</a>
