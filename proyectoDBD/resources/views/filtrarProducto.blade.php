@@ -32,22 +32,35 @@
         </div>
         </nav>
         <!-- busqueda-->
-        <nav class="navbar navbar-light float-xxl-end">
-            <div class="container-fluid">
+        <nav class="navbar navbar-light float-xxl-center">
+            <div class="container">
                 <form class="d-flex">
-                    <input name="nombre" class="form-control me-2" type="search" placeholder="Producto">
+                    <select name ="categoria" class="form-select me-2" id="Default select1">
+                        <option selected value="">Categoria</option>
+                        @foreach ($categorias as $categoria)
+                            <option value="{{$categoria->id}}">{{$categoria->nombreCategoria}}</option>
+                        @endforeach
+                    </select>
+                    <select name="subCategoria" class="form-select-md me-2" id="Default select2">
+                        <option selected value="">Subcategoria</option>
+                    @foreach ($subCategorias as $subCategoria)
+                        <option value="{{$subCategoria->id}}">{{$subCategoria->nombreCategoria}}</option>
+                    @endforeach
+                    </select>
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
             </div>
         </nav>
         <!-- cards con los productos-->
-        <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="container">
             <div class="col">
             @forelse($productos as $producto)
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{$producto->nombreProducto}}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">{{$producto->descripcionProducto}}</p>
+                        <p class="card-text">{{$producto->idPuesto}}</p>
+                        <button class ="btn btn-primary">Ir al puesto de feria</button>
                     </div>
                 </div>
             @empty

@@ -32,8 +32,8 @@
         </div>
         </nav>
         <!-- busqueda-->
-        <nav class="navbar navbar-light float-xxl-end">
-            <div class="container-fluid">
+        <nav class="navbar navbar-light float-center">
+            <div class="container">
                 <form class="d-flex">
                     <select name ="comuna" class="form-select me-2" id="Default select example">
                         <option selected>Seleccione comuna</option>
@@ -50,7 +50,7 @@
           <div class="col">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">www</h5>
+                <h5 class="card-title">owo</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <button class="btn btn-outline-success">Ir al puesto</button>
               </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comuna;
+use App\Models\PuestoFeria;
+//use App\Models\Feria;
+//use App\Models\Ubicacion;
 class ComunaController extends Controller
 {
     /**
@@ -11,12 +14,13 @@ class ComunaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $comuna = Comuna::all()
             ->where('estado', true);
+        
         if($comuna!=NULL){
-            return view('filtroComuna',compact('comuna'));
+            return view('filtroComuna',compact('comuna','puesto'));
         }
         return response('ERROR 404');
     }
