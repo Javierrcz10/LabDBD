@@ -24,15 +24,31 @@ class ProductoController extends Controller
         $categorias = Categoria::all()->where('estado', true);
         $subCategorias = SubCategoria::all()->where('estado', true);
         if($subCategoria !=NULL and $categoria == NULL){
-            $productos = Producto::all()
-                ->where('estado', true)
-                ->where('idSubCategoria',"$subCategoria");
+            $productos = Producto::join('producto_puestos','producto_puestos.idProducto','=','productos.id')
+                ->where('productos.estado', true)
+                ->where('productos.idSubCategoria',"$subCategoria")
+                ->get();
+            print_r($productos);
             return view('filtrarProducto',compact('productos','categorias','subCategorias'));
         }
         elseif($subCategoria ==NULL and $categoria !=NULL){
-            $productos =Producto::all()
-                ->where('estado',true);
+            $productos = Producto::join('sub_categorias','sub_categorias.id','=','productos.idSubCategoria')
+                ->join('producto_puestos','producto_puestos.idProducto','=','productos.id')
+                ->where('productos.estado', true)
+                ->where('sub_categorias.idCategoria', "$categoria")
+                ->get();
+                
+            
             return view('filtrarProducto',compact('productos','categorias','subCategorias'));
+        }
+        elseif($subCategoria !=NULL and $categoria !=NULL){
+            $productos = Producto::join('sub_categorias','sub_categorias.id','=','productos.idSubCategoria')
+                ->where('productos.estado', true)
+                ->where('productos.idSubCategoria',"$subCategoria")
+                ->where('sub_categorias.idCategoria',"$categoria")
+                ->get();
+            print_r($productos);
+            return  view('filtrarProducto',compact('productos','subCategorias','categorias'));
         }
         $productos = Producto::all()
             ->where('estado', true);

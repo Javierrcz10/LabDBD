@@ -42,7 +42,7 @@
                         @endforeach
                     </select>
                     <select name="subCategoria" class="form-select-md me-2" id="Default select2">
-                        <option selected>Subcategoria</option>
+                        <option selected value="">Subcategoria</option>
                     @foreach ($subCategorias as $subCategoria)
                         <option value="{{$subCategoria->id}}">{{$subCategoria->nombreCategoria}}</option>
                     @endforeach
@@ -58,7 +58,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{$producto->nombreProducto}}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">{{$producto->descripcionProducto}}</p>
+                        <p class="card-text">{{$producto->idPuesto}}</p>
+                        <button class ="btn btn-primary">Ir al puesto de feria</button>
                     </div>
                 </div>
             @empty
