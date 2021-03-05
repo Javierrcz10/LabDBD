@@ -142,7 +142,7 @@ Route::post('/usuarioComentarios/create','UsuarioComentarioController@store');
 Route::post('/usuarios/create','UsuarioController@store')->name('usuarioStore');
 Route::post('/usuarioProductos/create','UsuarioProductoController@store');
 Route::post('/usuarioPuestos/create','UsuarioPuestoController@store');
-Route::post('/usuarioRols/create','UsuarioRolController@store');
+Route::post('/usuarioRols/create','UsuarioRolController@store')->name('usuarioRolStore');
 
 
 /* rutas de update*/

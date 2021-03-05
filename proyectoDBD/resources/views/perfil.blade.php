@@ -62,11 +62,12 @@
                                 no tiene roles
                             @endforelse
                     </ul>
-                    <form class="row g-3">
-                        <select class="form-select mb-1" aria-label="Default select example" required>
+                    <form action="{{route('usuarioRolStore')}}" method="POST">
+                        <input type="hidden" name="idUsuario" value= "{{$usuario->id}}">
+                        <select name="idRol" class="form-select mb-1" aria-label="Default select example" required>
                             <option selected disabled value="">Selecciona un rol</option>
                             @forelse($roles as $roles)
-                                <option value="1">{{ $roles->nombreRol }}</option>
+                                <option value="{{ $roles->id }}">{{ $roles->nombreRol }}</option>
                             @empty
                                 no hay roles a postular
                             @endforelse

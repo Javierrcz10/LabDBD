@@ -33,7 +33,7 @@ class UsuarioRolController extends Controller
         $usuarioRol->idUsuario = $request->idUsuario;
         $usuarioRol->idRol = $request->idRol;
         $usuarioRol->save();
-        return response()->json(["message" => "relacion creada","id" => $usuarioRol->id],202);
+        return redirect()->action([UsuarioController::class, 'show'], ['id' => $request->idUsuario]);
     }
 
     /**
