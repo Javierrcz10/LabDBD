@@ -29,7 +29,15 @@
                 </a>
             </div>
         </nav>
+        @if($message != null) 
+            <div class="alert alert-success margen" role="alert">
+                {{$message}}
+            </div>
+        @else
+        @endif
+        
         <figure class="text-center">
+
             <h1>
                 Bienvenido
             </h1>
@@ -46,3 +54,11 @@
         
     </body> 
 </html>
+
+<style>
+    .margen{
+        margin-left:25%;
+        margin-right:25%;
+    }
+    
+</style>

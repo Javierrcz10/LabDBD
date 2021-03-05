@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Producto;
+use App\Models\SubCategoria;
+use App\Models\Categoria;
+use App\Models\ProductoPuesto;
+use App\Models\PuestoFeria;
+use App\Models\UnidadMedida;
 use Illuminate\Http\Request;
 use \App\Models\UsuarioProducto;
 use Illuminate\Support\Facades\DB;
@@ -33,6 +38,20 @@ class UsuarioProductoController extends Controller
         $usuarioProducto->idUsuario = $request->idUsuario;
         $usuarioProducto->idProducto = $request->idProducto;
         $usuarioProducto->save();
+        $productoPuesto = DB::table('puesto_ferias')
+        ->join('producto_puestos','producto_puestos.idPuesto','=','puesto_ferias.id')
+        ->get()
+        ->where('estado' , true)
+        ->where('idProducto' , $request->idProducto);
+        $producto = Producto::find($request->idProducto);
+        $unidadMedida = UnidadMedida::find($producto->idUnidad);
+        return view('producto')
+        ->with('producto' , $producto)
+        ->with('productoPuesto', $productoPuesto)
+        ->with('unidadMedida', $unidadMedida)
+        ->with('id',$request->idProducto)
+        ->with('idUsuario',$request->idUsuario)
+        ->with('message',"se agrego al carrito exitosamente");
         return response()->json(["message" => "relacion creada","id" => $usuarioProducto->id],202);
     }
 

@@ -39,14 +39,13 @@
                 
                 <div class="col-sm margen2">
                     <h2>Carro de compra</h2><br>
-                    <div class="card-group">
+                    <div class="card">
                         @forelse($usuarioProducto as $usuarioProducto)
                             <div class="card">
                                 <div class="card-body">
                                 <h5 class="card-title">{{$usuarioProducto->nombreProducto}}</h5>
                                 <h6 class="card-title">$ {{$usuarioProducto->precioProducto}}</h6>
                                 <p class="card-text">{{$usuarioProducto->descripcionProducto}}</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                 </div>
                             </div>
                         @empty
