@@ -30,14 +30,13 @@ Route::get('/producto', function () {
     return view('producto',['id' => 10]);
 });
 
-Route::get('/filtroComuna','PuestoFeriaController@filtrarPuestos');
+Route::get('/filtroComuna/{id}','PuestoFeriaController@filtrarPuestos');
 
 Route::get('/filtrarProducto/{id}','ProductoController@index');
 
 Route::get('/crearProducto/{id}', function ($id) {
     return view('crearProducto')->with('id', $id);
 });
-Route::get('/productosPuesto/{id}','PuestoFeriaController@show');
 
 Route::get('/registro', function () {
     return view('registro');
@@ -98,7 +97,7 @@ Route::get('/ferias/{id}','FeriaController@show');
 Route::get('/metodosDePago/{id}','MetodoPagoController@show');
 Route::get('/permisos/{id}','PermisoController@show');
 Route::get('/productos/{idUsario}/{id}','ProductoController@show');
-Route::get('/productosPuestos/{id}','ProductoPuestoController@show');
+Route::get('/productosPuesto/{idUsuario}/{id}','ProductoPuestoController@show');
 Route::get('/puestosFerias/{id}','PuestoFeriaController@show');
 Route::get('/regiones/{id}','RegionController@show');
 Route::get('/roles/{id}','RolController@show');

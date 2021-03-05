@@ -60,7 +60,7 @@
                         <h5><a class="nav-link" href="/productos/{{$id}}/{{$producto->idProducto}}">{{$producto->nombreProducto}}</a></h5>
                         <h5 class="card-title">{{$producto->nombreProducto}}</h5>
                         <p class="card-text">{{$producto->descripcionProducto}}</p>
-                        <a class="btn btn-primary" href="/productoPuesto/{{$producto->idPuesto}}" role="button">Ir al puesto de feria</a>
+                        <a class="btn btn-primary" href="/productosPuesto/{{$id}}/{{$producto->idPuesto}}" role="button">Ir al puesto de feria</a>
                     </div>
                 </div>
             @empty

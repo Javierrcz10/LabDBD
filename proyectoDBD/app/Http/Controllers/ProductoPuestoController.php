@@ -54,14 +54,15 @@ class ProductoPuestoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idUsuario,$id)
     {
 
         $puestoFerias = PuestoFeria::find($id);
         $productos = Producto::join('producto_puestos','producto_puestos.idProducto','=','productos.id')
-            ->where('producto_puesto.idPuesto', $id);
-        print_r($puestoFerias);
-        return view('productoPuesto',compact('puestoFerias','productos'))->with('id',$id);
+            ->where('producto_puestos.idPuesto', $id)
+            ->get();
+        
+        return view('productosPuesto',compact('puestoFerias','productos'))->with('idUsuario',$idUsuario)->with('id',$id);
     }
 
 
