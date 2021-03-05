@@ -16,7 +16,7 @@
         <div class="container-fluid">
        
         <a href="/inicio2/{{ $idUsuario}}"><img src="https://www.flaticon.es/svg/vstatic/svg/3081/3081887.svg?token=exp=1614144431~hmac=8d704a208a4e466b3c7785aa17a7a6c3" alt="" width="30" height="20" class="d-inline-block align-top"></a>
-            <a class="navbar-brand" href="/inicio2/{{ $id}}">Feria online</a>
+            <a class="navbar-brand" href="/inicio2/{{ $idUsuario}}">Feria online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
