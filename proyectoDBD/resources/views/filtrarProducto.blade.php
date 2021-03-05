@@ -57,6 +57,7 @@
             @forelse($productos as $producto)
                 <div class="card">
                     <div class="card-body">
+                        <h5><a class="nav-link" href="/productos/{{$producto->idProducto}}">{{$producto->nombreProducto}}</a></h5>
                         <h5 class="card-title">{{$producto->nombreProducto}}</h5>
                         <p class="card-text">{{$producto->descripcionProducto}}</p>
                         <p class="card-text">{{$producto->idPuesto}}</p>

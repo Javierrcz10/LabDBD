@@ -60,7 +60,11 @@ class UsuarioController extends Controller
             ->where('idUsuario', $id);
             //->where('estado', true);
         //$usuarioRoles = UsuarioRol::all()->where('idUsuario', $id);
-        $roles = Rol::all()->where('estado', true);
+        //$roles = Rol::all()->where('estado', true);
+        $roles = DB::table('rols')
+            ->distinct(['nombreRol'])
+            ->get()
+            ->where('estado', true);
         //verificar si el usuario esta borrado o no
         if($usuario == NULL){
             return response()->json(["message" => "usuario no existe"],404);
