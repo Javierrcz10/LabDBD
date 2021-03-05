@@ -36,23 +36,35 @@ class PuestoFeriaController extends Controller
         }
             
         $calles = Calle::all()->where('idComuna', $filtro);
-        
+        if($calles->isEmpty()){
+            $puestoFeria = PuestoFeria::all()->where('nohaypuestos','nohaypuestos');
+            return view('filtroComuna',compact('comunas','puestoFeria'));
+        }
         foreach($calles as $calle){
             $ubicaciones = Ubicacion::all()->where('idCalle', $calle->id);
+            
         }
-        
+        if($ubicaciones->isEmpty()){
+            $puestoFeria = PuestoFeria::all()->where('nohaypuestos','nohaypuestos');
+            return view('filtroComuna',compact('comunas','puestoFeria'));
+        }
         foreach($ubicaciones as $ubicacion){
             $ubicacionFerias = UbicacionFeria::all()->where('idUbicacion',$ubicacion->id);
         }
-        
+        if($ubicacionFerias->isEmpty()){
+            $puestoFeria = PuestoFeria::all()->where('nohaypuestos','nohaypuestos');
+            return view('filtroComuna',compact('comunas','puestoFeria'));
+        }
         foreach($ubicacionFerias as $ubicacionFeria){
             $ferias = Feria::all()->where('id',$ubicacionFeria->idFeria);
         }
-        
+        if($ferias->isEmpty()){
+            $puestoFeria = PuestoFeria::all()->where('nohaypuestos','nohaypuestos');
+            return view('filtroComuna',compact('comunas','puestoFeria'));
+        }
         foreach($ferias as $feria){
             $puestoFeria = PuestoFeria::all()->where('idFeria', $feria->id);
         }
-        
         return view('filtroComuna',compact('puestoFeria','comunas'));
 
 
