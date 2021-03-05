@@ -36,7 +36,7 @@ Route::get('/filtrarProducto','ProductoController@index');
 Route::get('/crearProducto/{id}', function ($id) {
     return view('crearProducto')->with('id', $id);
 });
-Route::get('/productosPuesto','ProductoPuestoController@index');
+Route::get('/productosPuesto/{id}','PuestoFeriaController@show');
 
 Route::get('/registro', function () {
     return view('registro');

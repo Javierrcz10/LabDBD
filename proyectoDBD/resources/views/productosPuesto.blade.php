@@ -32,10 +32,11 @@
         </div>
         </nav>
         <!-- info del puesto de feria-->
+        @forelse($puestoFerias as $puestoFeria)
         <div class="card">
             <div class="card-body">
-            <h5 class="card-title text-center">Nombre del puesto de feria</h5>
-            <h6 class="card-subtitle mb-2 text-muted text-center">Nombre del feriante</h6>
+            <h5 class="card-title text-center">{{$puestoFeria->NombrePuesto}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center">{{$puestoFeria->DescripcionPuesto}}</h6>
             </div>
         </div>
 
@@ -44,15 +45,17 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
         
         <div class="col">
-            
+            @forelse($productos as $producto)
             <div class="card">
             <div class="card-body">
-                <h5 class="card-title">wadw</h5>
+                <h5 class="card-title"></h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <button class="btn btn-outline-success">Ir al puesto</button>
+                
             </div>
             </div>
-            
+            @empty
+            <p>No posee productos</p>
+            @endforelse
             
         </div>
         </div>

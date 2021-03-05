@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Producto;
-use App\Models\PuestoFerias;
+use App\Models\PuestoFeria;
 use App\Models\Feria;
 use App\Models\ProductoPuesto;
 use Illuminate\Http\Request;
@@ -16,9 +16,9 @@ class ProductoPuestoController extends Controller
      */
     public function index()
     {
-        $productoPuesto = ProductoPuesto::all()->with('producto');
-        print_r($productoPuesto);
-        return view('productosPuesto',compact($productoPuesto));
+        $productoPuesto = ProductoPuesto::all();
+
+        return view('productosPuesto',compact('productoPuesto'));
     }
 
 
@@ -57,11 +57,11 @@ class ProductoPuestoController extends Controller
     public function show($id)
     {
 
-        $productoPuesto = ProductoPuesto::find($id);
-        if($productoPuesto != NULL){
-            return response()-> json($productoPuesto);
-        }
-        return response('ERROR 404');
+        $puestoFerias = PuestoFeria::find($id);
+        $productos = Producto::join('producto_puestos','producto_puestos.idProducto','=','productos.id')
+            ->where('producto_puesto.idPuesto', $id);
+        print_r($puestoFerias);
+        return view('productoPuesto',compact('puestoFerias','productos'))->with('id',$id);
     }
 
 

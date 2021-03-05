@@ -7,6 +7,7 @@ use App\Models\UbicacionFeria;
 use App\Models\Ubicacion;
 use App\Models\Calle;
 use App\Models\Comuna;
+use App\Models\ProductoPuesto;
 use Illuminate\Http\Request;
 
 class PuestoFeriaController extends Controller
@@ -105,10 +106,14 @@ class PuestoFeriaController extends Controller
     public function show($id)
     {
         $puestoFeria = PuestoFeria::find($id);
-        if($puestoFeria != NULL){
-            return response()-> json($puestoFeria);
+        $productoPuestos = ProductoPuesto::all()
+            ->where('idPuesto',$puestoFeria->id);
+        foreach($productoPuestos as $productoPuesto){
+            $productos = Producto::all()
+                ->where('id',$productoPuesto->idProducto);
         }
-        return response('ERROR 404');
+        
+        return view('productoPuesto',compact('puestoFeria','productos'));
     }
 
     /**
