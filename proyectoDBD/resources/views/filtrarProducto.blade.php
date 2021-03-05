@@ -15,17 +15,17 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
        
-        <a href="/"><img src="https://www.flaticon.es/svg/vstatic/svg/3081/3081887.svg?token=exp=1614144431~hmac=8d704a208a4e466b3c7785aa17a7a6c3" alt="" width="30" height="20" class="d-inline-block align-top"></a>
-            <a class="navbar-brand" href="/">Feria online</a>
+        <a href="/inicio2/{{ $id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/3081/3081887.svg?token=exp=1614144431~hmac=8d704a208a4e466b3c7785aa17a7a6c3" alt="" width="30" height="20" class="d-inline-block align-top"></a>
+            <a class="navbar-brand" href="/inicio2/{{ $id}}">Feria online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav position-absolute end-0">
-                <a class="nav-link active end-0" aria-current="page" href="/">carrito</a>
-                <a href="/"><img src="https://www.flaticon.es/svg/vstatic/svg/2121/2121815.svg?token=exp=1614144180~hmac=fbd564c4f791c62b73bcc3361327ae2f" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
-                <a class="nav-link" href="/">perfil</a>
-                <a href="/"><img src="https://www.flaticon.es/svg/vstatic/svg/64/64572.svg?token=exp=1614144250~hmac=cde59deb7b5db0484ffe1086425f367a" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
+                <a class="nav-link active end-0" aria-current="page" href="/usuarioProductos/{{ $id}}">carrito</a>
+                <a href="/usuarioProductos/{{ $id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/2121/2121815.svg?token=exp=1614144180~hmac=fbd564c4f791c62b73bcc3361327ae2f" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
+                <a class="nav-link" href="/usuarios/{{ $id}}">perfil</a>
+                <a href="/usuarios/{{ $id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/64/64572.svg?token=exp=1614144250~hmac=cde59deb7b5db0484ffe1086425f367a" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
                 &nbsp &nbsp &nbsp
             </div>
             </div>
@@ -57,7 +57,7 @@
             @forelse($productos as $producto)
                 <div class="card">
                     <div class="card-body">
-                        <h5><a class="nav-link" href="/productos/{{$producto->idProducto}}">{{$producto->nombreProducto}}</a></h5>
+                        <h5><a class="nav-link" href="/productos/{{$id}}/{{$producto->idProducto}}">{{$producto->nombreProducto}}</a></h5>
                         <h5 class="card-title">{{$producto->nombreProducto}}</h5>
                         <p class="card-text">{{$producto->descripcionProducto}}</p>
                         <p class="card-text">{{$producto->idPuesto}}</p>

@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm margen">
-                <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">filtrar por producto</a>
+                <a href="/filtrarProducto/{{ $id}}" class="btn btn-primary" role="button" data-bs-toggle="button">filtrar por producto</a>
                 </div>
                 <div class="col-sm margen">
                 <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">filtrar por comuna</a>

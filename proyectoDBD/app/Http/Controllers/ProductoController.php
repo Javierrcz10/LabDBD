@@ -17,8 +17,9 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,$id)
     {
+        print_r('hoi');
         $categoria = $request->get('categoria');
         $subCategoria = $request->get('subCategoria');
         $categorias = Categoria::all()->where('estado', true);
@@ -29,7 +30,7 @@ class ProductoController extends Controller
                 ->where('productos.idSubCategoria',"$subCategoria")
                 ->get();
             print_r($productos);
-            return view('filtrarProducto',compact('productos','categorias','subCategorias'));
+            return view('filtrarProducto',compact('productos','categorias','subCategorias'))->with('id',$id);
         }
         elseif($subCategoria ==NULL and $categoria !=NULL){
             $productos = Producto::join('sub_categorias','sub_categorias.id','=','productos.idSubCategoria')
@@ -39,7 +40,7 @@ class ProductoController extends Controller
                 ->get();
                 
             
-            return view('filtrarProducto',compact('productos','categorias','subCategorias'));
+            return view('filtrarProducto',compact('productos','categorias','subCategorias'))->with('id',$id);
         }
         elseif($subCategoria !=NULL and $categoria !=NULL){
             $productos = Producto::join('sub_categorias','sub_categorias.id','=','productos.idSubCategoria')
@@ -49,13 +50,14 @@ class ProductoController extends Controller
                 ->where('sub_categorias.idCategoria',"$categoria")
                 ->get();
             print_r($productos);
-            return  view('filtrarProducto',compact('productos','subCategorias','categorias'));
+            return  view('filtrarProducto',compact('productos','subCategorias','categorias'))->with('id',$id);
         }
-        $productos = Producto::all()
+        $productos = Producto::join('producto_puestos','producto_puestos.idProducto','=','productos.id')
+            ->get()
             ->where('estado', true);
         if($productos != NULL){
 
-            return view('filtrarProducto',compact('productos','categorias','subCategorias'));
+            return view('filtrarProducto',compact('productos','categorias','subCategorias'))->with('id',$id);
         }
         return response(404);
     }
@@ -93,7 +95,7 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idUsuario,$id)
     {
         $productoPuesto = DB::table('puesto_ferias')
             ->join('producto_puestos','producto_puestos.idPuesto','=','puesto_ferias.id')
@@ -131,7 +133,9 @@ class ProductoController extends Controller
             ->with('producto' , $producto)
             ->with('productoPuesto', $productoPuesto)
             ->with('unidadMedida', $unidadMedida)
-            ->with('id',$id);
+            ->with('id',$id)
+            ->with('idUsuario',$idUsuario)
+            ->with('message',null);
         }
         return response('ERROR 404');
     }

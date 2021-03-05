@@ -31,7 +31,7 @@ Route::get('/producto', function () {
 
 Route::get('/filtroComuna','PuestoFeriaController@filtrarPuestos');
 
-Route::get('/filtrarProducto','ProductoController@index');
+Route::get('/filtrarProducto/{id}','ProductoController@index');
 
 Route::get('/crearProducto/{id}', function ($id) {
     return view('crearProducto')->with('id', $id);
@@ -66,7 +66,7 @@ Route::get('/comentarios','ComentarioController@index');
 Route::get('/ferias','FeriaController@index');
 Route::get('/metodosDePago','MetodoPagoController@index');
 Route::get('/permisos','PermisoController@index');
-Route::get('/productos','ProductoController@index');
+Route::get('/productos/','ProductoController@index');
 Route::get('/puestosFerias','PuestoFeriaController@index');
 Route::get('/regiones','RegionController@index');
 Route::get('/roles','RolController@index');
@@ -96,7 +96,7 @@ Route::get('/comunas/{id}','ComunaController@show');
 Route::get('/ferias/{id}','FeriaController@show');
 Route::get('/metodosDePago/{id}','MetodoPagoController@show');
 Route::get('/permisos/{id}','PermisoController@show');
-Route::get('/productos/{id}','ProductoController@show');
+Route::get('/productos/{idUsario}/{id}','ProductoController@show');
 Route::get('/productosPuestos/{id}','ProductoPuestoController@show');
 Route::get('/puestosFerias/{id}','PuestoFeriaController@show');
 Route::get('/regiones/{id}','RegionController@show');
@@ -140,7 +140,7 @@ Route::post('/unidadMedidas/create','UnidadMedidaController@store');
 Route::post('/usuarioBoletas/create','UsuarioBoletaController@store');
 Route::post('/usuarioComentarios/create','UsuarioComentarioController@store');
 Route::post('/usuarios/create','UsuarioController@store')->name('usuarioStore');
-Route::post('/usuarioProductos/create','UsuarioProductoController@store');
+Route::post('/usuarioProductos/create','UsuarioProductoController@store')->name('usuarioProductoStore');
 Route::post('/usuarioPuestos/create','UsuarioPuestoController@store');
 Route::post('/usuarioRols/create','UsuarioRolController@store')->name('usuarioRolStore');
 
