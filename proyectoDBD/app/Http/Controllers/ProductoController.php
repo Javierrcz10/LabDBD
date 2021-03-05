@@ -19,17 +19,16 @@ class ProductoController extends Controller
      */
     public function index(Request $request,$id)
     {
-        print_r('hoi');
         $categoria = $request->get('categoria');
         $subCategoria = $request->get('subCategoria');
         $categorias = Categoria::all()->where('estado', true);
         $subCategorias = SubCategoria::all()->where('estado', true);
         if($subCategoria !=NULL and $categoria == NULL){
             $productos = Producto::join('sub_categorias','sub_categorias.id','=','productos.idSubCategoria')
+                ->join('producto_puestos','producto_puestos.idProducto','=','productos.id')
                 ->where('productos.estado', true)
                 ->where('productos.idSubCategoria',"$subCategoria")
                 ->get();
-            print_r($productos);
             return view('filtrarProducto',compact('productos','categorias','subCategorias'))->with('id',$id);
         }
         elseif($subCategoria ==NULL and $categoria !=NULL){
@@ -49,7 +48,6 @@ class ProductoController extends Controller
                 ->where('productos.idSubCategoria',"$subCategoria")
                 ->where('sub_categorias.idCategoria',"$categoria")
                 ->get();
-            print_r($productos);
             return  view('filtrarProducto',compact('productos','subCategorias','categorias'))->with('id',$id);
         }
         $productos = Producto::join('producto_puestos','producto_puestos.idProducto','=','productos.id')

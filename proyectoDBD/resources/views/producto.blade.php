@@ -39,7 +39,9 @@
                 
                 <div class="col-sm margen2">
                     @if($message != NULL)
-                        <h1 class="ui-pdp-title">{{ $message }}</h1>
+                        <div class="alert alert-success margen" role="alert">
+                            {{$message}}
+                        </div>
                     @else
                     @endif
                     <h1 class="color">{{ $producto->nombreProducto }}</h1>
@@ -114,5 +116,9 @@
         overflow: visible;
         display: inline-block;
         vertical-align: text-bottom;
+    }
+    .margen{
+        margin-left:25%;
+        margin-right:25%;
     }
 </style>

@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('inicio');
+
+    return view('inicio')->with('message',null);
 });
 
 Route::get('/uwu', function () {

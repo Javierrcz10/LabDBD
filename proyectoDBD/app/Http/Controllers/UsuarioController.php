@@ -41,7 +41,7 @@ class UsuarioController extends Controller
         $usuario->reputacionUsuario = 0.0;
         $usuario->estado = true;
         $usuario->save();
-        return redirect('/');
+        return redirect('/')->with('message',"Registro exitoso");
     }
 
     /**
