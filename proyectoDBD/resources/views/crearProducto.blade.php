@@ -42,22 +42,41 @@
 
                 <div class="col-sm margen2">
                 <form action="{!! route('productoStore',['id' => $id]) !!}" method="POST">
-                      <div class="form-floating mb-3">
-                          <input type="text" class="form-control" name="nombreProducto" placeholder="nombre">
-                          <label for="floatingInput">Nombre</label>
-                        </div>
-                        <div class="form-floating">
-                          <input type="text" class="form-control" name="descripcionProducto" placeholder="descripcion">
-                          <label for="usuario">Descripcion</label>
-                        </div>
-                        <br>
-                      
-                      <div class="form-floating mb-3">
-                          <input type="number" class="form-control" name="precioProducto" placeholder="precio">
-                          <label for="floatingInput">Precio producto</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary" href="/">Crear</button>
-                      
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="nombreProducto" placeholder="nombre">
+                        <label for="floatingInput">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="descripcionProducto" placeholder="descripcion">
+                        <label for="usuario">Descripcion</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" name="precioProducto" placeholder="precio">
+                        <label for="floatingInput">Precio producto</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" name="cantidad" placeholder="precio">
+                        <label for="floatingInput">Cantidad</label>
+                    </div>
+                    <select name="idUnidad" class="form-select mb-3" aria-label="Default select example" required>
+                        <option selected disabled value="">Selecciona una unidad de medida</option>
+                        @forelse($unidadMedida as $unidadMedida)
+                            <option value="{{ $unidadMedida->id }}">{{ $unidadMedida->tipoUnidad }}</option>
+                        @empty
+                            no hay unidades de medida
+                        @endforelse
+                    </select>
+                    <select name="idPuesto" class="form-select mb-3" aria-label="Default select example" required>
+                        <option selected disabled value="">Selecciona un Puesto</option>
+                        @forelse($usuarioPuestos as $usuarioPuestos)
+                            <option value="{{ $usuarioPuestos->idPuesto }}">{{ $usuarioPuestos->NombrePuesto }}</option>
+                        @empty
+                            usuario no tiene puestos
+                        @endforelse
+                    </select>
+                    <button type="submit" class="btn btn-primary" href="/">Crear</button>
+                    
                     </form>
                 </div>
 

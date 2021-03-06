@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Models\Usuario;
 use \App\Models\Rol;
+use App\Models\PuestoFeria;
 use \App\Models\UsuarioRol;
 use Illuminate\Support\Facades\DB;
 
@@ -65,6 +66,12 @@ class UsuarioController extends Controller
             ->distinct(['nombreRol'])
             ->get()
             ->where('estado', true);
+        $puestoFerias = PuestoFeria::all();
+
+        $usuarioPuestos = DB::table('usuario_puestos')
+            ->join('puesto_ferias','puesto_ferias.id','=','usuario_puestos.idPuesto')
+            ->get()
+            ->where('idUsuario', $id);
         //verificar si el usuario esta borrado o no
         if($usuario == NULL){
             return response()->json(["message" => "usuario no existe"],404);
@@ -73,7 +80,11 @@ class UsuarioController extends Controller
             return view('perfil')
             ->with('usuario',$usuario)
             ->with('roles',$roles)
-            ->with('usuarioRoles',$usuarioRoles);
+            ->with('roles2',$roles)
+            ->with('usuarioRoles',$usuarioRoles)
+            ->with('usuarioPuestos',$usuarioPuestos)
+            ->with('puestoFerias',$puestoFerias)
+            ->with('usuarioRoles2',$usuarioRoles);
         }
         return response()->json(["message" => "usuario se encuentra borrado"],404);
     }

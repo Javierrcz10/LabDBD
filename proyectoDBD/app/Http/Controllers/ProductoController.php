@@ -81,9 +81,15 @@ class ProductoController extends Controller
         $producto->descripcionProducto = $request->descripcionProducto;
         $producto->precioProducto = $request->precioProducto;
         $producto->idSubCategoria = 1;
-        $producto->idUnidad = 1;
+        $producto->idUnidad = $request->idUnidad;
         $producto->estado = true;
         $producto->save();
+        $productoPuesto = new ProductoPuesto();
+        $productoPuesto->cantidad = $request->cantidad;
+        $productoPuesto->idProducto = $producto->id;
+        $productoPuesto->idPuesto = $request->idPuesto;
+        $productoPuesto->estado = true;
+        $productoPuesto->save();
         return view('inicio2')->with('id',$id);
     }
 
@@ -209,5 +215,18 @@ class ProductoController extends Controller
         return response()->json([
             "message"=>"No se encontró el producto"
         ],404);
+    }
+
+    public function vistaCreacion($id)
+    {
+        $usuarioPuestos = DB::table('usuario_puestos')
+            ->join('puesto_ferias','puesto_ferias.id','=','usuario_puestos.idPuesto')
+            ->get()
+            ->where('idUsuario', $id);
+        $unidadMedida = UnidadMedida::all()->where('estado', true);
+        return view('crearProducto')
+            ->with('usuarioPuestos',$usuarioPuestos)
+            ->with('unidadMedida',$unidadMedida)
+            ->with('id', $id);
     }
 }

@@ -34,17 +34,13 @@ Route::get('/filtroComuna/{id}','PuestoFeriaController@filtrarPuestos');
 
 Route::get('/filtrarProducto/{id}','ProductoController@index');
 
-Route::get('/crearProducto/{id}', function ($id) {
-    return view('crearProducto')->with('id', $id);
-});
+Route::get('/crearProducto/{id}', 'ProductoController@vistaCreacion');
 
 Route::get('/registro', function () {
     return view('registro');
 });
 
-Route::get('/carritoCompra/{id}', function ($id) {
-    return view('carritoCompra')->with('id', $id);
-});
+
 
 Route::get('/inicioSesion', function () {
     return view('inicioSesion');
@@ -141,7 +137,7 @@ Route::post('/usuarioBoletas/create','UsuarioBoletaController@store');
 Route::post('/usuarioComentarios/create','UsuarioComentarioController@store');
 Route::post('/usuarios/create','UsuarioController@store')->name('usuarioStore');
 Route::post('/usuarioProductos/create','UsuarioProductoController@store')->name('usuarioProductoStore');
-Route::post('/usuarioPuestos/create','UsuarioPuestoController@store');
+Route::post('/usuarioPuestos/create','UsuarioPuestoController@store')->name('usuarioPuestoStore');
 Route::post('/usuarioRols/create','UsuarioRolController@store')->name('usuarioRolStore');
 
 

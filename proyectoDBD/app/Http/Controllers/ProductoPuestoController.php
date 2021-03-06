@@ -5,6 +5,7 @@ use App\Models\Producto;
 use App\Models\PuestoFeria;
 use App\Models\Feria;
 use App\Models\ProductoPuesto;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ProductoPuestoController extends Controller

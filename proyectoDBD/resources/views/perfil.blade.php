@@ -56,12 +56,13 @@
                     <br><br>
                     <h5>Roles del usuario</h5>
                     <ul>
-                            @forelse($usuarioRoles as $usuarioRoles)
+                        @forelse($usuarioRoles as $usuarioRoles)
                                 <li>{{ $usuarioRoles->idRol }}{{ $usuarioRoles->nombreRol }}</li>
                             @empty
                                 no tiene roles
                             @endforelse
                     </ul>
+                    <h6>Postulacion a Rol</h6>
                     <form action="{{route('usuarioRolStore')}}" method="POST">
                         <input type="hidden" name="idUsuario" value= "{{$usuario->id}}">
                         <select name="idRol" class="form-select mb-1" aria-label="Default select example" required>
@@ -75,7 +76,37 @@
                         <div class="col-auto">
                             <button type="submit" class="btn btn-primary mb-3">Postular</button>
                         </div>
-                    </form>
+                    </form><br>
+                    @forelse($usuarioRoles2 as $usuarioRol)
+                        @if($usuarioRol->nombreRol == 'vendedor')
+                            <h5>Puestos donde trabaja usuario</h5>
+                                <ul>
+                                    @forelse($usuarioPuestos as $usuarioPuesto)
+                                        <li>{{ $usuarioPuesto->NombrePuesto }}</li>
+                                    @empty
+                                        no tiene roles
+                                    @endforelse
+                                </ul>
+                            <h6>Postulacion a Puesto de Feria</h6>
+
+                            <form action="{{route('usuarioPuestoStore')}}" method="POST">
+                                <input type="hidden" name="idUsuario" value= "{{$usuario->id}}">
+                                <select name="idPuesto" class="form-select mb-1" aria-label="Default select example" required>
+                                    <option selected disabled value="">Selecciona un rol</option>
+                                    @forelse($puestoFerias as $puestoFeria)
+                                        <option value="{{ $puestoFeria->id }}">{{ $puestoFeria->NombrePuesto }}</option>
+                                    @empty
+                                        no hay roles a postular
+                                    @endforelse
+                                </select>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary mb-3">Postular</button>
+                                </div>
+                            </form>
+                        @else
+                        @endif
+                    @empty
+                    @endforelse
                 </div>
 
                 <div class="col-3">
