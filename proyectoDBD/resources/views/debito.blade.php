@@ -37,37 +37,76 @@
         </nav>
         <figure class="text-center">
             <h1>
-                Metodo de Pago
+                Debito
             </h1>
         </figure>
         <figure class="text-center">
             <h4>
-                Elija si desea cancelar con debito o credito
+                Ingrese sus datos de facturación
                 
             </h4>
             <br>
-            <div class="container">
-                <div class="row">
-                  <div class="col-sm">
-                  
-                    <img src="https://i.imgur.com/FOzroXu.jpg" class="img-fluid" alt="imagen" width="72%" height="200px">
-                    <br>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="/debito/{{$id}}" role="button">
-                        Elegir
-                    </a>
-                    
+            <div class="row g-2">
+                <div class="col-md">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="tipoPago" placeholder="name@example.com" value="Debito">
+                    <label for="floatingInputGrid">Tipo Pago</label>
                   </div>
-                  <div class="col-sm">
-                    <img src="https://i.imgur.com/0Ahx1tO.jpg" class="img-fluid" alt="Tarjeta credito" >
-                    <br>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="/credito/{{$id}}" role="button">
-                        Elegir
-                    </a>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <select class="form-select" id="nombreBanco" aria-label="Floating label select example">
+                      <option selected>Elija en este menu</option>
+                      <option value="1">Banco Santander</option>
+                      <option value="2">Banco BCI</option>
+                      <option value="3">Banco Estado</option>
+                      <option value="4">Banco Falabella</option>
+                      <option value="5">Banco del Desarrollo</option>
+                      <option value="6">Banco Corpbanca</option>
+                      <option value="7">Banco Consorcio</option>
+
+                    </select>
+                    <label for="nombreBanco">Nombre del banco</label>
                   </div>
-                 
                 </div>
               </div>
-        
+              <div class="row g-2">
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="ultimosDigitos" placeholder="name@example.com">
+                        <label for="floatingInput">ultimosDigitos</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                  <div class="form-floating">
+                    <select class="form-select" id="tipoCuenta" aria-label="Floating label select example">
+                      <option selected>Abra este menu</option>
+                      <option value="1">Cuenta Corriente</option>
+                      <option value="2">Cuenta ahorro</option>
+                      <option value="3">Cuenta Vista</option>
+                    </select>
+                    <label for="tipoCuenta">Tipo de cuenta</label>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                   
+                  </div>
+                  <div class="col-sm">
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#" role="button">
+                        Pagar
+                    </a>
+                  </div>
+                  <div class="col-sm">
+                
+                  </div>
+                </div>
+              </div>
            
             
           

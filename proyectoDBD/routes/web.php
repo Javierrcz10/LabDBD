@@ -50,6 +50,10 @@ Route::get('/metodoPago/{id}', function ($id) {
     return view('metodoPago')->with('id', $id);
 });
 
+Route::get('/debito/{id}', function ($id) {
+    return view('debito')->with('id', $id);
+});
+
 Route::get('/editarPerfil/{id}', 'UsuarioController@editar');
 /*  rutas de index*/
 
