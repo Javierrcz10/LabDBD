@@ -33,6 +33,12 @@
         </nav>
 
         <div class="container-fluid">
+                    @if($message != NULL)
+                        <div class="alert alert-success margen3" role="alert">
+                            {{$message}}
+                        </div>
+                    @else
+                    @endif
             <div class="row">
                 <div class="col-sm margen">
                 <a href="/filtrarProducto/{{ $id}}" class="btn btn-primary" role="button" data-bs-toggle="button">filtrar por producto</a>
@@ -62,5 +68,8 @@
     .margen2{
         margin-top:1%;
     }
-    
+    .margen3{
+        margin-left:25%;
+        margin-right:25%;
+    }
 </style>

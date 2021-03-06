@@ -23,7 +23,7 @@ Route::get('/uwu', function () {
 });
 
 Route::get('/inicio2/{id}', function ($id) {
-    return view('inicio2')->with('id', $id);
+    return view('inicio2')->with('id', $id)->with('message',null);
 });
 
 Route::get('/producto', function () {

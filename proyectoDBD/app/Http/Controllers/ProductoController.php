@@ -90,7 +90,7 @@ class ProductoController extends Controller
         $productoPuesto->idPuesto = $request->idPuesto;
         $productoPuesto->estado = true;
         $productoPuesto->save();
-        return view('inicio2')->with('id',$id);
+        return view('inicio2')->with('id',$id)->with('message',"se creo el producto con exito");
     }
 
     /**
