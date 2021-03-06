@@ -62,7 +62,7 @@ Route::get('/comentarios','ComentarioController@index');
 Route::get('/ferias','FeriaController@index');
 Route::get('/metodosDePago','MetodoPagoController@index');
 Route::get('/permisos','PermisoController@index');
-Route::get('/productos/','ProductoController@index');
+Route::get('/productos','ProductoController@index');
 Route::get('/puestosFerias','PuestoFeriaController@index');
 Route::get('/regiones','RegionController@index');
 Route::get('/roles','RolController@index');

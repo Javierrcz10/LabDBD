@@ -184,7 +184,7 @@ class UsuarioController extends Controller
         if($usuario == NULL){
             return redirect('/inicioSesion');
         }
-        return view('inicio2')->with('id',$usuario->id);
+        return view('inicio2')->with('id',$usuario->id)->with('message',NULL);
     }
 }
 
