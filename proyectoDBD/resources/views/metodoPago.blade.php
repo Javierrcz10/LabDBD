@@ -46,18 +46,20 @@
                 <div class="row">
                   <div class="col-sm">
                   
-                    <img src="https://i.imgur.com/FOzroXu.jpg" class="img-fluid" alt="imagen" width="72%" height="200px">
+                    <img src="https://cdn.pixabay.com/photo/2016/05/03/12/19/credit-card-1369111_960_720.png" class="img-fluid" alt="imagen" width="72%" height="200px">
+                    <br>
                     <br>
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="/debito/{{$id}}" role="button">
-                        Elegir
+                        Elegir debito
                     </a>
                     
                   </div>
                   <div class="col-sm">
-                    <img src="https://i.imgur.com/0Ahx1tO.jpg" class="img-fluid" alt="Tarjeta credito" >
+                    <img src="https://cdn.pixabay.com/photo/2020/09/21/21/30/credit-card-5591300_960_720.png" class="img-fluid" width="72%" height="200px" alt="Tarjeta credito" >
+                    <br>
                     <br>
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="/credito/{{$id}}" role="button">
-                        Elegir
+                        Elegir credito
                     </a>
                   </div>
                  
