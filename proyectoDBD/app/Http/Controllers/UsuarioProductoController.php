@@ -112,4 +112,27 @@ class UsuarioProductoController extends Controller
         $usuarioProducto->delete();
         return response()->json(["message" => "el usuario producto ha sido borrado","id" => $id],201);
     }
+
+    public function show2($id)
+    {
+        //$usuarioProducto = UsuarioProducto::find($id);
+        $usuarioProducto = DB::table('usuario_productos')
+            ->join('productos','usuario_productos.idProducto','=','productos.id')
+            ->get()
+            ->where('estado' , true)
+            ->where('idUsuario' , $id);
+        //$usuarioProducto = UsuarioProducto::all()->where('idProducto', $id);
+        $precioTotal = 0;
+        foreach ($usuarioProducto as $precio){
+            $precioTotal = $precioTotal + $precio->precioProducto;
+        }
+        if($usuarioProducto != NULL){
+            return view('debito')
+                ->with('usuarioProducto' , $usuarioProducto)
+                ->with('id',$id)
+                ->with('total',$precioTotal);
+
+        }
+        return response()->json(['message' => 'no existen datos'],404);
+    }
 }
