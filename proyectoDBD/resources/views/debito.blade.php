@@ -46,24 +46,26 @@
                 
             </h4>
             <br>
+          <div>
+            <form action="{{route('metPago')}}" method="POST">
             <div class="row g-2">
                 <div class="col-md">
                   <div class="form-floating">
-                    <input type="email" class="form-control" id="tipoPago" placeholder="name@example.com" value="Debito">
+                    <input type="text" name ="tipoPago" class="form-control" id="tipoPago" placeholder="Debito" value="Debito" disabled>
                     <label for="floatingInputGrid">Tipo Pago</label>
                   </div>
                 </div>
                 <div class="col-md">
                   <div class="form-floating">
-                    <select class="form-select" id="nombreBanco" aria-label="Floating label select example">
-                      <option selected>Elija en este menu</option>
-                      <option value="1">Banco Santander</option>
-                      <option value="2">Banco BCI</option>
-                      <option value="3">Banco Estado</option>
-                      <option value="4">Banco Falabella</option>
-                      <option value="5">Banco del Desarrollo</option>
-                      <option value="6">Banco Corpbanca</option>
-                      <option value="7">Banco Consorcio</option>
+                    <select name= "nombreBanco" class="form-select" id="nombreBanco" aria-label="Floating label select example">
+                      <option selected value ="">Elija en este menu</option>
+                      <option value="Banco Santander">Banco Santander</option>
+                      <option value="Banco BCI">Banco BCI</option>
+                      <option value="Banco Estado">Banco Estado</option>
+                      <option value="Banco Falabella">Banco Falabella</option>
+                      <option value="Banco del Desarrollo">Banco del Desarrollo</option>
+                      <option value="Banco Corpbanca">Banco Corpbanca</option>
+                      <option value="Banco Consorcio">Banco Consorcio</option>
 
                     </select>
                     <label for="nombreBanco">Nombre del banco</label>
@@ -98,9 +100,13 @@
                    
                   </div>
                   <div class="col-sm">
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#" role="button">
-                        Pagar
-                    </a>
+                    
+                    <input type="hidden" name="idUsuario" value= "{{$id}}">
+                    <input type="hidden" name="tipoPago" value= "Debito">
+                    <input type="hidden" name="totalPago" value= "{{$total}}">
+                    <button type="submit" class="btn btn-primary" href="boleta{{$id}}">Pagar</button>
+              </form>
+              </div>
                   </div>
                   <div class="col-sm">
                 

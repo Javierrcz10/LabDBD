@@ -50,9 +50,8 @@ Route::get('/metodoPago/{id}', function ($id) {
     return view('metodoPago')->with('id', $id);
 });
 
-Route::get('/debito/{id}', function ($id) {
-    return view('debito')->with('id', $id);
-});
+Route::get('/debito/{id}','UsuarioProductoController@show2'); 
+    
 
 Route::get('/editarPerfil/{id}', 'UsuarioController@editar');
 /*  rutas de index*/
@@ -124,7 +123,7 @@ Route::post('/categorias/create','CategoriaController@store');
 Route::post('/comentarios/create','ComentarioController@store');
 Route::post('/comunas/create','ComunaController@store');
 Route::post('/ferias/create','FeriaController@store');
-Route::post('/metodosDePago/create','MetodoPagoController@store');
+Route::post('/metodosDePago/create','MetodoPagoController@store')->name('metPago');
 Route::post('/permisos/create','PermisoController@store');
 Route::post('/productos/create/{id}','ProductoController@store')->name('productoStore');
 Route::post('/productosPuestos/create','ProductoPuestoController@store');
