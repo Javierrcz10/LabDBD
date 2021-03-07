@@ -40,31 +40,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Feria::factory(10)->create();
+        Feria::factory(30)->create();
         Rol::factory(10)->create();
         Permiso::factory(10)->create();
         UnidadMedida::factory(10)->create();
-        Usuario::factory(10)->create();
+        Usuario::factory(30)->create();
         Region::factory(10)->create();
         Categoria::factory(10)->create();
         SubCategoria::factory(10)->create();
-        Producto::factory(10)->create();
-        RolPermiso::factory(10)->create();
-        UsuarioProducto::factory(10)->create();
-        UsuarioRol::factory(10)->create();
+        Producto::factory(30)->create();
+        RolPermiso::factory(30)->create();
+        UsuarioProducto::factory(30)->create();
+        UsuarioRol::factory(30)->create();
         Comuna::factory(10)->create();
-        Calle::factory(10)->create();
-        Ubicacion::factory(10)->create();
-        UbicacionFeria::factory(10)->create();
-        UbicacionUsuario::factory(10)->create();
-        MetodoPago::factory(10)->create();
-        Boleta::factory(10)->create();
-        UsuarioBoleta::factory(10)->create();
-        Comentario::factory(10)->create();
-        BoletaProducto::factory(10)->create();
-        UsuarioComentario::factory(10)->create();
-        PuestoFeria::factory(10)->create();
-        UsuarioPuesto::factory(10)->create();
-        ProductoPuesto::factory(10)->create();
+        Calle::factory(15)->create();
+        Ubicacion::factory(30)->create();
+        UbicacionFeria::factory(30)->create();
+        UbicacionUsuario::factory(30)->create();
+        MetodoPago::factory(30)->create();
+        Boleta::factory(30)->create();
+        UsuarioBoleta::factory(30)->create();
+        Comentario::factory(30)->create();
+        BoletaProducto::factory(30)->create();
+        UsuarioComentario::factory(30)->create();
+        PuestoFeria::factory(30)->create();
+        UsuarioPuesto::factory(30)->create();
+        ProductoPuesto::factory(30)->create();
     }
 }
