@@ -35,9 +35,13 @@
         
         <div class="card">
             <div class="card-body">
-            <h5 class="card-title text-center">{{$puestoFerias->NombrePuesto}}</h5>
+            <h5 class="card-title text-center">Nombre del puesto: {{$puestoFerias->NombrePuesto}}</h5>
             <h6 class="card-subtitle mb-2 text-muted text-center">{{$puestoFerias->DescripcionPuesto}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted text-center">Feriante/s acargo del puesto:</h6>
+            @foreach($usuarios as $feriante)
+                <h6 class="card-subtitle mb-2 text-muted text-center">{{$feriante->nombreUsuario}} </h6>
             </div>
+            @endforeach
         </div>
         
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use App\Models\PuestoFeria;
 use App\Models\Feria;
+use App\Models\Usuario;
+use App\Models\UsuarioPuesto;
 use App\Models\ProductoPuesto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -59,11 +61,15 @@ class ProductoPuestoController extends Controller
     {
 
         $puestoFerias = PuestoFeria::find($id);
+        $usuarios = Usuario::join('usuario_puestos','usuario_puestos.idUsuario','=','usuarios.id')
+            ->where('usuarios.estado', true)
+            ->where('usuario_puestos.idPuesto', $id)
+            ->get();
         $productos = Producto::join('producto_puestos','producto_puestos.idProducto','=','productos.id')
             ->where('producto_puestos.idPuesto', $id)
             ->get();
         
-        return view('productosPuesto',compact('puestoFerias','productos'))->with('idUsuario',$idUsuario)->with('id',$id);
+        return view('productosPuesto',compact('puestoFerias','productos','usuarios'))->with('idUsuario',$idUsuario)->with('id',$id);
     }
 
 
