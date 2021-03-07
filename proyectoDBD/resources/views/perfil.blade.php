@@ -57,7 +57,7 @@
                     <h5>Roles del usuario</h5>
                     <ul>
                         @forelse($usuarioRoles as $usuarioRoles)
-                                <li>{{ $usuarioRoles->idRol }}{{ $usuarioRoles->nombreRol }}</li>
+                                <li>{{ $usuarioRoles->nombreRol }}</li>
                             @empty
                                 no tiene roles
                             @endforelse

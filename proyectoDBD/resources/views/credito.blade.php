@@ -44,6 +44,7 @@
             <br>
           <div>
             <form action="{{route('metPago')}}" method="POST">
+            <input type="hidden" name="idUsuario" value= "{{$id}}">
             <div class="row g-2">
                 <div class="col-md">
                   <div class="form-floating">
