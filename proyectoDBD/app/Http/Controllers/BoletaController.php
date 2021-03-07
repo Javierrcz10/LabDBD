@@ -48,11 +48,11 @@ class BoletaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idUsuario, $id)
     {
         $boleta = Boleta::find($id);
         if($boleta != NULL){
-            return response()-> json($boleta);
+            return view('boleta')->with('boleta',$boleta)->with('id',$idUsuario);
         }
         return response('ERROR 404');
     }
@@ -120,6 +120,20 @@ class BoletaController extends Controller
         return response()->json([
             "message"=>"No se encontró el boleta"
         ],404);
+    }
+
+    public function store2(Request $request)
+    {
+        $boleta = new Boleta();
+        $boleta->precioTotal = $request->precioTotal;
+        $boleta->fecha = $request->fecha;
+        $boleta->idPago = $request->idPago;
+        $boleta->estado = true;
+        $boleta->save();
+        return response()->json([
+            "message"=> "boleta creada",
+            "id"=> $boleta->id
+        ],202);
     }
 }
 

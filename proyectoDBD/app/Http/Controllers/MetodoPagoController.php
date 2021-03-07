@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MetodoPago;
+use App\Models\Boleta;
+use \App\Models\UsuarioBoleta;
+use App\Models\BoletaProducto;
+use \App\Models\UsuarioProducto;
+use Illuminate\Support\Facades\DB;
 class MetodoPagoController extends Controller
 {
     /**
@@ -37,10 +42,32 @@ class MetodoPagoController extends Controller
         $metodoPago->estado = true;
         $metodoPago->idUsuario = $request->idUsuario;
         $metodoPago->save();
-        return response()->json([
-            "message"=> "metodo de pago creado",
-            "id"=> $metodoPago->id
-        ],202);
+        $boleta = new Boleta();
+        $boleta->precioTotal = $request->totalPago;
+        $boleta->fecha = date('Y-m-d G:i:s');
+        $boleta->idPago = $metodoPago->id;
+        $boleta->estado = true;
+        $boleta->save();
+        $usuarioBoleta = new UsuarioBoleta();
+        $usuarioBoleta->idUsuario = $request->idUsuario;
+        $usuarioBoleta->idBoleta = $boleta->id;
+        $usuarioBoleta->save();
+        //se obtienen productos del carrito
+        $Producto = DB::table('usuario_productos')
+            ->join('productos','usuario_productos.idProducto','=','productos.id')
+            ->get()
+            ->where('estado' , true)
+            ->where('idUsuario' , $request->idUsuario);
+        foreach($Producto as $producto){
+            $boletaProducto = new BoletaProducto();
+            $boletaProducto->idBoleta = $boleta->id;
+            $boletaProducto->idProducto = $producto->idProducto;
+            $boletaProducto->save();
+        }
+       
+
+
+        return redirect()->action([BoletaController::class, 'show'], ['idUsuario' => $request->idUsuario, 'id' => $boleta->id]);
     }
 
     /**

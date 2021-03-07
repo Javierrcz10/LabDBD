@@ -86,7 +86,7 @@ Route::get('/usuarioRols','UsuarioRolController@index');
 
 /*  rutas de show*/
 
-Route::get('/boletas/{id}','BoletaController@show');
+Route::get('/boletas/{idUsuario}/{id}','BoletaController@show');
 Route::get('/boletaProductos/{id}','BoletaProductoController@show');
 Route::get('/calles/{id}','CalleController@show');
 Route::get('/categorias/{id}','CategoriaController@show');

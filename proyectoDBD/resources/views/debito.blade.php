@@ -75,9 +75,13 @@
               <div class="row g-2">
                 <div class="col-md">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" name="ultimosDigitos" placeholder="name@example.com">
+                        <input type="number" class="form-control" name="ultimosDigitos" placeholder="name@example.com">
                         <label for="floatingInput">ultimosDigitos</label>
                     </div>
+                    <div class="form-floating">
+                    <input type="number" name ="precio" class="form-control" id="tipoPago" placeholder="precio" value="{{$total}}" disabled>
+                    <label for="floatingInputGrid">Precio Total</label>
+                  </div>
                 </div>
                 <div class="col-md">
                   <div class="form-floating">
