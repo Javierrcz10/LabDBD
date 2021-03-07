@@ -33,7 +33,7 @@ class UsuarioPuestoController extends Controller
         $usuarioPuesto->idUsuario = $request->idUsuario;
         $usuarioPuesto->idPuesto = $request->idPuesto;
         $usuarioPuesto->save();
-        return response()->json(["message" => "relacion creada","id" => $usuarioPuesto->id],202);
+        return redirect()->action([UsuarioController::class, 'show'], ['id' => $request->idUsuario]);
     }
 
     /**

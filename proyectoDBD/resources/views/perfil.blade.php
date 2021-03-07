@@ -84,7 +84,7 @@
                                     @forelse($usuarioPuestos as $usuarioPuesto)
                                         <li>{{ $usuarioPuesto->NombrePuesto }}</li>
                                     @empty
-                                        no tiene roles
+                                        no tiene puestos
                                     @endforelse
                                 </ul>
                             <h6>Postulacion a Puesto de Feria</h6>
@@ -92,11 +92,11 @@
                             <form action="{{route('usuarioPuestoStore')}}" method="POST">
                                 <input type="hidden" name="idUsuario" value= "{{$usuario->id}}">
                                 <select name="idPuesto" class="form-select mb-1" aria-label="Default select example" required>
-                                    <option selected disabled value="">Selecciona un rol</option>
+                                    <option selected disabled value="">Selecciona un puesto</option>
                                     @forelse($puestoFerias as $puestoFeria)
                                         <option value="{{ $puestoFeria->id }}">{{ $puestoFeria->NombrePuesto }}</option>
                                     @empty
-                                        no hay roles a postular
+                                        no hay puestos a postular
                                     @endforelse
                                 </select>
                                 <div class="col-auto">
