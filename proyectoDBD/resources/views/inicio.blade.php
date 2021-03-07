@@ -13,21 +13,24 @@
     </head>
     <body>
     <!-- Image and text -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">
-                <img src="https://i.imgur.com/no68Ic5.png" alt="" width="30" height="20" class="d-inline-block align-top">
-                Feria Online
-                <p>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="registro" role="button">
-                        Registrarse
-                    </a>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="inicioSesion" role="button">
-                        Iniciar Sesión
-                    </a>
-                </p>
-                </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+       
+        <a href="/"><img src="https://cdn.pixabay.com/photo/2013/07/13/01/22/vegetables-155616_960_720.png" alt="" width="90" height="60" class="d-inline-block align-top me-1"></a>
+            <a class="navbar-brand" href="/">Feria online</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav position-absolute end-0">
+                <a class="nav-link active end-0" aria-current="page" href="/registro">Registrarse</a>
+                
+                <a class="nav-link active" href="/inicioSesion">Iniciar Sesión</a>
+                
+                &nbsp &nbsp &nbsp
             </div>
+            </div>
+        </div>
         </nav>
         @if($message != null) 
             <div class="alert alert-success margen" role="alert">

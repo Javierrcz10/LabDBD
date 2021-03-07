@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
        
-        <a href="/inicio2/{{ $usuario->id }}"><img src="https://www.flaticon.es/svg/vstatic/svg/3081/3081887.svg?token=exp=1614144431~hmac=8d704a208a4e466b3c7785aa17a7a6c3" alt="" width="30" height="20" class="d-inline-block align-top"></a>
+        <a href="/inicio2/{{ $usuario->id }}"><img src="https://cdn.pixabay.com/photo/2013/07/13/01/22/vegetables-155616_960_720.png" alt="" width="90" height="60" class="d-inline-block align-top me-1"></a>
             <a class="navbar-brand" href="/inicio2/{{ $usuario->id }}">Feria online</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,16 +24,16 @@
             <div class="navbar-nav position-absolute end-0">
                 @forelse($usuarioRoles as $us)
                     @if($us->nombreRol == 'vendedor')
-                        <a class="nav-link active end-0" aria-current="page" href="/crearProducto/{{ $usuario->id}}">crear producto</a>
-                        <a href="/crearProducto/{{ $usuario->id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/1077/1077221.svg?token=exp=1614838195~hmac=e3b31a3a0566ea4d600327788c1b9201" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
+                        <a class="nav-link active end-0" aria-current="page" href="/crearProducto/{{ $usuario->id}}">Crear producto</a>
+                        <a href="/crearProducto/{{ $usuario->id}}"><img src="https://image.flaticon.com/icons/png/512/83/83074.png" alt="Crear producto" width="30" height="30" class="d-inline-block align-bottom me-2"></a>
                     @else
                     @endif
                 @empty
                 @endforelse
-                <a class="nav-link active end-0" aria-current="page" href="/usuarioProductos/{{ $usuario->id}}">carrito</a>
-                <a href="/usuarioProductos/{{ $usuario->id}}"><img src="https://www.flaticon.es/svg/vstatic/svg/2121/2121815.svg?token=exp=1614144180~hmac=fbd564c4f791c62b73bcc3361327ae2f" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
-                <a class="nav-link" href="/usuarios/{{ $usuario->id }}">perfil</a>
-                <a href="/usuarios/{{ $usuario->id }}"><img src="https://www.flaticon.es/svg/vstatic/svg/64/64572.svg?token=exp=1614144250~hmac=cde59deb7b5db0484ffe1086425f367a" alt="" width="20" height="40" class="d-inline-block align-bottom"></a>
+                <a class="nav-link active end-0" aria-current="page" href="/usuarioProductos/{{ $usuario->id}}">Carrito</a>
+                <a href="/usuarioProductos/{{ $usuario->id}}"><img src="https://cdn.pixabay.com/photo/2013/07/12/14/53/cart-148964_960_720.png" alt="" width="30" height="30" class="d-inline-block align-bottom me-2"></a>
+                <a class="nav-link active" href="/usuarios/{{ $usuario->id }}">Perfil</a>
+                <a href="/usuarios/{{ $usuario->id }}"><img src="https://image.flaticon.com/icons/png/512/50/50050.png" alt="Perfil" width="30" height="30" class="d-inline-block align-bottom"></a>
                 &nbsp &nbsp &nbsp
             </div>
             </div>
@@ -46,7 +46,7 @@
                 </div>
                 
                 <div class="col-sm margen2">
-                    <img src="https://www.flaticon.com/svg/vstatic/svg/1077/1077114.svg?token=exp=1614194909~hmac=30af42c7e17c7d2142cdfd454ac9ecde" class="img-thumbnail" alt="imagen" width="20%" height="200px">
+                    <img src="https://image.flaticon.com/icons/png/512/50/50050.png" class="img-thumbnail" alt="imagen" width="20%" height="200px">
                     <h2>Usuario: {{ $usuario->nombreUsuario }}</h2> 
                     <h2>Apodo: {{ $usuario->apodoUsuario }}</h2> 
                     <h2>Mail: {{ $usuario->emailUsuario }}</h2> 
