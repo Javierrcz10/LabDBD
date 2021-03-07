@@ -135,4 +135,27 @@ class UsuarioProductoController extends Controller
         }
         return response()->json(['message' => 'no existen datos'],404);
     }
+
+    public function show3($id)
+    {
+        //$usuarioProducto = UsuarioProducto::find($id);
+        $usuarioProducto = DB::table('usuario_productos')
+            ->join('productos','usuario_productos.idProducto','=','productos.id')
+            ->get()
+            ->where('estado' , true)
+            ->where('idUsuario' , $id);
+        //$usuarioProducto = UsuarioProducto::all()->where('idProducto', $id);
+        $precioTotal = 0;
+        foreach ($usuarioProducto as $precio){
+            $precioTotal = $precioTotal + $precio->precioProducto;
+        }
+        if($usuarioProducto != NULL){
+            return view('credito')
+                ->with('usuarioProducto' , $usuarioProducto)
+                ->with('id',$id)
+                ->with('total',$precioTotal);
+
+        }
+        return response()->json(['message' => 'no existen datos'],404);
+    }
 }

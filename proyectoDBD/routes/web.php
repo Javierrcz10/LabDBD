@@ -51,7 +51,7 @@ Route::get('/metodoPago/{id}', function ($id) {
 });
 
 Route::get('/debito/{id}','UsuarioProductoController@show2'); 
-    
+Route::get('/credito/{id}','UsuarioProductoController@show3');     
 
 Route::get('/editarPerfil/{id}', 'UsuarioController@editar');
 /*  rutas de index*/
