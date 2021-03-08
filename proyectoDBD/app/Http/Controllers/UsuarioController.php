@@ -122,6 +122,16 @@ class UsuarioController extends Controller
             ->where('idUsuario', $id)       
             ->where('estado', true);
         //$usuarioRoles = UsuarioRol::all()->where('idUsuario', $id);
+        $roles = DB::table('rols')
+            ->distinct(['nombreRol'])
+            ->get()
+            ->where('estado', true);
+        $puestoFerias = PuestoFeria::all();
+
+        $usuarioPuestos = DB::table('usuario_puestos')
+            ->join('puesto_ferias','puesto_ferias.id','=','usuario_puestos.idPuesto')
+            ->get()
+            ->where('idUsuario', $id);
         $roles = Rol::all()->where('estado', true);
         if($request->nombreUsuario != NULL){
             $usuario->nombreUsuario = $request->nombreUsuario;
@@ -142,7 +152,11 @@ class UsuarioController extends Controller
         return view('perfil')
         ->with('usuario',$usuario)
         ->with('roles',$roles)
-        ->with('usuarioRoles',$usuarioRoles);
+        ->with('roles2',$roles)
+        ->with('usuarioRoles',$usuarioRoles)
+        ->with('usuarioPuestos',$usuarioPuestos)
+        ->with('puestoFerias',$puestoFerias)
+        ->with('usuarioRoles2',$usuarioRoles);
 
     }
 
